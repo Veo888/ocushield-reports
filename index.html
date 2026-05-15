@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocushield · Financial Reports</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --os-blue:      #044494;
+    --os-dark-blue: #022148;
+    --os-mid-blue:  #0775FF;
+    --os-teal:      #1ACCAA;
+    --os-green:     #4AB217;
+    --os-yellow:    #FCD112;
+    --os-orange:    #FF8507;
+    --os-red:       #FF3C06;
+    --os-purple:    #A129B2;
+    --os-pink:      #FD83E7;
+    --tint-blue:    #e8eef8;
+    --tint-teal:    #e8faf7;
+    --tint-green:   #eef7e8;
+    --tint-orange:  #fff3e8;
+    --tint-red:     #fff0ee;
+    --white:        #ffffff;
+    --off-white:    #f7f9fc;
+    --light:        #eef2f8;
+    --border:       #d0daea;
+    --mid:          #8aa0be;
+    --dark:         #3a4f6a;
+    --text:         #1a2e45;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background: var(--off-white);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--os-dark-blue);
+    position: relative;
+    overflow: hidden;
+  }
+  .header-shields {
+    position: absolute; top: -40px; right: -30px;
+    display: flex; gap: 12px; opacity: .15; pointer-events: none;
+  }
+  .hs {
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .header-inner {
+    position: relative; z-index: 2;
+    max-width: 1100px; margin: 0 auto;
+    padding: 40px 48px 36px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .logo-block { display: flex; align-items: center; gap: 16px; }
+  .logo-eye {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: var(--os-blue);
+    border: 2px solid rgba(255,255,255,.15);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 26px; font-weight: 700; color: #fff;
+  }
+  .brand-sub {
+    font-size: 11px; color: rgba(255,255,255,.45);
+    letter-spacing: 1.5px; text-transform: uppercase; margin-top: 3px;
+  }
+  .header-meta {
+    text-align: right;
+  }
+  .header-meta-label {
+    font-size: 11px; color: rgba(255,255,255,.4);
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .header-meta-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px; color: rgba(255,255,255,.65); margin-top: 3px;
+  }
+
+  /* ── ACCENT BAR ── */
+  .accent-bar {
+    height: 5px;
+    background: linear-gradient(90deg,
+      var(--os-teal) 0%, var(--os-green) 20%,
+      var(--os-yellow) 40%, var(--os-orange) 60%,
+      var(--os-red) 80%, var(--os-purple) 100%);
+  }
+
+  /* ── HERO STRIP ── */
+  .hero {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 48px;
+    max-width: 1100px; margin: 0 auto; width: 100%;
+  }
+  .hero-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 28px; font-weight: 700; color: var(--os-dark-blue);
+    margin-bottom: 8px;
+  }
+  .hero-sub {
+    font-size: 14px; color: var(--mid); max-width: 560px; line-height: 1.7;
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 1100px; margin: 0 auto;
+    padding: 40px 48px; flex: 1; width: 100%;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--os-blue);
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: ''; width: 18px; height: 3px;
+    background: var(--os-teal); border-radius: 2px; flex-shrink: 0;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    margin-bottom: 40px;
+  }
+  .stat {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 20px;
+    position: relative; overflow: hidden;
+  }
+  .stat::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    border-radius: 0 0 10px 10px; background: var(--os-teal);
+  }
+  .stat.blue::after   { background: var(--os-blue); }
+  .stat.purple::after { background: var(--os-purple); }
+  .stat.orange::after { background: var(--os-orange); }
+  .stat-label { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--mid); margin-bottom: 6px; }
+  .stat-val   { font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 700; color: var(--os-dark-blue); }
+  .stat-note  { font-size: 11px; color: var(--mid); margin-top: 4px; }
+
+  /* ── REPORTS GRID ── */
+  .reports-grid {
+    display: flex; flex-direction: column; gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .report-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow .2s, transform .15s, border-color .2s;
+    cursor: pointer;
+  }
+  .report-card:hover {
+    box-shadow: 0 4px 20px rgba(4,68,148,.12);
+    transform: translateY(-1px);
+    border-color: var(--os-blue);
+  }
+  .report-card:hover .report-arrow { opacity: 1; transform: translateX(0); }
+
+  /* Left colour band */
+  .report-band {
+    width: 6px; flex-shrink: 0;
+    background: var(--os-teal);
+  }
+  .report-band.revised { background: var(--os-green); }
+  .report-band.draft   { background: var(--os-orange); }
+  .report-band.archive { background: var(--mid); }
+
+  .report-body {
+    flex: 1; padding: 20px 24px;
+    display: flex; align-items: center; gap: 20px;
+  }
+
+  /* Month badge */
+  .report-month {
+    width: 64px; flex-shrink: 0; text-align: center;
+  }
+  .report-month-abbr {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 22px; font-weight: 700; color: var(--os-dark-blue);
+    line-height: 1;
+  }
+  .report-month-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--mid); margin-top: 3px;
+  }
+
+  .report-divider {
+    width: 1px; height: 48px; background: var(--border); flex-shrink: 0;
+  }
+
+  .report-info { flex: 1; }
+  .report-title-row {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 4px;
+  }
+  .report-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 16px; font-weight: 700; color: var(--os-dark-blue);
+  }
+
+  .badge {
+    display: inline-flex; align-items: center;
+    border-radius: 4px; padding: 2px 8px;
+    font-size: 10px; font-weight: 600; letter-spacing: .4px;
+  }
+  .badge-green  { background: #eef7e8; color: var(--os-green);  border: 1px solid rgba(74,178,23,.2); }
+  .badge-orange { background: #fff3e8; color: var(--os-orange); border: 1px solid rgba(255,133,7,.2); }
+  .badge-blue   { background: var(--tint-blue); color: var(--os-blue); border: 1px solid rgba(4,68,148,.15); }
+  .badge-mid    { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
+  .badge-teal   { background: var(--tint-teal); color: #0e9e83; border: 1px solid rgba(26,204,170,.2); }
+
+  .report-desc {
+    font-size: 12px; color: var(--mid); line-height: 1.5;
+  }
+
+  .report-meta-row {
+    display: flex; align-items: center; gap: 16px; margin-top: 8px;
+  }
+  .report-meta-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: var(--mid);
+    display: flex; align-items: center; gap: 5px;
+  }
+  .report-meta-item svg { opacity: .5; }
+
+  .report-right {
+    display: flex; flex-direction: column; align-items: flex-end;
+    gap: 8px; flex-shrink: 0; padding-right: 4px;
+  }
+  .report-arrow {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: var(--tint-blue);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--os-blue);
+    opacity: 0; transform: translateX(-4px);
+    transition: opacity .2s, transform .2s;
+    flex-shrink: 0;
+  }
+  .report-kpis {
+    display: flex; gap: 16px;
+  }
+  .report-kpi { text-align: right; }
+  .report-kpi-label { font-size: 10px; color: var(--mid); letter-spacing: .5px; text-transform: uppercase; }
+  .report-kpi-val   { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--os-dark-blue); font-weight: 500; margin-top: 1px; }
+  .pos { color: var(--os-green) !important; }
+  .neg { color: var(--os-red)   !important; }
+
+  /* ── COMING SOON CARD ── */
+  .coming-soon {
+    background: var(--white); border: 1px dashed var(--border);
+    border-radius: 12px; padding: 24px;
+    display: flex; align-items: center; gap: 16px;
+    color: var(--mid);
+  }
+  .coming-soon-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    background: var(--light);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 18px;
+  }
+  .coming-soon-title { font-size: 13px; font-weight: 600; color: var(--dark); }
+  .coming-soon-sub   { font-size: 12px; color: var(--mid); margin-top: 2px; }
+
+  /* ── PROTOCOL BOX ── */
+  .protocol-box {
+    background: var(--tint-blue);
+    border: 1px solid rgba(4,68,148,.15);
+    border-radius: 10px; padding: 20px 24px;
+    display: flex; gap: 16px; align-items: flex-start;
+    margin-bottom: 40px;
+  }
+  .protocol-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--os-blue);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .protocol-title { font-size: 13px; font-weight: 600; color: var(--os-dark-blue); margin-bottom: 4px; }
+  .protocol-desc  { font-size: 12px; color: var(--dark); line-height: 1.6; }
+  .protocol-link  {
+    display: inline-block; margin-top: 8px;
+    font-size: 12px; font-weight: 600; color: var(--os-blue);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(4,68,148,.2);
+  }
+  .protocol-link:hover { border-bottom-color: var(--os-blue); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--os-dark-blue);
+    padding: 24px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-inner {
+    max-width: 1100px; width: 100%; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .f-brand { font-family: 'Libre Baskerville', serif; font-size: 14px; color: rgba(255,255,255,.7); font-weight: 700; }
+  .f-note  { font-size: 11px; color: rgba(255,255,255,.3); margin-top: 3px; }
+  .shield-row { display: flex; gap: 5px; }
+  .f-shield { width: 20px; height: 12px; border-radius: 3px; opacity: .45; }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <div class="header-shields">
+    <div class="hs" style="width:70px;height:44px;background:var(--os-teal);transform:rotate(-8deg) scale(1.4)"></div>
+    <div class="hs" style="width:70px;height:44px;background:var(--os-purple);transform:rotate(5deg) scale(1.1);margin-top:10px"></div>
+    <div class="hs" style="width:70px;height:44px;background:var(--os-orange);transform:rotate(-4deg) scale(.9);margin-top:24px"></div>
+    <div class="hs" style="width:70px;height:44px;background:var(--os-green);transform:rotate(9deg) scale(1.2);margin-top:6px"></div>
+    <div class="hs" style="width:70px;height:44px;background:var(--os-yellow);transform:rotate(-5deg);margin-top:18px"></div>
+    <div class="hs" style="width:70px;height:44px;background:var(--os-red);transform:rotate(3deg) scale(1.1);margin-top:8px"></div>
+    <div class="hs" style="width:70px;height:44px;background:var(--os-pink);transform:rotate(-9deg) scale(.8);margin-top:22px"></div>
+  </div>
+  <div class="header-inner">
+    <div class="logo-block">
+      <div class="logo-eye">
+        <svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="14" cy="14" r="9" stroke="white" stroke-width="2.2" fill="none"/>
+          <circle cx="14" cy="14" r="3.5" fill="white" opacity=".9"/>
+          <rect x="6" y="3" width="5" height="3" rx="1" fill="#1ACCAA"/>
+          <rect x="12" y="2" width="5" height="3" rx="1" fill="#A129B2"/>
+          <rect x="18" y="3" width="5" height="3" rx="1" fill="#FCD112"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">Ocushield</div>
+        <div class="brand-sub">Financial Intelligence Hub</div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="header-meta-label">Last updated</div>
+      <div class="header-meta-val">15 May 2026</div>
+    </div>
+  </div>
+</header>
+<div class="accent-bar"></div>
+
+<!-- ═══ HERO ═══ -->
+<div style="background:var(--white);border-bottom:1px solid var(--border);">
+  <div class="hero">
+    <div class="hero-title">Financial Reports</div>
+    <div class="hero-sub">Monthly P&amp;L variance analysis, cash position, and performance commentary for Ocushield Limited. All reports sourced live from Xero.</div>
+  </div>
+</div>
+
+<main>
+
+  <!-- STATS -->
+  <div style="margin-bottom:32px; margin-top:4px;">
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-label">Reports Published</div>
+        <div class="stat-val">1</div>
+        <div class="stat-note">FY2026 to date</div>
+      </div>
+      <div class="stat blue">
+        <div class="stat-label">Latest Month</div>
+        <div class="stat-val">April</div>
+        <div class="stat-note">2026 actuals</div>
+      </div>
+      <div class="stat purple">
+        <div class="stat-label">YTD Net P&amp;L</div>
+        <div class="stat-val neg" style="font-size:24px;">−£35.8k</div>
+        <div class="stat-note">Jan–Apr 2026</div>
+      </div>
+      <div class="stat orange">
+        <div class="stat-label">Cash Position</div>
+        <div class="stat-val" style="font-size:24px;">£170.5k</div>
+        <div class="stat-note">As at 15 May 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FY2026 REPORTS -->
+  <section style="margin-bottom:40px;">
+    <div class="section-label">FY2026 · Monthly Reports</div>
+    <div class="reports-grid">
+
+      <!-- JANUARY — placeholder -->
+      <div class="report-card" style="opacity:.45;cursor:default;" title="Report not yet published">
+        <div class="report-band archive"></div>
+        <div class="report-body">
+          <div class="report-month">
+            <div class="report-month-abbr">Jan</div>
+            <div class="report-month-year">2026</div>
+          </div>
+          <div class="report-divider"></div>
+          <div class="report-info">
+            <div class="report-title-row">
+              <span class="report-name">January 2026</span>
+              <span class="badge badge-mid">Not published</span>
+            </div>
+            <div class="report-desc">P&amp;L variance analysis not yet available for this period.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FEBRUARY — placeholder -->
+      <div class="report-card" style="opacity:.45;cursor:default;" title="Report not yet published">
+        <div class="report-band archive"></div>
+        <div class="report-body">
+          <div class="report-month">
+            <div class="report-month-abbr">Feb</div>
+            <div class="report-month-year">2026</div>
+          </div>
+          <div class="report-divider"></div>
+          <div class="report-info">
+            <div class="report-title-row">
+              <span class="report-name">February 2026</span>
+              <span class="badge badge-mid">Not published</span>
+            </div>
+            <div class="report-desc">P&amp;L variance analysis not yet available for this period.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MARCH — placeholder -->
+      <div class="report-card" style="opacity:.45;cursor:default;" title="Report not yet published">
+        <div class="report-band archive"></div>
+        <div class="report-body">
+          <div class="report-month">
+            <div class="report-month-abbr">Mar</div>
+            <div class="report-month-year">2026</div>
+          </div>
+          <div class="report-divider"></div>
+          <div class="report-info">
+            <div class="report-title-row">
+              <span class="report-name">March 2026</span>
+              <span class="badge badge-mid">Not published</span>
+            </div>
+            <div class="report-desc">P&amp;L variance analysis not yet available for this period.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- APRIL v2 — LIVE -->
+      <a class="report-card" href="ocushield_april_2026_v2.html">
+        <div class="report-band revised"></div>
+        <div class="report-body">
+          <div class="report-month">
+            <div class="report-month-abbr">Apr</div>
+            <div class="report-month-year">2026</div>
+          </div>
+          <div class="report-divider"></div>
+          <div class="report-info">
+            <div class="report-title-row">
+              <span class="report-name">April 2026 · P&amp;L Variance Analysis</span>
+              <span class="badge badge-green">✓ Latest</span>
+              <span class="badge badge-teal">v2 Revised</span>
+            </div>
+            <div class="report-desc">Full MoM, YoY, and YTD variance analysis with cash position and runway projections. March comparatives corrected following Xero API date-range issue. One-off items flagged including Eye Screening revenue spike and settlement agreement.</div>
+            <div class="report-meta-row">
+              <span class="report-meta-item">
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 3.5V6l1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                Published 15 May 2026
+              </span>
+              <span class="report-meta-item">
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><rect x="1" y="2" width="10" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h10" stroke="currentColor" stroke-width="1.2"/></svg>
+                Source: Xero Live
+              </span>
+              <span class="report-meta-item">
+                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                March figures verified
+              </span>
+            </div>
+          </div>
+          <div class="report-right">
+            <div class="report-arrow">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="report-kpis">
+              <div class="report-kpi">
+                <div class="report-kpi-label">Revenue</div>
+                <div class="report-kpi-val">£353.4k</div>
+              </div>
+              <div class="report-kpi">
+                <div class="report-kpi-label">Net Profit</div>
+                <div class="report-kpi-val pos">£58.3k</div>
+              </div>
+              <div class="report-kpi">
+                <div class="report-kpi-label">GP Margin</div>
+                <div class="report-kpi-val">40.6%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- APRIL v1 — SUPERSEDED -->
+      <a class="report-card" href="ocushield_april_2026_branded.html" style="opacity:.6;">
+        <div class="report-band archive"></div>
+        <div class="report-body">
+          <div class="report-month">
+            <div class="report-month-abbr">Apr</div>
+            <div class="report-month-year">2026</div>
+          </div>
+          <div class="report-divider"></div>
+          <div class="report-info">
+            <div class="report-title-row">
+              <span class="report-name">April 2026 · P&amp;L Variance Analysis</span>
+              <span class="badge badge-mid">v1 — Superseded</span>
+            </div>
+            <div class="report-desc">Original version. March comparatives contain a Xero API date-range error (Amazon ROW understated by £14,909). Retained for audit trail only — use v2 for all reference purposes.</div>
+            <div class="report-meta-row">
+              <span class="report-meta-item">Published 15 May 2026</span>
+              <span class="report-meta-item" style="color:var(--os-orange);">⚠ Contains data error in March column</span>
+            </div>
+          </div>
+          <div class="report-right">
+            <div class="report-arrow">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- MAY — coming soon -->
+      <div class="coming-soon">
+        <div class="coming-soon-icon">📅</div>
+        <div>
+          <div class="coming-soon-title">May 2026 · P&amp;L Variance Analysis</div>
+          <div class="coming-soon-sub">Expected mid-June 2026 · Data will be sourced live from Xero using verified explicit date ranges</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REPORTING PROTOCOL NOTE -->
+  <div class="protocol-box">
+    <div class="protocol-icon">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2L2 6v6l7 4 7-4V6L9 2z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 10V7M9 12v.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </div>
+    <div>
+      <div class="protocol-title">Xero API Reporting Protocol</div>
+      <div class="protocol-desc">All reports from May 2026 onwards use explicit start and end dates for every comparison period, with cross-call reconciliation checks. This prevents the Xero API date-range truncation issue identified during the April 2026 reporting cycle. A full protocol document is maintained alongside this repository.
+        <br><a class="protocol-link" href="ocushield_xero_reporting_protocol.md">View reporting protocol →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FY2025 ARCHIVE -->
+  <section>
+    <div class="section-label">FY2025 · Archive</div>
+    <div class="reports-grid">
+      <div class="coming-soon">
+        <div class="coming-soon-icon">🗂</div>
+        <div>
+          <div class="coming-soon-title">FY2025 Monthly Reports</div>
+          <div class="coming-soon-sub">Historical reports for FY2025 not yet uploaded. Add prior period HTML files to this repository to populate the archive.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="f-brand">Ocushield Limited</div>
+      <div class="f-note">Financial Intelligence Hub · Confidential — Internal use only · Data sourced from Xero</div>
+    </div>
+    <div class="shield-row">
+      <div class="f-shield" style="background:var(--os-teal);"></div>
+      <div class="f-shield" style="background:var(--os-green);"></div>
+      <div class="f-shield" style="background:var(--os-yellow);"></div>
+      <div class="f-shield" style="background:var(--os-orange);"></div>
+      <div class="f-shield" style="background:var(--os-red);"></div>
+      <div class="f-shield" style="background:var(--os-purple);"></div>
+      <div class="f-shield" style="background:var(--os-pink);"></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocushield — April 2026 Performance Review v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --os-blue:      #044494;
+    --os-dark-blue: #022148;
+    --os-mid-blue:  #0775FF;
+    --os-teal:      #1ACCAA;
+    --os-green:     #4AB217;
+    --os-yellow:    #FCD112;
+    --os-orange:    #FF8507;
+    --os-red:       #FF3C06;
+    --os-purple:    #A129B2;
+    --os-pink:      #FD83E7;
+    --tint-blue:    #e8eef8;
+    --tint-teal:    #e8faf7;
+    --tint-green:   #eef7e8;
+    --tint-orange:  #fff3e8;
+    --tint-red:     #fff0ee;
+    --tint-purple:  #f5eaf7;
+    --white:   #ffffff;
+    --off-white:#f7f9fc;
+    --light:   #eef2f8;
+    --border:  #d0daea;
+    --mid:     #8aa0be;
+    --dark:    #3a4f6a;
+    --text:    #1a2e45;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--off-white); color:var(--text); font-family:'DM Sans',sans-serif; font-size:13px; line-height:1.6; }
+
+  header { background:var(--os-dark-blue); position:relative; overflow:hidden; }
+  .header-shields { position:absolute; top:-30px; right:-20px; display:flex; gap:10px; opacity:.18; pointer-events:none; }
+  .shield { border-radius:6px; width:56px; height:36px; }
+  .header-inner { position:relative; z-index:2; padding:28px 44px 24px; display:flex; justify-content:space-between; align-items:flex-end; }
+  .logo-eye { width:44px; height:44px; border-radius:10px; background:var(--os-blue); border:2px solid rgba(255,255,255,.15); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .eye-svg { width:28px; height:28px; }
+  .logo-block { display:flex; align-items:center; gap:14px; }
+  .brand-name { font-family:'Libre Baskerville',serif; font-size:22px; font-weight:700; color:#fff; }
+  .brand-sub { font-size:11px; color:rgba(255,255,255,.5); letter-spacing:1.2px; text-transform:uppercase; margin-top:2px; }
+  .header-right { text-align:right; }
+  .report-title { font-family:'Libre Baskerville',serif; font-size:20px; color:#fff; font-weight:700; }
+  .report-date { font-size:12px; color:rgba(255,255,255,.55); margin-top:4px; }
+  .revised-badge { display:inline-block; background:var(--os-orange); color:#fff; font-size:10px; font-weight:700; padding:3px 8px; border-radius:4px; letter-spacing:.5px; margin-top:6px; }
+
+  .accent-bar { height:5px; background:linear-gradient(90deg,var(--os-teal) 0%,var(--os-green) 20%,var(--os-yellow) 40%,var(--os-orange) 60%,var(--os-red) 80%,var(--os-purple) 100%); }
+
+  main { padding:32px 44px; max-width:1400px; }
+  section { margin-bottom:40px; }
+  .section-label { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--os-blue); margin-bottom:14px; display:flex; align-items:center; gap:10px; }
+  .section-label::before { content:''; width:18px; height:3px; background:var(--os-teal); border-radius:2px; flex-shrink:0; }
+  .section-label::after { content:''; flex:1; height:1px; background:var(--border); }
+
+  .kpi-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+  .kpi { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:20px 18px 16px; position:relative; overflow:hidden; }
+  .kpi::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; border-radius:0 0 12px 12px; background:var(--os-teal); }
+  .kpi.warn::after { background:var(--os-orange); }
+  .kpi.neutral::after { background:var(--os-blue); }
+  .kpi::before { content:''; position:absolute; top:10px; right:12px; width:22px; height:14px; border-radius:3px; opacity:.12; background:var(--os-blue); }
+  .kpi-label { font-size:10px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--mid); margin-bottom:8px; }
+  .kpi-val { font-family:'Libre Baskerville',serif; font-size:28px; font-weight:700; color:var(--os-dark-blue); line-height:1.1; }
+  .kpi-delta { font-family:'DM Mono',monospace; font-size:11px; margin-top:6px; }
+  .kpi-sub { font-size:11px; color:var(--mid); margin-top:4px; }
+  .up   { color:var(--os-green); }
+  .down { color:var(--os-red); }
+  .flat { color:var(--mid); }
+
+  .badge { display:inline-block; border-radius:4px; padding:2px 7px; font-size:10px; font-weight:600; letter-spacing:.4px; margin-left:4px; vertical-align:middle; }
+  .badge-orange { background:#fff3e8; color:var(--os-orange); border:1px solid rgba(255,133,7,.25); }
+  .badge-green  { background:#eef7e8; color:var(--os-green);  border:1px solid rgba(74,178,23,.25); }
+  .badge-red    { background:#fff0ee; color:var(--os-red);    border:1px solid rgba(255,60,6,.25); }
+  .badge-blue   { background:var(--tint-blue); color:var(--os-blue); border:1px solid rgba(4,68,148,.15); }
+  .badge-revised{ background:var(--os-orange); color:#fff; border:none; }
+
+  .table-wrap { background:var(--white); border:1px solid var(--border); border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(4,68,148,.06); }
+  table { width:100%; border-collapse:collapse; }
+  thead th { background:var(--os-dark-blue); padding:11px 14px; font-size:10px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:rgba(255,255,255,.7); text-align:right; }
+  thead th:first-child { text-align:left; }
+  tbody tr { border-bottom:1px solid var(--light); transition:background .12s; }
+  tbody tr:hover { background:var(--tint-blue); }
+  tbody tr:last-child { border-bottom:none; }
+  td { padding:9px 14px; text-align:right; font-family:'DM Mono',monospace; font-size:12px; color:var(--dark); }
+  td:first-child { text-align:left; font-family:'DM Sans',sans-serif; font-size:12px; color:var(--text); }
+  .row-group td { background:var(--tint-blue); color:var(--os-blue); font-weight:600; font-size:10px; letter-spacing:1.2px; text-transform:uppercase; padding:8px 14px; font-family:'DM Sans',sans-serif; }
+  .row-total td { background:var(--os-dark-blue); color:#fff; font-weight:500; font-size:12px; }
+  .row-total td:first-child { font-family:'DM Sans',sans-serif; font-weight:600; }
+  .row-margin td { background:#f0f4fb; color:var(--mid); font-size:11px; font-style:italic; }
+  .row-sub td:first-child { padding-left:28px; color:var(--mid); font-size:11.5px; }
+  .pos  { color:var(--os-green); }
+  .neg  { color:var(--os-red); }
+  .neut { color:var(--mid); }
+
+  .two-col   { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .card { background:var(--white); border:1px solid var(--border); border-radius:12px; padding:24px; box-shadow:0 1px 4px rgba(4,68,148,.06); }
+  .card-title { font-family:'Libre Baskerville',serif; font-size:15px; font-weight:700; color:var(--os-dark-blue); margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+  .card-title::before { content:''; width:14px; height:9px; border-radius:2px; background:var(--os-teal); flex-shrink:0; }
+
+  .channel-row { display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--light); }
+  .channel-row:last-child { border-bottom:none; }
+  .channel-name { flex:1; font-size:12px; color:var(--text); }
+  .channel-val  { font-family:'DM Mono',monospace; font-size:12px; width:78px; text-align:right; color:var(--os-dark-blue); font-weight:500; }
+  .channel-bar-wrap { width:90px; height:6px; background:var(--light); border-radius:3px; overflow:hidden; }
+  .channel-bar { height:6px; border-radius:3px; }
+  .channel-delta { font-family:'DM Mono',monospace; font-size:11px; width:52px; text-align:right; }
+
+  .oneoff-list { display:flex; flex-direction:column; gap:10px; }
+  .oneoff { border-radius:10px; padding:14px 16px; display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+  .oneoff.green  { background:var(--tint-green);  border-left:4px solid var(--os-green); }
+  .oneoff.orange { background:var(--tint-orange); border-left:4px solid var(--os-orange); }
+  .oneoff.red    { background:var(--tint-red);    border-left:4px solid var(--os-red); }
+  .oneoff.blue   { background:var(--tint-blue);   border-left:4px solid var(--os-blue); }
+  .oneoff-desc { font-size:12px; color:var(--text); font-weight:600; }
+  .oneoff-sub  { font-size:11px; color:var(--dark); margin-top:3px; line-height:1.5; }
+  .oneoff-val  { font-family:'Libre Baskerville',serif; font-size:15px; font-weight:700; text-align:right; white-space:nowrap; flex-shrink:0; }
+
+  .bar-chart { display:flex; flex-direction:column; gap:8px; margin-top:16px; }
+  .bar-row { display:flex; align-items:center; gap:10px; }
+  .bar-month { font-family:'DM Mono',monospace; font-size:10px; color:var(--mid); width:44px; }
+  .bar-outer { flex:1; height:22px; background:var(--light); border-radius:4px; overflow:hidden; }
+  .bar-fill  { height:22px; border-radius:4px; display:flex; align-items:center; padding-left:8px; }
+  .bar-label { font-family:'DM Mono',monospace; font-size:10px; color:#fff; font-weight:500; }
+
+  .runway-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:20px; }
+  .runway-cell { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:18px 16px; text-align:center; position:relative; overflow:hidden; }
+  .runway-cell::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:var(--os-blue); }
+  .runway-cell.teal::before  { background:var(--os-teal); }
+  .runway-cell.green::before { background:var(--os-green); }
+  .runway-cell.orange::before{ background:var(--os-orange); }
+  .runway-label { font-size:10px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--mid); margin-bottom:6px; }
+  .runway-val  { font-family:'Libre Baskerville',serif; font-size:24px; font-weight:700; color:var(--os-dark-blue); }
+  .runway-note { font-size:11px; color:var(--mid); margin-top:4px; }
+
+  .scenario { border-radius:10px; padding:16px; margin-bottom:10px; }
+  .scenario.bull { background:var(--tint-green);  border-left:4px solid var(--os-green); }
+  .scenario.base { background:var(--tint-orange); border-left:4px solid var(--os-orange); }
+  .scenario.bear { background:var(--tint-red);    border-left:4px solid var(--os-red); }
+  .scenario-label  { font-size:10px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--mid); margin-bottom:4px; }
+  .scenario-months { font-family:'Libre Baskerville',serif; font-size:22px; font-weight:700; color:var(--os-dark-blue); }
+  .scenario-note   { font-size:11px; color:var(--dark); margin-top:4px; line-height:1.5; }
+
+  .insight-list { display:flex; flex-direction:column; gap:8px; }
+  .insight { border-radius:8px; padding:12px 14px; font-size:12px; color:var(--dark); line-height:1.65; border-left:3px solid var(--border); }
+  .insight.alert    { background:var(--tint-orange); border-left-color:var(--os-orange); }
+  .insight.positive { background:var(--tint-green);  border-left-color:var(--os-green); }
+  .insight.negative { background:var(--tint-red);    border-left-color:var(--os-red); }
+  .insight.info     { background:var(--tint-blue);   border-left-color:var(--os-blue); }
+  .insight strong   { color:var(--os-dark-blue); }
+
+  .bridge { display:flex; gap:12px; align-items:flex-end; height:200px; padding:0 4px; }
+  .bridge-col { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; }
+  .bridge-bar { width:80%; border-radius:6px 6px 0 0; position:relative; }
+  .bridge-val { font-family:'DM Mono',monospace; font-size:10px; position:absolute; top:-18px; text-align:center; width:100%; }
+  .bridge-lbl { font-size:10px; color:var(--mid); margin-top:8px; text-align:center; line-height:1.3; font-family:'DM Sans',sans-serif; }
+
+  .correction-notice {
+    background:var(--tint-orange); border:1px solid rgba(255,133,7,.3);
+    border-radius:8px; padding:12px 16px; margin-bottom:24px;
+    font-size:12px; color:var(--dark); display:flex; gap:10px; align-items:flex-start;
+  }
+  .correction-notice strong { color:var(--os-dark-blue); }
+
+  footer { background:var(--os-dark-blue); padding:20px 44px; display:flex; justify-content:space-between; align-items:center; margin-top:40px; }
+  footer .f-brand { font-family:'Libre Baskerville',serif; font-size:13px; color:rgba(255,255,255,.7); font-weight:700; }
+  footer .f-note  { font-size:11px; color:rgba(255,255,255,.35); }
+  .shield-row { display:flex; gap:5px; }
+  .f-shield { width:18px; height:11px; border-radius:2px; opacity:.5; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-shields">
+    <div class="shield" style="background:var(--os-teal);transform:rotate(-8deg) scale(1.4)"></div>
+    <div class="shield" style="background:var(--os-purple);transform:rotate(5deg) scale(1.1);margin-top:8px"></div>
+    <div class="shield" style="background:var(--os-orange);transform:rotate(-3deg) scale(.9);margin-top:20px"></div>
+    <div class="shield" style="background:var(--os-green);transform:rotate(10deg) scale(1.2);margin-top:4px"></div>
+    <div class="shield" style="background:var(--os-yellow);transform:rotate(-6deg);margin-top:14px"></div>
+    <div class="shield" style="background:var(--os-red);transform:rotate(4deg) scale(1.1);margin-top:6px"></div>
+    <div class="shield" style="background:var(--os-pink);transform:rotate(-9deg) scale(.8);margin-top:18px"></div>
+  </div>
+  <div class="header-inner">
+    <div class="logo-block">
+      <div class="logo-eye">
+        <svg class="eye-svg" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="14" cy="14" r="9" stroke="white" stroke-width="2.2" fill="none"/>
+          <circle cx="14" cy="14" r="3.5" fill="white" opacity=".9"/>
+          <rect x="6" y="3" width="5" height="3" rx="1" fill="#1ACCAA"/>
+          <rect x="12" y="2" width="5" height="3" rx="1" fill="#A129B2"/>
+          <rect x="18" y="3" width="5" height="3" rx="1" fill="#FCD112"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">Ocushield</div>
+        <div class="brand-sub">Financial Performance</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="report-title">April 2026 · P&amp;L Variance Analysis</div>
+      <div class="report-date">Generated 15 May 2026 &nbsp;·&nbsp; Live from Xero &nbsp;·&nbsp; Currency: GBP &nbsp;·&nbsp; Confidential</div>
+      <div><span class="revised-badge">REVISED v2 — March figures corrected</span></div>
+    </div>
+  </div>
+</header>
+<div class="accent-bar"></div>
+
+<main>
+
+<!-- CORRECTION NOTICE -->
+<div class="correction-notice">
+  <span style="font-size:16px;">⚠</span>
+  <div>
+    <strong>Revision notice:</strong> March 2026 comparative figures have been corrected following a Xero API date-range error in v1 (comparison period was 3–31 Mar rather than 1–31 Mar). Key corrections: Amazon Sales ROW Mar restated from £28,621 → <strong>£43,530</strong>; Total Revenue Mar from £289,589 → <strong>£302,713</strong>; Total CoS from £230,258 → <strong>£240,822</strong>; Total OpEx from £117,569 → <strong>£120,667</strong>; Net Loss from −£58,238 → <strong>−£58,776</strong>. April 2026 actuals are unchanged.
+  </div>
+</div>
+
+<!-- KPI HEADLINES -->
+<section>
+  <div class="section-label">Key Headlines · April 2026</div>
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-label">Revenue</div>
+      <div class="kpi-val">£353.4k</div>
+      <div class="kpi-delta up">▲ +16.7% vs March <span class="badge badge-revised">revised</span></div>
+      <div class="kpi-delta up">▲ +1.2% vs Apr '25</div>
+      <div class="kpi-sub" style="margin-top:6px;">MoM growth corrected from +22% to +16.7%</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Gross Profit</div>
+      <div class="kpi-val">£143.6k</div>
+      <div class="kpi-delta up">▲ +132% vs March <span class="badge badge-revised">revised</span></div>
+      <div class="kpi-delta down">▼ −40.5% vs Apr '25</div>
+      <div class="kpi-sub" style="margin-top:6px;">GP margin 40.6% vs 20.4% March</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Net Profit</div>
+      <div class="kpi-val">£58.3k</div>
+      <div class="kpi-delta up">▲ Swing from −£58.8k Mar <span class="badge badge-revised">revised</span></div>
+      <div class="kpi-delta up">▲ +65.3% vs Apr '25</div>
+      <div class="kpi-sub" style="margin-top:6px;">Net margin 16.5%</div>
+    </div>
+    <div class="kpi warn">
+      <div class="kpi-label">YTD Net Profit</div>
+      <div class="kpi-val" style="color:var(--os-red)">−£35.8k</div>
+      <div class="kpi-delta down">vs +£170.6k YTD Apr '25</div>
+      <div class="kpi-delta flat">Gap: −£206.4k</div>
+      <div class="kpi-sub" style="margin-top:6px;">Significantly behind prior year</div>
+    </div>
+    <div class="kpi neutral">
+      <div class="kpi-label">Cash Position</div>
+      <div class="kpi-val">£170.5k</div>
+      <div class="kpi-delta flat">Receivables: £178.5k</div>
+      <div class="kpi-delta flat">Payables:    £87.8k</div>
+      <div class="kpi-sub" style="margin-top:6px;">Working capital £422.3k</div>
+    </div>
+  </div>
+</section>
+
+<!-- FULL P&L VARIANCE TABLE -->
+<section>
+  <div class="section-label">Full P&amp;L Bridge · MoM &amp; YoY (March figures corrected)</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align:left;width:270px;">Line Item</th>
+          <th>Apr 2026</th>
+          <th>Mar 2026 ✓</th>
+          <th>MoM Var £</th>
+          <th>MoM %</th>
+          <th>Apr 2025</th>
+          <th>YoY Var £</th>
+          <th>YoY %</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="row-group"><td colspan="8">Revenue</td></tr>
+
+        <tr class="row-sub">
+          <td>Eye Screening Service <span class="badge badge-green">ONE-OFF ↑</span></td>
+          <td>£130,824</td><td>£19,809</td>
+          <td class="pos">+£111,015</td><td class="pos">+560%</td>
+          <td class="neut">—</td><td class="neut">n/a</td><td class="neut">n/a</td>
+        </tr>
+        <tr class="row-sub">
+          <td>Website Sales ROW</td>
+          <td>£91,718</td><td>£116,547</td>
+          <td class="neg">−£24,829</td><td class="neg">−21%</td>
+          <td>£107,735</td><td class="neg">−£16,017</td><td class="neg">−15%</td>
+        </tr>
+        <tr class="row-sub">
+          <td>Website Sales UK</td>
+          <td>£56,314</td><td>£70,123</td>
+          <td class="neg">−£13,809</td><td class="neg">−20%</td>
+          <td>£69,681</td><td class="neg">−£13,367</td><td class="neg">−19%</td>
+        </tr>
+        <tr class="row-sub">
+          <td>Amazon Sales ROW <span class="badge badge-revised">corrected</span></td>
+          <td>£43,206</td><td>£43,530</td>
+          <td class="neut">−£324</td><td class="neut">−0.7%</td>
+          <td>£51,110</td><td class="neg">−£7,904</td><td class="neg">−15%</td>
+        </tr>
+        <tr class="row-sub">
+          <td>Amazon Sales UK</td>
+          <td>£13,368</td><td>£13,149</td>
+          <td class="pos">+£219</td><td class="pos">+1.7%</td>
+          <td>£14,069</td><td class="neg">−£701</td><td class="neg">−5%</td>
+        </tr>
+        <tr class="row-sub">
+          <td>B2B / Other <span class="badge badge-blue">YoY absence</span></td>
+          <td>£17,972</td><td>£39,555</td>
+          <td class="neg">−£21,583</td><td class="neg">−55%</td>
+          <td>£106,690</td><td class="neg">−£88,718</td><td class="neg">−83%</td>
+        </tr>
+
+        <tr class="row-total">
+          <td>Total Revenue</td>
+          <td>£353,402</td><td>£302,713</td>
+          <td class="pos">+£50,689</td><td class="pos">+16.7%</td>
+          <td>£349,285</td><td class="pos">+£4,117</td><td class="pos">+1.2%</td>
+        </tr>
+
+        <tr class="row-group"><td colspan="8">Cost of Sales</td></tr>
+
+        <tr class="row-sub">
+          <td>Digital Marketing</td>
+          <td>£44,537</td><td>£59,242</td>
+          <td class="pos">−£14,705</td><td class="pos">−24.8%</td>
+          <td>£50,988</td><td class="pos">−£6,451</td><td class="pos">−13%</td>
+        </tr>
+        <tr class="row-sub">
+          <td>Cost of Goods Sold</td>
+          <td>£30,515</td><td>£40,076</td>
+          <td class="pos">−£9,561</td><td class="pos">−23.9%</td>
+          <td>£53,319</td><td class="pos">−£22,804</td><td class="pos">−43%</td>
+        </tr>
+        <tr class="row-sub">
+          <td>Outbound / Fulfilment</td>
+          <td>£27,105</td><td>£33,933</td>
+          <td class="pos">−£6,828</td><td class="pos">−20%</td>
+          <td>£29,135</td><td class="pos">−£2,030</td><td class="pos">−7%</td>
+        </tr>
+        <tr class="row-sub">
+          <td>Discounts Allowed (ROW)</td>
+          <td>£23,243</td><td>£31,926</td>
+          <td class="pos">−£8,683</td><td class="pos">−27%</td>
+          <td>£23,947</td><td class="pos">−£704</td><td class="pos">−3%</td>
+        </tr>
+        <tr class="row-sub">
+          <td>Amazon Seller Fees</td>
+          <td>£13,565</td><td>£8,774</td>
+          <td class="neg">+£4,791</td><td class="neg">+55%</td>
+          <td class="neut">—</td><td class="neut">n/a</td><td class="neut">n/a</td>
+        </tr>
+        <tr class="row-sub">
+          <td>Other Cost of Sales</td>
+          <td>£70,881</td><td>£66,871</td>
+          <td class="neg">+£4,010</td><td class="neg">+6%</td>
+          <td>£89,652</td><td class="pos">−£18,771</td><td class="pos">−21%</td>
+        </tr>
+
+        <tr class="row-total">
+          <td>Total Cost of Sales</td>
+          <td>£209,845</td><td>£240,822</td>
+          <td class="pos">−£30,977</td><td class="pos">−12.9%</td>
+          <td>£247,041</td><td class="pos">−£37,196</td><td class="pos">−15.1%</td>
+        </tr>
+
+        <tr class="row-total" style="background:var(--os-blue);">
+          <td>Gross Profit</td>
+          <td>£143,557</td><td>£61,891</td>
+          <td class="pos">+£81,666</td><td class="pos">+131.9%</td>
+          <td>£102,244</td><td class="pos">+£41,313</td><td class="pos">+40.4%</td>
+        </tr>
+        <tr class="row-margin">
+          <td>GP Margin</td>
+          <td>40.6%</td><td>20.4%</td>
+          <td class="pos">+20.2pp</td><td>—</td>
+          <td>29.3%</td><td class="pos">+11.3pp</td><td>—</td>
+        </tr>
+
+        <tr class="row-group"><td colspan="8">Operating Expenses</td></tr>
+
+        <tr class="row-sub">
+          <td>Salaries <span class="badge badge-blue">ONE-OFF settlement</span></td>
+          <td class="neut">—</td><td>£36,494</td>
+          <td class="neut">n/a</td><td class="neut">n/a</td>
+          <td class="neut">—</td><td class="neut">n/a</td><td class="neut">n/a</td>
+        </tr>
+        <tr class="row-sub">
+          <td>Legal &amp; Professional <span class="badge badge-orange">⚠ elevated</span></td>
+          <td>£12,769</td><td>£7,744</td>
+          <td class="neg">+£5,025</td><td class="neg">+65%</td>
+          <td class="neut">—</td><td class="neut">n/a</td><td class="neut">n/a</td>
+        </tr>
+        <tr class="row-sub">
+          <td>Consulting</td>
+          <td>£12,111</td><td>£8,975</td>
+          <td class="neg">+£3,136</td><td class="neg">+35%</td>
+          <td>£6,081</td><td class="neg">+£6,030</td><td class="neg">+99%</td>
+        </tr>
+        <tr class="row-sub">
+          <td>Overseas Salaries</td>
+          <td>£9,117</td><td>£9,422</td>
+          <td class="pos">−£305</td><td class="pos">−3%</td>
+          <td>£8,115</td><td class="neg">+£1,002</td><td class="neg">+12%</td>
+        </tr>
+        <tr class="row-sub">
+          <td>Directors' Remuneration</td>
+          <td>£6,667</td><td>£6,667</td>
+          <td class="neut">—</td><td class="neut">0%</td>
+          <td class="neut">—</td><td class="neut">n/a</td><td class="neut">n/a</td>
+        </tr>
+        <tr class="row-sub">
+          <td>Amortisation</td>
+          <td>£5,857</td><td>£5,846</td>
+          <td class="neut">+£11</td><td class="neut">0%</td>
+          <td class="neut">—</td><td class="neut">n/a</td><td class="neut">n/a</td>
+        </tr>
+        <tr class="row-sub">
+          <td>IT Software &amp; Other OpEx</td>
+          <td>£38,731</td><td>£45,519</td>
+          <td class="pos">−£6,788</td><td class="pos">−15%</td>
+          <td>£52,766</td><td class="pos">−£14,035</td><td class="pos">−27%</td>
+        </tr>
+
+        <tr class="row-total">
+          <td>Total Operating Expenses</td>
+          <td>£85,251</td><td>£120,667</td>
+          <td class="pos">−£35,416</td><td class="pos">−29.4%</td>
+          <td>£66,962</td><td class="neg">+£18,289</td><td class="neg">+27.3%</td>
+        </tr>
+
+        <tr class="row-total" style="background:var(--os-teal);">
+          <td style="color:var(--os-dark-blue);font-weight:700;">Net Profit</td>
+          <td style="color:var(--os-dark-blue);font-size:14px;font-weight:700;">£58,305</td>
+          <td style="color:rgba(2,33,72,.75);">−£58,776</td>
+          <td style="color:var(--os-dark-blue);">+£117,081</td>
+          <td style="color:var(--os-dark-blue);">+199%</td>
+          <td style="color:rgba(2,33,72,.75);">£35,282</td>
+          <td style="color:var(--os-dark-blue);">+£23,023</td>
+          <td style="color:var(--os-dark-blue);">+65.3%</td>
+        </tr>
+        <tr class="row-margin">
+          <td>Net Margin</td>
+          <td style="color:var(--os-green);font-weight:600;">16.5%</td>
+          <td style="color:var(--os-red);">−19.4%</td>
+          <td class="pos">+35.9pp</td><td>—</td>
+          <td>10.1%</td><td class="pos">+6.4pp</td><td>—</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- YTD TABLE -->
+<section>
+  <div class="section-label">YTD · Jan–Apr 2026 vs Jan–Apr 2025</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align:left;width:260px;">Line Item</th>
+          <th>YTD Apr 2026</th>
+          <th>YTD Apr 2025</th>
+          <th>Variance £</th>
+          <th>Variance %</th>
+          <th style="text-align:left;">Commentary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Total Revenue</td>
+          <td>£1,249,632</td><td>£1,446,649</td>
+          <td class="neg">−£197,017</td><td class="neg">−13.6%</td>
+          <td style="text-align:left;color:var(--mid);font-family:'DM Sans',sans-serif;font-size:11px;">B2B mix shift &amp; lower DTC web sales</td>
+        </tr>
+        <tr>
+          <td>Total Cost of Sales</td>
+          <td>£931,329</td><td>£986,851</td>
+          <td class="pos">−£55,522</td><td class="pos">−5.6%</td>
+          <td style="text-align:left;color:var(--mid);font-family:'DM Sans',sans-serif;font-size:11px;">Good CoS discipline maintained</td>
+        </tr>
+        <tr class="row-total">
+          <td>Gross Profit</td>
+          <td>£318,303</td><td>£459,798</td>
+          <td class="neg">−£141,495</td><td class="neg">−30.8%</td>
+          <td style="text-align:left;color:rgba(255,255,255,.6);font-family:'DM Sans',sans-serif;font-size:11px;">Mix shift impact</td>
+        </tr>
+        <tr class="row-margin">
+          <td>GP Margin</td>
+          <td>25.5%</td><td>31.8%</td>
+          <td class="neg">−6.3pp</td><td>—</td><td></td>
+        </tr>
+        <tr>
+          <td>Total Operating Expenses</td>
+          <td>£354,080</td><td>£289,155</td>
+          <td class="neg">+£64,925</td><td class="neg">+22.5%</td>
+          <td style="text-align:left;color:var(--mid);font-family:'DM Sans',sans-serif;font-size:11px;">Headcount &amp; consulting materially up YoY</td>
+        </tr>
+        <tr class="row-total" style="background:var(--os-red);">
+          <td>Net Profit / (Loss)</td>
+          <td>−£35,778</td><td>£170,643</td>
+          <td>−£206,421</td><td>−221%</td>
+          <td style="text-align:left;color:rgba(255,255,255,.6);font-family:'DM Sans',sans-serif;font-size:11px;">YTD significantly behind prior year</td>
+        </tr>
+        <tr class="row-margin">
+          <td>Net Margin</td>
+          <td style="color:var(--os-red);">−2.9%</td>
+          <td style="color:var(--os-green);">11.8%</td>
+          <td class="neg">−14.7pp</td><td>—</td><td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ONE-OFFS + CHANNEL -->
+<section>
+  <div class="section-label">One-Off &amp; Notable Items · April 2026</div>
+  <div class="two-col">
+    <div class="oneoff-list">
+
+      <div class="oneoff green">
+        <div>
+          <div class="oneoff-desc">Eye Screening — Revenue Spike <span class="badge badge-green">ONE-OFF</span></div>
+          <div class="oneoff-sub">April: £130,824 vs March £19,809 (+560%). No April '25 equivalent. Likely a large B2B eye-screening contract. Boosts GP margin by ~8–10pp. Not repeatable at this level without confirmed pipeline.</div>
+        </div>
+        <div class="oneoff-val up">+£111k MoM</div>
+      </div>
+
+      <div class="oneoff blue">
+        <div>
+          <div class="oneoff-desc">Amazon ROW — Flat MoM (not +51% as originally stated) <span class="badge badge-revised">corrected</span></div>
+          <div class="oneoff-sub">After correcting March to the full month, Amazon ROW was £43,530 in March vs £43,206 in April — essentially flat (−0.7%). The previously reported +51% was an artefact of the truncated March comparison period. Amazon ROW is still down 15% YoY.</div>
+        </div>
+        <div class="oneoff-val flat">−£324 MoM</div>
+      </div>
+
+      <div class="oneoff blue">
+        <div>
+          <div class="oneoff-desc">March Salaries — Settlement Agreement <span class="badge badge-blue">ONE-OFF CONFIRMED</span></div>
+          <div class="oneoff-sub">£36,494 salaries in March vs £6,603 in February (+452%) confirmed as a one-off settlement agreement. Non-recurring — underlying monthly salary run rate is not materially changed. April OpEx reflects the normalised base.</div>
+        </div>
+        <div class="oneoff-val flat">£36.5k one-off</div>
+      </div>
+
+      <div class="oneoff orange">
+        <div>
+          <div class="oneoff-desc">Legal &amp; Professional Fees — Elevated <span class="badge badge-orange">⚠ watch</span></div>
+          <div class="oneoff-sub">£12,769 in April vs £7,744 March (+65%) and £744 in February. Could reflect contract negotiations, IP filings, or compliance work. Three-month trend suggests a new run rate rather than one-off.</div>
+        </div>
+        <div class="oneoff-val" style="color:var(--os-orange);">+£5k MoM</div>
+      </div>
+
+      <div class="oneoff blue">
+        <div>
+          <div class="oneoff-desc">B2B / McKinsey Revenue — YoY Absence</div>
+          <div class="oneoff-sub">April '25 included £74,750 B2B/McKinsey revenue. No equivalent in April '26. Underlying DTC is broadly stable but the B2B uplift from H1 2025 has not been replaced. YTD B2B gap is ~£214k.</div>
+        </div>
+        <div class="oneoff-val down">−£74.8k YoY</div>
+      </div>
+
+    </div>
+
+    <div class="card">
+      <div class="card-title">Revenue by Channel · April 2026</div>
+      <div class="channel-row">
+        <div class="channel-name">👁&nbsp; Eye Screening <span class="badge badge-green">ONE-OFF</span></div>
+        <div class="channel-val">£130,824</div>
+        <div class="channel-bar-wrap"><div class="channel-bar" style="width:100%;background:var(--os-teal)"></div></div>
+        <div class="channel-delta up">+560% MoM</div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">🌍&nbsp; Website Sales ROW</div>
+        <div class="channel-val">£91,718</div>
+        <div class="channel-bar-wrap"><div class="channel-bar" style="width:70%;background:var(--os-blue)"></div></div>
+        <div class="channel-delta neg">−21% MoM</div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">🇬🇧&nbsp; Website Sales UK</div>
+        <div class="channel-val">£56,314</div>
+        <div class="channel-bar-wrap"><div class="channel-bar" style="width:43%;background:var(--os-blue)"></div></div>
+        <div class="channel-delta neg">−20% MoM</div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">📦&nbsp; Amazon ROW <span class="badge badge-revised">corrected</span></div>
+        <div class="channel-val">£43,206</div>
+        <div class="channel-bar-wrap"><div class="channel-bar" style="width:33%;background:var(--mid)"></div></div>
+        <div class="channel-delta flat">−0.7% MoM</div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">📦&nbsp; Amazon UK</div>
+        <div class="channel-val">£13,368</div>
+        <div class="channel-bar-wrap"><div class="channel-bar" style="width:10%;background:var(--os-green)"></div></div>
+        <div class="channel-delta up">+1.7% MoM</div>
+      </div>
+      <div class="channel-row">
+        <div class="channel-name">🤝&nbsp; B2B / Other</div>
+        <div class="channel-val">£17,972</div>
+        <div class="channel-bar-wrap"><div class="channel-bar" style="width:14%;background:var(--os-orange)"></div></div>
+        <div class="channel-delta neg">−55% MoM</div>
+      </div>
+
+      <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--light);">
+        <div style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--mid);margin-bottom:10px;">GP Margin Trend</div>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <div class="bar-month">Mar '26</div>
+            <div class="bar-outer"><div class="bar-fill" style="width:20.4%;background:var(--os-red);"><span class="bar-label">20.4%</span></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-month">Apr '26</div>
+            <div class="bar-outer"><div class="bar-fill" style="width:40.6%;background:var(--os-teal);"><span class="bar-label">40.6%</span></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-month">Apr '25</div>
+            <div class="bar-outer"><div class="bar-fill" style="width:29.3%;background:var(--os-blue);"><span class="bar-label">29.3%</span></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-month">YTD '26</div>
+            <div class="bar-outer"><div class="bar-fill" style="width:25.5%;background:var(--os-purple);"><span class="bar-label">25.5%</span></div></div>
+          </div>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:var(--os-orange);background:var(--tint-orange);padding:8px 10px;border-radius:6px;">
+          ⚠ April margin is elevated by high-margin Eye Screening revenue. Underlying DTC margin circa 25–27%.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASH & RUNWAY -->
+<section>
+  <div class="section-label">Cash Position &amp; Runway · 15 May 2026</div>
+  <div class="runway-grid">
+    <div class="runway-cell neutral">
+      <div class="runway-label">Cash Balance</div>
+      <div class="runway-val">£170.5k</div>
+      <div class="runway-note">Live Xero balance</div>
+    </div>
+    <div class="runway-cell green">
+      <div class="runway-label">Receivables</div>
+      <div class="runway-val" style="color:var(--os-green);">£178.5k</div>
+      <div class="runway-note">Outstanding customer invoices</div>
+    </div>
+    <div class="runway-cell orange">
+      <div class="runway-label">Payables</div>
+      <div class="runway-val" style="color:var(--os-orange);">£87.8k</div>
+      <div class="runway-note">Outstanding to suppliers</div>
+    </div>
+    <div class="runway-cell teal">
+      <div class="runway-label">Working Capital</div>
+      <div class="runway-val" style="color:var(--os-teal);">£422.3k</div>
+      <div class="runway-note">Total liquidity buffer</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">Runway Scenarios</div>
+      <div style="font-size:11px;color:var(--mid);margin-bottom:16px;line-height:1.6;">
+        Net liquid position: £170.5k cash + £178.5k receivables − £87.8k payables = <strong style="color:var(--os-dark-blue);">£261.2k net</strong>
+      </div>
+      <div class="scenario bull">
+        <div class="scenario-label">Bull Case · April momentum holds</div>
+        <div class="scenario-months">12+ months</div>
+        <div class="scenario-note">Monthly net profit £50–60k; cash self-sustaining. Eye Screening pipeline confirmed and repeating.</div>
+      </div>
+      <div class="scenario base">
+        <div class="scenario-label">Base Case · DTC only, Eye Screening drops off</div>
+        <div class="scenario-months">6–9 months</div>
+        <div class="scenario-note">Monthly burn ~£20–30k without Eye Screening. Working capital covers this comfortably but requires action on cost base.</div>
+      </div>
+      <div class="scenario bear">
+        <div class="scenario-label">Bear Case · Revenue contraction + elevated OpEx</div>
+        <div class="scenario-months">4–5 months</div>
+        <div class="scenario-note">YTD net loss −£35.8k over 4 months = ~£9k/mo average. If this worsens (DTC decline + OpEx creep), runway compresses quickly. Receivables collection critical.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Founder Watchlist</div>
+      <div class="insight-list">
+        <div class="insight positive">
+          <strong>April is Ocushield's best month of 2026</strong> — net profit of £58.3k is a genuine turnaround from March's −£58.8k loss.
+        </div>
+        <div class="insight alert">
+          <strong>Eye Screening is now the critical revenue question.</strong> At £130.8k it was 37% of April revenue (vs just £19.8k in March). Is this a confirmed recurring B2B contract? May's P&amp;L will be the real test.
+        </div>
+        <div class="insight info">
+          <strong>Amazon ROW is flat MoM, not +51%.</strong> The v1 figure was an error from truncated March data. Amazon ROW is essentially unchanged month-on-month, and down 15% YoY — a more sobering picture than originally presented.
+        </div>
+        <div class="insight negative">
+          <strong>YTD is £206k behind prior year on net profit.</strong> Primarily a revenue mix issue — B2B/McKinsey revenue from H1 2025 has not been replaced in 2026.
+        </div>
+        <div class="insight alert">
+          <strong>Website DTC (UK + ROW) is declining structurally.</strong> Both channels down ~20% MoM and 15–19% YoY. Digital marketing spend also down 24% MoM — worth interrogating whether the pullback is causing the decline.
+        </div>
+        <div class="insight positive">
+          <strong>March salaries spike (£36.5k) confirmed as a one-off settlement agreement.</strong> Non-recurring — April's OpEx reflects the true normalised run rate, making the underlying OpEx position cleaner than March suggested.
+        </div>
+        <div class="insight negative">
+          <strong>OpEx creep YoY is structural.</strong> Total OpEx £85k vs £67k April '25 (+27%). Consulting near-doubled YoY; legal fees elevated. YTD headcount costs also +124%.
+        </div>
+        <div class="insight alert">
+          <strong>Receivables of £178.5k need active management</strong> — almost equal to the cash balance. Stale receivables could mask a tighter cash position than the headline figure suggests.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRIDGE -->
+<section>
+  <div class="section-label">Net Profit Bridge · March → April 2026 (corrected)</div>
+  <div class="card">
+    <div style="font-size:11px;color:var(--mid);margin-bottom:20px;">Illustrative waterfall showing the key drivers of the £117.1k MoM swing in net profit (corrected March baseline)</div>
+    <div class="bridge">
+      <div class="bridge-col">
+        <div style="position:relative;width:80%;height:59px;">
+          <div class="bridge-val neg" style="top:-18px;">−£58.8k</div>
+          <div style="width:100%;height:59px;background:var(--os-red);opacity:.7;border-radius:6px 6px 0 0;"></div>
+        </div>
+        <div class="bridge-lbl">March<br>Net P&amp;L</div>
+      </div>
+      <div class="bridge-col">
+        <div style="position:relative;width:80%;height:51px;">
+          <div class="bridge-val pos" style="top:-18px;">+£50.7k</div>
+          <div style="width:100%;height:51px;background:var(--os-teal);border-radius:6px 6px 0 0;"></div>
+        </div>
+        <div class="bridge-lbl">Revenue<br>Uplift</div>
+      </div>
+      <div class="bridge-col">
+        <div style="position:relative;width:80%;height:31px;">
+          <div class="bridge-val pos" style="top:-18px;">+£30.9k</div>
+          <div style="width:100%;height:31px;background:var(--os-green);border-radius:6px 6px 0 0;"></div>
+        </div>
+        <div class="bridge-lbl">CoS<br>Reduction</div>
+      </div>
+      <div class="bridge-col">
+        <div style="position:relative;width:80%;height:35px;">
+          <div class="bridge-val pos" style="top:-18px;">+£35.4k</div>
+          <div style="width:100%;height:35px;background:var(--os-blue);border-radius:6px 6px 0 0;"></div>
+        </div>
+        <div class="bridge-lbl">OpEx<br>Saving</div>
+      </div>
+      <div class="bridge-col">
+        <div style="position:relative;width:80%;height:58px;">
+          <div class="bridge-val pos" style="top:-18px;font-weight:700;font-size:12px;">+£58.3k</div>
+          <div style="width:100%;height:58px;background:linear-gradient(180deg,var(--os-teal),var(--os-green));border-radius:6px 6px 0 0;"></div>
+        </div>
+        <div class="bridge-lbl" style="color:var(--os-dark-blue);font-weight:600;">April<br>Net Profit</div>
+      </div>
+    </div>
+    <div style="margin-top:14px;font-size:11px;color:var(--mid);background:var(--tint-blue);border-radius:6px;padding:10px 12px;">
+      Primary driver is Eye Screening revenue (+£111k vs March). CoS reduction −£31k and OpEx saving −£35.4k (largely March salary spike not repeating in April) also material contributors. Note: ~£111k of the revenue uplift is attributable to the one-off Eye Screening item.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div>
+    <div class="f-brand">Ocushield Limited</div>
+    <div class="f-note" style="margin-top:3px;">April 2026 Financial Performance Review v2 (Revised) · Data sourced live from Xero · 15 May 2026 · Confidential — Internal use only</div>
+  </div>
+  <div class="shield-row">
+    <div class="f-shield" style="background:var(--os-teal);"></div>
+    <div class="f-shield" style="background:var(--os-green);"></div>
+    <div class="f-shield" style="background:var(--os-yellow);"></div>
+    <div class="f-shield" style="background:var(--os-orange);"></div>
+    <div class="f-shield" style="background:var(--os-red);"></div>
+    <div class="f-shield" style="background:var(--os-purple);"></div>
+    <div class="f-shield" style="background:var(--os-pink);"></div>
+  </div>
+</footer>
+
+</body>
+</html>
