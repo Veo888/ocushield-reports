@@ -169,6 +169,173 @@
   footer .f-note  { font-size:11px; color:rgba(255,255,255,.35); }
   .shield-row { display:flex; gap:5px; }
   .f-shield { width:18px; height:11px; border-radius:2px; opacity:.5; }
+/* ═══════════════════════════════════════════
+   MOBILE RESPONSIVE — injected into all files
+   Breakpoints: 768px (tablet), 480px (phone)
+════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Header */
+  .header-inner { flex-direction:column; align-items:flex-start; gap:14px; padding:24px 20px 20px; }
+  .header-right { text-align:left; }
+  .report-title { font-size:16px; }
+  .report-date  { font-size:11px; }
+  .brand-name   { font-size:18px; }
+  .header-shields { display:none; }
+
+  /* Main padding */
+  main  { padding:24px 16px; }
+  .hero { padding:20px 16px; }
+  .hero-title { font-size:20px; }
+
+  /* KPI grid: 5-col → 2-col */
+  .kpi-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+  .kpi-val  { font-size:22px; }
+
+  /* Stats row (index page): 4-col → 2-col */
+  .stats-row { grid-template-columns:repeat(2,1fr); gap:10px; }
+  .stat-val  { font-size:22px; }
+
+  /* Runway grid: 4-col → 2-col */
+  .runway-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+  .runway-val  { font-size:20px; }
+
+  /* Two-col → single col */
+  .two-col { grid-template-columns:1fr; }
+
+  /* Tables: horizontal scroll, sticky first column */
+  .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:10px; }
+  table { min-width:640px; }
+  td, thead th { padding:8px 10px; font-size:11px; }
+  td:first-child { position:sticky; left:0; background:var(--white); z-index:1; min-width:130px; font-size:11px; }
+  .row-total td:first-child { background:var(--os-dark-blue); }
+  .row-group td:first-child { background:var(--tint-blue); }
+  .row-margin td:first-child { background:#f0f4fb; }
+
+  /* One-off items: stack value below text */
+  .oneoff { flex-direction:column; gap:6px; }
+  .oneoff-val { text-align:left; font-size:13px; }
+
+  /* Channel rows */
+  .channel-bar-wrap { width:60px; }
+  .channel-delta { width:44px; font-size:10px; }
+  .channel-val { font-size:11px; width:64px; }
+
+  /* Bridge chart: compress */
+  .bridge { height:140px; gap:6px; }
+  .bridge-bar { width:90%; }
+  .bridge-lbl { font-size:9px; }
+  .bridge-val { font-size:9px; }
+
+  /* Section label */
+  .section-label { font-size:9px; letter-spacing:1.5px; }
+
+  /* Correction notice */
+  .correction-notice { flex-direction:column; gap:8px; font-size:11px; }
+
+  /* Protocol box */
+  .protocol-box { flex-direction:column; gap:12px; padding:16px; }
+
+  /* Report cards (index) */
+  .report-body { flex-wrap:wrap; gap:12px; padding:14px 16px; }
+  .report-kpis { display:none; }
+  .report-right { flex-direction:row; align-items:center; }
+  .report-arrow { opacity:1; transform:none; }
+  .report-month { width:48px; }
+  .report-month-abbr { font-size:18px; }
+  .report-divider { height:36px; }
+  .report-name { font-size:14px; }
+  .report-meta-row { flex-wrap:wrap; gap:6px; }
+  .report-meta-item { font-size:10px; }
+
+  /* Scenario cards */
+  .scenario-months { font-size:18px; }
+
+  /* Bar chart */
+  .bar-month { width:36px; font-size:9px; }
+
+  /* Footer */
+  footer { padding:20px 16px; }
+  .footer-inner { flex-direction:column; gap:12px; align-items:flex-start; }
+  .shield-row { display:none; }
+}
+
+@media (max-width: 480px) {
+  /* Phone: tighten further */
+  .header-inner { padding:18px 16px 16px; }
+  .logo-eye { width:36px; height:36px; }
+  .brand-name { font-size:16px; }
+  .report-title { font-size:14px; }
+
+  main  { padding:16px 12px; }
+  .hero { padding:16px 12px; }
+  .hero-title { font-size:17px; }
+
+  /* KPI: 2-col → 1-col for very small screens */
+  .kpi-grid  { grid-template-columns:1fr 1fr; gap:8px; }
+  .kpi       { padding:14px 12px 12px; }
+  .kpi-val   { font-size:20px; }
+  .kpi-label { font-size:9px; }
+  .kpi-delta { font-size:10px; }
+  .kpi-sub   { font-size:10px; }
+
+  /* Stats: 2-col */
+  .stats-row { grid-template-columns:1fr 1fr; gap:8px; }
+  .stat { padding:14px 12px; }
+  .stat-val { font-size:18px; }
+
+  /* Runway: 2-col */
+  .runway-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  .runway-cell { padding:14px 12px; }
+  .runway-val  { font-size:18px; }
+
+  /* Card padding */
+  .card { padding:16px; }
+  .card-title { font-size:14px; }
+
+  /* Scenario */
+  .scenario { padding:12px; }
+  .scenario-months { font-size:16px; }
+  .scenario-note { font-size:11px; }
+
+  /* Insight */
+  .insight { font-size:11px; padding:10px 12px; }
+
+  /* Oneoff */
+  .oneoff { padding:12px; }
+  .oneoff-desc { font-size:11px; }
+  .oneoff-sub  { font-size:10px; }
+
+  /* Bridge: hide on very small, show simplified */
+  .bridge { height:110px; gap:4px; }
+  .bridge-lbl { font-size:8px; }
+
+  /* Protocol */
+  .protocol-box { padding:14px; }
+  .protocol-title { font-size:12px; }
+  .protocol-desc  { font-size:11px; }
+
+  /* Report cards */
+  .report-name { font-size:13px; }
+  .report-desc { font-size:11px; }
+  .coming-soon { padding:16px; }
+  .coming-soon-title { font-size:12px; }
+  .coming-soon-sub   { font-size:11px; }
+
+  /* Table sticky col narrower */
+  td:first-child { min-width:110px; }
+
+  /* Badges: smaller */
+  .badge { font-size:9px; padding:1px 5px; }
+
+  /* Footer */
+  .f-brand { font-size:12px; }
+  .f-note  { font-size:10px; }
+
+  /* Bar chart label */
+  .bar-label { font-size:9px; }
+  .bar-month { font-size:9px; width:32px; }
+}
+
 </style>
 </head>
 <body>
@@ -207,6 +374,45 @@
   </div>
 </header>
 <div class="accent-bar"></div>
+<!-- NAV: insert after <div class="accent-bar"></div> -->
+<nav style="background:var(--os-blue);padding:0 44px;position:relative;z-index:10;">
+  <div style="max-width:1400px;display:flex;align-items:center;gap:4px;">
+
+    <!-- Home link -->
+    <a href="index.html" style="display:flex;align-items:center;gap:7px;padding:10px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.75);text-decoration:none;border-right:1px solid rgba(255,255,255,.1);transition:color .15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.75)'">
+      <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 7L7 1l6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 5.5V12a.5.5 0 00.5.5h2.5V9h3v3.5H11a.5.5 0 00.5-.5V5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Reports Hub
+    </a>
+
+    <!-- Reports dropdown -->
+    <div style="position:relative;" onmouseenter="document.getElementById('rpt-dd').style.display='block'" onmouseleave="document.getElementById('rpt-dd').style.display='none'">
+      <button style="display:flex;align-items:center;gap:6px;padding:10px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.75);background:none;border:none;cursor:pointer;transition:color .15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.75)'">
+        FY2026 Reports
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div id="rpt-dd" style="display:none;position:absolute;top:100%;left:0;background:var(--os-dark-blue);border:1px solid rgba(255,255,255,.1);border-radius:8px;min-width:240px;box-shadow:0 8px 24px rgba(0,0,0,.3);overflow:hidden;z-index:100;">
+        <a href="ocushield_january_2026.html"  style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;font-size:12px;color:rgba(255,255,255,.7);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.07);transition:background .12s;" onmouseover="this.style.background='rgba(255,255,255,.07)'" onmouseout="this.style.background='transparent'">January 2026 <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--os-red);">−£15.0k</span></a>
+        <a href="ocushield_february_2026.html" style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;font-size:12px;color:rgba(255,255,255,.7);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.07);transition:background .12s;" onmouseover="this.style.background='rgba(255,255,255,.07)'" onmouseout="this.style.background='transparent'">February 2026 <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--os-red);">−£20.3k</span></a>
+        <a href="ocushield_march_2026.html"    style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;font-size:12px;color:rgba(255,255,255,.7);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.07);transition:background .12s;" onmouseover="this.style.background='rgba(255,255,255,.07)'" onmouseout="this.style.background='transparent'">March 2026 <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--os-red);">−£58.8k</span></a>
+        <a href="ocushield_april_2026_v2.html" style="display:flex;background:rgba(255,255,255,.05);border-left:3px solid var(--os-teal)!important;justify-content:space-between;align-items:center;padding:10px 16px;font-size:12px;color:rgba(255,255,255,.7);text-decoration:none;transition:background .12s;" onmouseover="this.style.background='rgba(255,255,255,.07)'" onmouseout="this.style.background='transparent'">April 2026 <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--os-green);">+£58.3k</span></a>
+      </div>
+    </div>
+
+    <!-- Current page label (right side) -->
+    <div style="margin-left:auto;font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.5px;padding:10px 0;">
+      APR 2026 · v2
+    </div>
+
+  </div>
+</nav>
+<!-- Mobile nav -->
+<style>
+@media(max-width:768px){
+  nav { padding:0 16px; }
+  nav > div { flex-wrap:wrap; }
+}
+</style>
+
 
 <main>
 
