@@ -326,6 +326,184 @@
   .f-note  { font-size: 11px; color: rgba(255,255,255,.3); margin-top: 3px; }
   .shield-row { display: flex; gap: 5px; }
   .f-shield { width: 20px; height: 12px; border-radius: 3px; opacity: .45; }
+/* ═══════════════════════════════════════════
+   MOBILE RESPONSIVE — injected into all files
+   Breakpoints: 768px (tablet), 480px (phone)
+════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Header */
+  .header-inner { flex-direction:column; align-items:flex-start; gap:14px; padding:24px 20px 20px; }
+  .header-right { text-align:left; }
+  .report-title { font-size:16px; }
+  .report-date  { font-size:11px; }
+  .brand-name   { font-size:18px; }
+  .header-shields { display:none; }
+
+  /* Main padding */
+  main  { padding:24px 16px; }
+  .hero { padding:20px 16px; }
+  .hero-title { font-size:20px; }
+
+  /* KPI grid: 5-col → 2-col */
+  .kpi-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+  .kpi-val  { font-size:22px; }
+
+  /* Stats row (index page): 4-col → 2-col */
+  .stats-row { grid-template-columns:repeat(2,1fr); gap:10px; }
+  .stat-val  { font-size:22px; }
+
+  /* Runway grid: 4-col → 2-col */
+  .runway-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
+  .runway-val  { font-size:20px; }
+
+  /* Two-col → single col */
+  .two-col { grid-template-columns:1fr; }
+
+  /* Tables: horizontal scroll, sticky first column */
+  .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:10px; }
+  table { min-width:640px; }
+  td, thead th { padding:8px 10px; font-size:11px; }
+  td:first-child { position:sticky; left:0; background:var(--white); z-index:1; min-width:130px; font-size:11px; }
+  .row-total td:first-child { background:var(--os-dark-blue); }
+  .row-group td:first-child { background:var(--tint-blue); }
+  .row-margin td:first-child { background:#f0f4fb; }
+
+  /* One-off items: stack value below text */
+  .oneoff { flex-direction:column; gap:6px; }
+  .oneoff-val { text-align:left; font-size:13px; }
+
+  /* Channel rows */
+  .channel-bar-wrap { width:60px; }
+  .channel-delta { width:44px; font-size:10px; }
+  .channel-val { font-size:11px; width:64px; }
+
+  /* Bridge chart: compress */
+  .bridge { height:140px; gap:6px; }
+  .bridge-bar { width:90%; }
+  .bridge-lbl { font-size:9px; }
+  .bridge-val { font-size:9px; }
+
+  /* Section label */
+  .section-label { font-size:9px; letter-spacing:1.5px; }
+
+  /* Correction notice */
+  .correction-notice { flex-direction:column; gap:8px; font-size:11px; }
+
+  /* Protocol box */
+  .protocol-box { flex-direction:column; gap:12px; padding:16px; }
+
+  /* Report cards (index) */
+  .report-body { flex-wrap:wrap; gap:12px; padding:14px 16px; }
+  .report-kpis { display:none; }
+  .report-right { flex-direction:row; align-items:center; }
+  .report-arrow { opacity:1; transform:none; }
+  .report-month { width:48px; }
+  .report-month-abbr { font-size:18px; }
+  .report-divider { height:36px; }
+  .report-name { font-size:14px; }
+  .report-meta-row { flex-wrap:wrap; gap:6px; }
+  .report-meta-item { font-size:10px; }
+
+  /* Scenario cards */
+  .scenario-months { font-size:18px; }
+
+  /* Bar chart */
+  .bar-month { width:36px; font-size:9px; }
+
+  /* Footer */
+  footer { padding:20px 16px; }
+  .footer-inner { flex-direction:column; gap:12px; align-items:flex-start; }
+  .shield-row { display:none; }
+}
+
+@media (max-width: 480px) {
+  /* Phone: tighten further */
+  .header-inner { padding:18px 16px 16px; }
+  .logo-eye { width:36px; height:36px; }
+  .brand-name { font-size:16px; }
+  .report-title { font-size:14px; }
+
+  main  { padding:16px 12px; }
+  .hero { padding:16px 12px; }
+  .hero-title { font-size:17px; }
+
+  /* KPI: 2-col → 1-col for very small screens */
+  .kpi-grid  { grid-template-columns:1fr 1fr; gap:8px; }
+  .kpi       { padding:14px 12px 12px; }
+  .kpi-val   { font-size:20px; }
+  .kpi-label { font-size:9px; }
+  .kpi-delta { font-size:10px; }
+  .kpi-sub   { font-size:10px; }
+
+  /* Stats: 2-col */
+  .stats-row { grid-template-columns:1fr 1fr; gap:8px; }
+  .stat { padding:14px 12px; }
+  .stat-val { font-size:18px; }
+
+  /* Runway: 2-col */
+  .runway-grid { grid-template-columns:1fr 1fr; gap:8px; }
+  .runway-cell { padding:14px 12px; }
+  .runway-val  { font-size:18px; }
+
+  /* Card padding */
+  .card { padding:16px; }
+  .card-title { font-size:14px; }
+
+  /* Scenario */
+  .scenario { padding:12px; }
+  .scenario-months { font-size:16px; }
+  .scenario-note { font-size:11px; }
+
+  /* Insight */
+  .insight { font-size:11px; padding:10px 12px; }
+
+  /* Oneoff */
+  .oneoff { padding:12px; }
+  .oneoff-desc { font-size:11px; }
+  .oneoff-sub  { font-size:10px; }
+
+  /* Bridge: hide on very small, show simplified */
+  .bridge { height:110px; gap:4px; }
+  .bridge-lbl { font-size:8px; }
+
+  /* Protocol */
+  .protocol-box { padding:14px; }
+  .protocol-title { font-size:12px; }
+  .protocol-desc  { font-size:11px; }
+
+  /* Report cards */
+  .report-name { font-size:13px; }
+  .report-desc { font-size:11px; }
+  .coming-soon { padding:16px; }
+  .coming-soon-title { font-size:12px; }
+  .coming-soon-sub   { font-size:11px; }
+
+  /* Table sticky col narrower */
+  td:first-child { min-width:110px; }
+
+  /* Badges: smaller */
+  .badge { font-size:9px; padding:1px 5px; }
+
+  /* Footer */
+  .f-brand { font-size:12px; }
+  .f-note  { font-size:10px; }
+
+  /* Bar chart label */
+  .bar-label { font-size:9px; }
+  .bar-month { font-size:9px; width:32px; }
+}
+
+@media (max-width: 768px) {
+  /* Index page specifics */
+  header .header-inner { max-width:100%; }
+  .hero { max-width:100%; }
+  main  { max-width:100%; }
+  .report-card .report-body { padding:14px 16px; }
+}
+@media (max-width: 480px) {
+  .stats-row { grid-template-columns:1fr 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -380,7 +558,7 @@
     <div class="stats-row">
       <div class="stat">
         <div class="stat-label">Reports Published</div>
-        <div class="stat-val">1</div>
+        <div class="stat-val">4</div>
         <div class="stat-note">FY2026 to date</div>
       </div>
       <div class="stat blue">
@@ -406,8 +584,8 @@
     <div class="section-label">FY2026 · Monthly Reports</div>
     <div class="reports-grid">
 
-      <!-- JANUARY — placeholder -->
-      <div class="report-card" style="opacity:.45;cursor:default;" title="Report not yet published">
+      <!-- JANUARY — LIVE -->
+      <a class="report-card" href="ocushield_january_2026.html">
         <div class="report-band archive"></div>
         <div class="report-body">
           <div class="report-month">
@@ -417,16 +595,30 @@
           <div class="report-divider"></div>
           <div class="report-info">
             <div class="report-title-row">
-              <span class="report-name">January 2026</span>
-              <span class="badge badge-mid">Not published</span>
+              <span class="report-name">January 2026 · P&amp;L Variance Analysis</span>
+              <span class="badge badge-blue">Backdated</span>
             </div>
-            <div class="report-desc">P&amp;L variance analysis not yet available for this period.</div>
+            <div class="report-desc">MoM vs December 2025 and YoY vs January 2025. Net loss −£15k. Revenue −21.8% YoY across all channels. Write-off one-off flagged.</div>
+            <div class="report-meta-row">
+              <span class="report-meta-item">Generated 15 May 2026</span>
+              <span class="report-meta-item">Source: Xero Live</span>
+            </div>
+          </div>
+          <div class="report-right">
+            <div class="report-arrow">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="report-kpis">
+              <div class="report-kpi"><div class="report-kpi-label">Revenue</div><div class="report-kpi-val">£304.5k</div></div>
+              <div class="report-kpi"><div class="report-kpi-label">Net P&L</div><div class="report-kpi-val neg">−£15.0k</div></div>
+              <div class="report-kpi"><div class="report-kpi-label">GP Margin</div><div class="report-kpi-val">19.4%</div></div>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
 
-      <!-- FEBRUARY — placeholder -->
-      <div class="report-card" style="opacity:.45;cursor:default;" title="Report not yet published">
+      <!-- FEBRUARY — LIVE -->
+      <a class="report-card" href="ocushield_february_2026.html">
         <div class="report-band archive"></div>
         <div class="report-body">
           <div class="report-month">
@@ -436,16 +628,30 @@
           <div class="report-divider"></div>
           <div class="report-info">
             <div class="report-title-row">
-              <span class="report-name">February 2026</span>
-              <span class="badge badge-mid">Not published</span>
+              <span class="report-name">February 2026 · P&amp;L Variance Analysis</span>
+              <span class="badge badge-blue">Backdated</span>
             </div>
-            <div class="report-desc">P&amp;L variance analysis not yet available for this period.</div>
+            <div class="report-desc">MoM vs January 2026 and YoY vs February 2025. Net loss −£20.3k. B2B Corporates spike and Eye Screening first appearance. Amazon ROW declining.</div>
+            <div class="report-meta-row">
+              <span class="report-meta-item">Generated 15 May 2026</span>
+              <span class="report-meta-item">Source: Xero Live</span>
+            </div>
+          </div>
+          <div class="report-right">
+            <div class="report-arrow">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="report-kpis">
+              <div class="report-kpi"><div class="report-kpi-label">Revenue</div><div class="report-kpi-val">£289.0k</div></div>
+              <div class="report-kpi"><div class="report-kpi-label">Net P&L</div><div class="report-kpi-val neg">−£20.3k</div></div>
+              <div class="report-kpi"><div class="report-kpi-label">GP Margin</div><div class="report-kpi-val">18.6%</div></div>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
 
-      <!-- MARCH — placeholder -->
-      <div class="report-card" style="opacity:.45;cursor:default;" title="Report not yet published">
+      <!-- MARCH — LIVE -->
+      <a class="report-card" href="ocushield_march_2026.html">
         <div class="report-band archive"></div>
         <div class="report-body">
           <div class="report-month">
@@ -455,13 +661,27 @@
           <div class="report-divider"></div>
           <div class="report-info">
             <div class="report-title-row">
-              <span class="report-name">March 2026</span>
-              <span class="badge badge-mid">Not published</span>
+              <span class="report-name">March 2026 · P&amp;L Variance Analysis</span>
+              <span class="badge badge-blue">Backdated</span>
             </div>
-            <div class="report-desc">P&amp;L variance analysis not yet available for this period.</div>
+            <div class="report-desc">MoM vs February 2026 and YoY vs March 2025. Net loss −£58.8k inflated by £36.5k one-off settlement agreement. Underlying loss ~£22k. Eye Screening building.</div>
+            <div class="report-meta-row">
+              <span class="report-meta-item">Generated 15 May 2026</span>
+              <span class="report-meta-item">Source: Xero Live</span>
+            </div>
+          </div>
+          <div class="report-right">
+            <div class="report-arrow">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="report-kpis">
+              <div class="report-kpi"><div class="report-kpi-label">Revenue</div><div class="report-kpi-val">£302.7k</div></div>
+              <div class="report-kpi"><div class="report-kpi-label">Net P&L</div><div class="report-kpi-val neg">−£58.8k</div></div>
+              <div class="report-kpi"><div class="report-kpi-label">GP Margin</div><div class="report-kpi-val">20.4%</div></div>
+            </div>
           </div>
         </div>
-      </div>
+      </a>
 
       <!-- APRIL v2 — LIVE -->
       <a class="report-card" href="ocushield_april_2026_v2.html">
