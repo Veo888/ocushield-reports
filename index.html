@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23022148'/><circle cx='16' cy='16' r='9' stroke='%231ACCAA' stroke-width='2' fill='none'/><circle cx='16' cy='16' r='3.5' fill='%231ACCAA'/></svg>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ocushield · Financial Reports</title>
+<title>Ocushield · Reports Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -23,6 +22,7 @@
     --tint-green:   #eef7e8;
     --tint-orange:  #fff3e8;
     --tint-red:     #fff0ee;
+    --tint-purple:  #f5eeff;
     --white:        #ffffff;
     --off-white:    #f7f9fc;
     --light:        #eef2f8;
@@ -55,843 +55,563 @@
     position: absolute; top: -40px; right: -30px;
     display: flex; gap: 12px; opacity: .15; pointer-events: none;
   }
-  .hs {
-    border-radius: 8px;
-    flex-shrink: 0;
-  }
+  .hs { border-radius: 8px; flex-shrink: 0; }
   .header-inner {
     position: relative; z-index: 2;
     max-width: 1100px; margin: 0 auto;
-    padding: 40px 48px 36px;
+    padding: 32px 40px 28px;
     display: flex; justify-content: space-between; align-items: center;
+    gap: 20px;
   }
   .logo-block { display: flex; align-items: center; gap: 16px; }
   .logo-eye {
-    width: 52px; height: 52px; border-radius: 12px;
-    background: var(--os-blue);
-    border: 2px solid rgba(255,255,255,.15);
+    width: 48px; height: 48px; border-radius: 10px;
+    background: var(--os-mid-blue);
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
-  .brand-name {
+  .logo-eye svg { width: 28px; height: 28px; }
+  .logo-text h1 {
     font-family: 'Libre Baskerville', serif;
-    font-size: 26px; font-weight: 700; color: #fff;
+    font-size: 20px; font-weight: 700;
+    color: #fff; letter-spacing: -0.02em; line-height: 1.1;
   }
-  .brand-sub {
-    font-size: 11px; color: rgba(255,255,255,.45);
-    letter-spacing: 1.5px; text-transform: uppercase; margin-top: 3px;
+  .logo-text p {
+    font-size: 11px; color: rgba(255,255,255,.5);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px;
   }
-  .header-meta {
-    text-align: right;
+  .header-stats {
+    display: flex; gap: 24px; flex-shrink: 0;
   }
-  .header-meta-label {
-    font-size: 11px; color: rgba(255,255,255,.4);
-    letter-spacing: 1px; text-transform: uppercase;
-  }
-  .header-meta-val {
+  .stat-item { text-align: right; }
+  .stat-val {
     font-family: 'DM Mono', monospace;
-    font-size: 13px; color: rgba(255,255,255,.65); margin-top: 3px;
+    font-size: 22px; color: #fff; font-weight: 500; line-height: 1;
   }
+  .stat-note { font-size: 10px; color: rgba(255,255,255,.4); margin-top: 3px; }
 
   /* ── ACCENT BAR ── */
   .accent-bar {
-    height: 5px;
+    height: 4px;
     background: linear-gradient(90deg,
       var(--os-teal) 0%, var(--os-green) 20%,
-      var(--os-yellow) 40%, var(--os-orange) 60%,
-      var(--os-red) 80%, var(--os-purple) 100%);
-  }
-
-  /* ── HERO STRIP ── */
-  .hero {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: 32px 48px;
-    max-width: 1100px; margin: 0 auto; width: 100%;
-  }
-  .hero-title {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 28px; font-weight: 700; color: var(--os-dark-blue);
-    margin-bottom: 8px;
-  }
-  .hero-sub {
-    font-size: 14px; color: var(--mid); max-width: 560px; line-height: 1.7;
+      var(--os-yellow) 36%, var(--os-orange) 52%,
+      var(--os-red) 68%, var(--os-purple) 84%, var(--os-pink) 100%);
   }
 
   /* ── MAIN ── */
   main {
+    flex: 1;
     max-width: 1100px; margin: 0 auto;
-    padding: 40px 48px; flex: 1; width: 100%;
+    padding: 36px 40px 60px;
+    width: 100%;
   }
 
   /* ── SECTION LABEL ── */
   .section-label {
-    font-size: 10px; font-weight: 600; letter-spacing: 2px;
-    text-transform: uppercase; color: var(--os-blue);
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .section-label::before {
-    content: ''; width: 18px; height: 3px;
-    background: var(--os-teal); border-radius: 2px; flex-shrink: 0;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--os-blue); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
   }
   .section-label::after {
-    content: ''; flex: 1; height: 1px; background: var(--border);
+    content: ''; flex: 1; height: 1px;
+    background: var(--border);
   }
 
-  /* ── STATS ROW ── */
-  .stats-row {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
-    margin-bottom: 40px;
-  }
-  .stat {
-    background: var(--white); border: 1px solid var(--border);
-    border-radius: 10px; padding: 18px 20px;
-    position: relative; overflow: hidden;
-  }
-  .stat::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-    border-radius: 0 0 10px 10px; background: var(--os-teal);
-  }
-  .stat.blue::after   { background: var(--os-blue); }
-  .stat.purple::after { background: var(--os-purple); }
-  .stat.orange::after { background: var(--os-orange); }
-  .stat-label { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--mid); margin-bottom: 6px; }
-  .stat-val   { font-family: 'Libre Baskerville', serif; font-size: 28px; font-weight: 700; color: var(--os-dark-blue); }
-  .stat-note  { font-size: 11px; color: var(--mid); margin-top: 4px; }
+  section { margin-bottom: 40px; }
 
-  /* ── REPORTS GRID ── */
+  /* ── REPORT GRID ── */
   .reports-grid {
-    display: flex; flex-direction: column; gap: 12px;
-    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
   }
 
+  /* ── REPORT CARD ── */
   .report-card {
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-    text-decoration: none;
-    color: inherit;
-    transition: box-shadow .2s, transform .15s, border-color .2s;
-    cursor: pointer;
+    padding: 20px;
+    display: flex; flex-direction: column; gap: 12px;
+    text-decoration: none; color: inherit;
+    transition: box-shadow .18s, border-color .18s, transform .18s;
+    position: relative; overflow: hidden;
   }
   .report-card:hover {
-    box-shadow: 0 4px 20px rgba(4,68,148,.12);
-    transform: translateY(-1px);
-    border-color: var(--os-blue);
+    box-shadow: 0 4px 20px rgba(4,68,148,.1);
+    border-color: #b8cde8;
+    transform: translateY(-2px);
   }
-  .report-card:hover .report-arrow { opacity: 1; transform: translateX(0); }
-
-  /* Left colour band */
-  .report-band {
-    width: 6px; flex-shrink: 0;
-    background: var(--os-teal);
+  .report-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 12px 12px 0 0;
   }
-  .report-band.revised { background: var(--os-green); }
-  .report-band.draft   { background: var(--os-orange); }
-  .report-band.archive { background: var(--mid); }
-
-  .report-body {
-    flex: 1; padding: 20px 24px;
-    display: flex; align-items: center; gap: 20px;
+  .report-card.fin::before  { background: var(--os-mid-blue); }
+  .report-card.mkt::before  { background: var(--os-purple); }
+  .report-card.dimmed {
+    opacity: .6; pointer-events: none;
   }
 
-  /* Month badge */
-  .report-month {
-    width: 64px; flex-shrink: 0; text-align: center;
+  .card-top {
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 8px;
   }
-  .report-month-abbr {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 22px; font-weight: 700; color: var(--os-dark-blue);
-    line-height: 1;
-  }
-  .report-month-year {
+  .card-month {
     font-family: 'DM Mono', monospace;
-    font-size: 11px; color: var(--mid); margin-top: 3px;
+    font-size: 11px; font-weight: 500;
+    color: var(--mid);
+    letter-spacing: 0.06em; text-transform: uppercase;
   }
-
-  .report-divider {
-    width: 1px; height: 48px; background: var(--border); flex-shrink: 0;
-  }
-
-  .report-info { flex: 1; }
-  .report-title-row {
-    display: flex; align-items: center; gap: 8px; margin-bottom: 4px;
-  }
-  .report-name {
-    font-family: 'Libre Baskerville', serif;
-    font-size: 16px; font-weight: 700; color: var(--os-dark-blue);
-  }
-
   .badge {
-    display: inline-flex; align-items: center;
-    border-radius: 4px; padding: 2px 8px;
-    font-size: 10px; font-weight: 600; letter-spacing: .4px;
+    font-size: 9px; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; border-radius: 4px;
+    padding: 2px 7px; white-space: nowrap; flex-shrink: 0;
   }
-  .badge-green  { background: #eef7e8; color: var(--os-green);  border: 1px solid rgba(74,178,23,.2); }
-  .badge-orange { background: #fff3e8; color: var(--os-orange); border: 1px solid rgba(255,133,7,.2); }
-  .badge-blue   { background: var(--tint-blue); color: var(--os-blue); border: 1px solid rgba(4,68,148,.15); }
-  .badge-mid    { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
-  .badge-teal   { background: var(--tint-teal); color: #0e9e83; border: 1px solid rgba(26,204,170,.2); }
+  .badge-blue   { background: var(--tint-blue);   color: var(--os-blue); }
+  .badge-teal   { background: var(--tint-teal);   color: #0e7e68; }
+  .badge-red    { background: var(--tint-red);    color: #b52a00; }
+  .badge-green  { background: var(--tint-green);  color: #2e7a08; }
+  .badge-purple { background: var(--tint-purple); color: #6e1a85; }
 
-  .report-desc {
+  .card-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 15px; font-weight: 700; line-height: 1.25;
+    color: var(--text);
+  }
+  .card-desc {
     font-size: 12px; color: var(--mid); line-height: 1.5;
   }
 
-  .report-meta-row {
-    display: flex; align-items: center; gap: 16px; margin-top: 8px;
+  .card-kpis {
+    display: flex; gap: 16px; padding-top: 10px;
+    border-top: 1px solid var(--light);
   }
-  .report-meta-item {
+  .kpi { display: flex; flex-direction: column; gap: 2px; }
+  .kpi-label { font-size: 9px; color: var(--mid); text-transform: uppercase; letter-spacing: 0.08em; }
+  .kpi-val {
     font-family: 'DM Mono', monospace;
-    font-size: 11px; color: var(--mid);
-    display: flex; align-items: center; gap: 5px;
+    font-size: 13px; font-weight: 500;
   }
-  .report-meta-item svg { opacity: .5; }
+  .kpi-val.pos { color: var(--os-green); }
+  .kpi-val.neg { color: var(--os-red); }
+  .kpi-val.neu { color: var(--os-blue); }
+  .kpi-val.muted { color: var(--mid); }
 
-  .report-right {
-    display: flex; flex-direction: column; align-items: flex-end;
-    gap: 8px; flex-shrink: 0; padding-right: 4px;
+  .card-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 10px; border-top: 1px solid var(--light);
   }
-  .report-arrow {
-    width: 32px; height: 32px; border-radius: 8px;
+  .card-updated { font-size: 10px; color: var(--mid); }
+  .card-arrow {
+    width: 26px; height: 26px; border-radius: 6px;
     background: var(--tint-blue);
     display: flex; align-items: center; justify-content: center;
-    color: var(--os-blue);
-    opacity: 0; transform: translateX(-4px);
-    transition: opacity .2s, transform .2s;
     flex-shrink: 0;
   }
-  .report-kpis {
-    display: flex; gap: 16px;
-  }
-  .report-kpi { text-align: right; }
-  .report-kpi-label { font-size: 10px; color: var(--mid); letter-spacing: .5px; text-transform: uppercase; }
-  .report-kpi-val   { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--os-dark-blue); font-weight: 500; margin-top: 1px; }
-  .pos { color: var(--os-green) !important; }
-  .neg { color: var(--os-red)   !important; }
+  .card-arrow svg { width: 12px; height: 12px; color: var(--os-blue); }
+  .report-card.mkt .card-arrow { background: var(--tint-purple); }
+  .report-card.mkt .card-arrow svg { color: var(--os-purple); }
 
-  /* ── COMING SOON CARD ── */
+  /* ── COMING SOON / PLACEHOLDER ── */
   .coming-soon {
-    background: var(--white); border: 1px dashed var(--border);
-    border-radius: 12px; padding: 24px;
+    background: var(--light);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 20px;
     display: flex; align-items: center; gap: 16px;
     color: var(--mid);
   }
-  .coming-soon-icon {
-    width: 40px; height: 40px; border-radius: 8px;
-    background: var(--light);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; font-size: 18px;
-  }
-  .coming-soon-title { font-size: 13px; font-weight: 600; color: var(--dark); }
-  .coming-soon-sub   { font-size: 12px; color: var(--mid); margin-top: 2px; }
+  .coming-soon-icon { font-size: 24px; flex-shrink: 0; }
+  .coming-soon-title { font-size: 13px; font-weight: 500; color: var(--dark); }
+  .coming-soon-sub { font-size: 11px; margin-top: 2px; line-height: 1.5; }
 
   /* ── PROTOCOL BOX ── */
   .protocol-box {
     background: var(--tint-blue);
-    border: 1px solid rgba(4,68,148,.15);
-    border-radius: 10px; padding: 20px 24px;
-    display: flex; gap: 16px; align-items: flex-start;
-    margin-bottom: 40px;
+    border: 1px solid #c0d4ef;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 12px;
+    color: var(--os-blue);
+    margin-bottom: 32px;
+    display: flex; align-items: center; gap: 12px;
   }
-  .protocol-icon {
-    width: 36px; height: 36px; border-radius: 8px;
-    background: var(--os-blue);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
+  .protocol-box svg { flex-shrink: 0; width: 18px; height: 18px; }
+  .protocol-link {
+    color: var(--os-blue); font-weight: 600;
+    text-decoration: none; white-space: nowrap;
   }
-  .protocol-title { font-size: 13px; font-weight: 600; color: var(--os-dark-blue); margin-bottom: 4px; }
-  .protocol-desc  { font-size: 12px; color: var(--dark); line-height: 1.6; }
-  .protocol-link  {
-    display: inline-block; margin-top: 8px;
-    font-size: 12px; font-weight: 600; color: var(--os-blue);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(4,68,148,.2);
-  }
-  .protocol-link:hover { border-bottom-color: var(--os-blue); }
+  .protocol-link:hover { text-decoration: underline; }
 
   /* ── FOOTER ── */
   footer {
     background: var(--os-dark-blue);
-    padding: 24px 48px;
-    display: flex; justify-content: space-between; align-items: center;
+    padding: 0;
   }
   .footer-inner {
-    max-width: 1100px; width: 100%; margin: 0 auto;
+    max-width: 1100px; margin: 0 auto;
+    padding: 22px 40px;
     display: flex; justify-content: space-between; align-items: center;
+    gap: 16px;
   }
-  .f-brand { font-family: 'Libre Baskerville', serif; font-size: 14px; color: rgba(255,255,255,.7); font-weight: 700; }
-  .f-note  { font-size: 11px; color: rgba(255,255,255,.3); margin-top: 3px; }
-  .shield-row { display: flex; gap: 5px; }
-  .f-shield { width: 20px; height: 12px; border-radius: 3px; opacity: .45; }
-/* ═══════════════════════════════════════════
-   MOBILE RESPONSIVE — injected into all files
-   Breakpoints: 768px (tablet), 480px (phone)
-════════════════════════════════════════════ */
-@media (max-width: 768px) {
-  /* Header */
-  .header-inner { flex-direction:column; align-items:flex-start; gap:14px; padding:24px 20px 20px; }
-  .header-right { text-align:left; }
-  .report-title { font-size:16px; }
-  .report-date  { font-size:11px; }
-  .brand-name   { font-size:18px; }
-  .header-shields { display:none; }
+  .f-brand { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.7); }
+  .f-note  { font-size: 10px; color: rgba(255,255,255,.3); margin-top: 3px; }
+  .shield-row { display: flex; gap: 6px; flex-shrink: 0; }
+  .f-shield {
+    width: 10px; height: 14px; border-radius: 2px;
+    opacity: .6;
+  }
 
-  /* Main padding */
-  main  { padding:24px 16px; }
-  .hero { padding:20px 16px; }
-  .hero-title { font-size:20px; }
-
-  /* KPI grid: 5-col → 2-col */
-  .kpi-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
-  .kpi-val  { font-size:22px; }
-
-  /* Stats row (index page): 4-col → 2-col */
-  .stats-row { grid-template-columns:repeat(2,1fr); gap:10px; }
-  .stat-val  { font-size:22px; }
-
-  /* Runway grid: 4-col → 2-col */
-  .runway-grid { grid-template-columns:repeat(2,1fr); gap:10px; }
-  .runway-val  { font-size:20px; }
-
-  /* Two-col → single col */
-  .two-col { grid-template-columns:1fr; }
-
-  /* Tables: horizontal scroll, sticky first column */
-  .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:10px; }
-  table { min-width:640px; }
-  td, thead th { padding:8px 10px; font-size:11px; }
-  td:first-child { position:sticky; left:0; background:var(--white); z-index:1; min-width:130px; font-size:11px; }
-  .row-total td:first-child { background:var(--os-dark-blue); }
-  .row-group td:first-child { background:var(--tint-blue); }
-  .row-margin td:first-child { background:#f0f4fb; }
-
-  /* One-off items: stack value below text */
-  .oneoff { flex-direction:column; gap:6px; }
-  .oneoff-val { text-align:left; font-size:13px; }
-
-  /* Channel rows */
-  .channel-bar-wrap { width:60px; }
-  .channel-delta { width:44px; font-size:10px; }
-  .channel-val { font-size:11px; width:64px; }
-
-  /* Bridge chart: compress */
-  .bridge { height:140px; gap:6px; }
-  .bridge-bar { width:90%; }
-  .bridge-lbl { font-size:9px; }
-  .bridge-val { font-size:9px; }
-
-  /* Section label */
-  .section-label { font-size:9px; letter-spacing:1.5px; }
-
-  /* Correction notice */
-  .correction-notice { flex-direction:column; gap:8px; font-size:11px; }
-
-  /* Protocol box */
-  .protocol-box { flex-direction:column; gap:12px; padding:16px; }
-
-  /* Report cards (index) */
-  .report-body { flex-wrap:wrap; gap:12px; padding:14px 16px; }
-  .report-kpis { display:none; }
-  .report-right { flex-direction:row; align-items:center; }
-  .report-arrow { opacity:1; transform:none; }
-  .report-month { width:48px; }
-  .report-month-abbr { font-size:18px; }
-  .report-divider { height:36px; }
-  .report-name { font-size:14px; }
-  .report-meta-row { flex-wrap:wrap; gap:6px; }
-  .report-meta-item { font-size:10px; }
-
-  /* Scenario cards */
-  .scenario-months { font-size:18px; }
-
-  /* Bar chart */
-  .bar-month { width:36px; font-size:9px; }
-
-  /* Footer */
-  footer { padding:20px 16px; }
-  .footer-inner { flex-direction:column; gap:12px; align-items:flex-start; }
-  .shield-row { display:none; }
-}
-
-@media (max-width: 480px) {
-  /* Phone: tighten further */
-  .header-inner { padding:18px 16px 16px; }
-  .logo-eye { width:36px; height:36px; }
-  .brand-name { font-size:16px; }
-  .report-title { font-size:14px; }
-
-  main  { padding:16px 12px; }
-  .hero { padding:16px 12px; }
-  .hero-title { font-size:17px; }
-
-  /* KPI: 2-col → 1-col for very small screens */
-  .kpi-grid  { grid-template-columns:1fr 1fr; gap:8px; }
-  .kpi       { padding:14px 12px 12px; }
-  .kpi-val   { font-size:20px; }
-  .kpi-label { font-size:9px; }
-  .kpi-delta { font-size:10px; }
-  .kpi-sub   { font-size:10px; }
-
-  /* Stats: 2-col */
-  .stats-row { grid-template-columns:1fr 1fr; gap:8px; }
-  .stat { padding:14px 12px; }
-  .stat-val { font-size:18px; }
-
-  /* Runway: 2-col */
-  .runway-grid { grid-template-columns:1fr 1fr; gap:8px; }
-  .runway-cell { padding:14px 12px; }
-  .runway-val  { font-size:18px; }
-
-  /* Card padding */
-  .card { padding:16px; }
-  .card-title { font-size:14px; }
-
-  /* Scenario */
-  .scenario { padding:12px; }
-  .scenario-months { font-size:16px; }
-  .scenario-note { font-size:11px; }
-
-  /* Insight */
-  .insight { font-size:11px; padding:10px 12px; }
-
-  /* Oneoff */
-  .oneoff { padding:12px; }
-  .oneoff-desc { font-size:11px; }
-  .oneoff-sub  { font-size:10px; }
-
-  /* Bridge: hide on very small, show simplified */
-  .bridge { height:110px; gap:4px; }
-  .bridge-lbl { font-size:8px; }
-
-  /* Protocol */
-  .protocol-box { padding:14px; }
-  .protocol-title { font-size:12px; }
-  .protocol-desc  { font-size:11px; }
-
-  /* Report cards */
-  .report-name { font-size:13px; }
-  .report-desc { font-size:11px; }
-  .coming-soon { padding:16px; }
-  .coming-soon-title { font-size:12px; }
-  .coming-soon-sub   { font-size:11px; }
-
-  /* Table sticky col narrower */
-  td:first-child { min-width:110px; }
-
-  /* Badges: smaller */
-  .badge { font-size:9px; padding:1px 5px; }
-
-  /* Footer */
-  .f-brand { font-size:12px; }
-  .f-note  { font-size:10px; }
-
-  /* Bar chart label */
-  .bar-label { font-size:9px; }
-  .bar-month { font-size:9px; width:32px; }
-}
-
-@media (max-width: 768px) {
-  /* Index page specifics */
-  header .header-inner { max-width:100%; }
-  .hero { max-width:100%; }
-  main  { max-width:100%; }
-  .report-card .report-body { padding:14px 16px; }
-}
-@media (max-width: 480px) {
-  .stats-row { grid-template-columns:1fr 1fr; }
-}
-
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    .header-inner { flex-direction: column; align-items: flex-start; padding: 24px 20px 20px; gap: 16px; }
+    .header-stats { gap: 16px; align-self: stretch; justify-content: flex-start; }
+    .stat-item { text-align: left; }
+    main { padding: 24px 16px 48px; }
+    .reports-grid { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; align-items: flex-start; padding: 20px 20px; }
+    .shield-row { display: none; }
+    .card-kpis { flex-wrap: wrap; gap: 12px; }
+  }
 </style>
 </head>
 <body>
 
 <!-- ═══ HEADER ═══ -->
 <header>
-  <div class="header-shields">
-    <div class="hs" style="width:70px;height:44px;background:var(--os-teal);transform:rotate(-8deg) scale(1.4)"></div>
-    <div class="hs" style="width:70px;height:44px;background:var(--os-purple);transform:rotate(5deg) scale(1.1);margin-top:10px"></div>
-    <div class="hs" style="width:70px;height:44px;background:var(--os-orange);transform:rotate(-4deg) scale(.9);margin-top:24px"></div>
-    <div class="hs" style="width:70px;height:44px;background:var(--os-green);transform:rotate(9deg) scale(1.2);margin-top:6px"></div>
-    <div class="hs" style="width:70px;height:44px;background:var(--os-yellow);transform:rotate(-5deg);margin-top:18px"></div>
-    <div class="hs" style="width:70px;height:44px;background:var(--os-red);transform:rotate(3deg) scale(1.1);margin-top:8px"></div>
-    <div class="hs" style="width:70px;height:44px;background:var(--os-pink);transform:rotate(-9deg) scale(.8);margin-top:22px"></div>
-  </div>
   <div class="header-inner">
     <div class="logo-block">
       <div class="logo-eye">
-        <svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="14" cy="14" r="9" stroke="white" stroke-width="2.2" fill="none"/>
-          <circle cx="14" cy="14" r="3.5" fill="white" opacity=".9"/>
-          <rect x="6" y="3" width="5" height="3" rx="1" fill="#1ACCAA"/>
-          <rect x="12" y="2" width="5" height="3" rx="1" fill="#A129B2"/>
-          <rect x="18" y="3" width="5" height="3" rx="1" fill="#FCD112"/>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
         </svg>
       </div>
-      <div>
-        <div class="brand-name">Ocushield</div>
-        <div class="brand-sub">Financial Intelligence Hub</div>
+      <div class="logo-text">
+        <h1>Ocushield</h1>
+        <p>Intelligence Hub</p>
       </div>
     </div>
-    <div class="header-meta">
-      <div class="header-meta-label">Last updated</div>
-      <div class="header-meta-val">18 May 2026</div>
+    <div class="header-stats">
+      <div class="stat-item">
+        <div class="stat-val">10</div>
+        <div class="stat-note">Reports published</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">2</div>
+        <div class="stat-note">Report types</div>
+      </div>
     </div>
   </div>
 </header>
+
 <div class="accent-bar"></div>
 
-<!-- ═══ HERO ═══ -->
-<div style="background:var(--white);border-bottom:1px solid var(--border);">
-  <div class="hero">
-    <div class="hero-title">Financial Reports</div>
-    <div class="hero-sub">Monthly P&amp;L variance analysis, cash position, and performance commentary for Ocushield Limited. All reports sourced live from Xero.</div>
-  </div>
-</div>
-
+<!-- ═══ MAIN ═══ -->
 <main>
 
-  <!-- STATS -->
-  <div style="margin-bottom:32px; margin-top:4px;">
-    <div class="stats-row">
-      <div class="stat">
-        <div class="stat-label">Reports Published</div>
-        <div class="stat-val">7</div>
-        <div class="stat-note">FY2025–2026</div>
-      </div>
-      <div class="stat blue">
-        <div class="stat-label">Latest Month</div>
-        <div class="stat-val">April</div>
-        <div class="stat-note">2026 actuals</div>
-      </div>
-      <div class="stat purple">
-        <div class="stat-label">YTD Net P&amp;L</div>
-        <div class="stat-val neg" style="font-size:24px;">−£159.2k</div>
-        <div class="stat-note">Jan–Apr 2026 (FM restated)</div>
-      </div>
-      <div class="stat orange">
-        <div class="stat-label">Cash Position</div>
-        <div class="stat-val" style="font-size:24px;">£189.8k</div>
-        <div class="stat-note">As at 18 May 2026</div>
-      </div>
-    </div>
+  <!-- Protocol notice -->
+  <div class="protocol-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+    </svg>
+    <span>All financial data is sourced from Xero and pulled using the standardised Ocushield reporting protocol.
+      <br><a class="protocol-link" href="ocushield_xero_reporting_protocol.md">View reporting protocol →</a>
+    </span>
   </div>
 
-  <!-- FY2026 REPORTS -->
-  <section style="margin-bottom:40px;">
-    <div class="section-label">FY2026 · Monthly Reports</div>
+  <!-- ═══ MARKETING PERFORMANCE ═══ -->
+  <section>
+    <div class="section-label">Marketing Performance</div>
     <div class="reports-grid">
 
-      <!-- JANUARY — LIVE -->
-      <a class="report-card" href="ocushield_january_2026.html">
-        <div class="report-band archive"></div>
-        <div class="report-body">
-          <div class="report-month">
-            <div class="report-month-abbr">Jan</div>
-            <div class="report-month-year">2026</div>
+      <a class="report-card mkt" href="ocushield-dashboard.html">
+        <div class="card-top">
+          <div class="card-month">May 2026 · MTD</div>
+          <span class="badge badge-purple">Live</span>
+        </div>
+        <div class="card-title">Marketing Performance Dashboard</div>
+        <div class="card-desc">Facebook Ads across all Ocushield accounts. Campaign-level ROAS, top &amp; bottom 5 performers, spend vs revenue trend, and optimisation diagnosis.</div>
+        <div class="card-kpis">
+          <div class="kpi">
+            <span class="kpi-label">Spend MTD</span>
+            <span class="kpi-val neu">£10,436</span>
           </div>
-          <div class="report-divider"></div>
-          <div class="report-info">
-            <div class="report-title-row">
-              <span class="report-name">January 2026 · P&amp;L Variance Analysis</span>
-              <span class="badge badge-blue">Backdated</span>
-            </div>
-            <div class="report-desc">MoM vs December 2025 and YoY vs January 2025. Net loss −£15k. Revenue −21.8% YoY across all channels. Write-off one-off flagged.</div>
-            <div class="report-meta-row">
-              <span class="report-meta-item">Generated 15 May 2026</span>
-              <span class="report-meta-item">Source: Xero Live</span>
-            </div>
+          <div class="kpi">
+            <span class="kpi-label">Purchases</span>
+            <span class="kpi-val neu">218</span>
           </div>
-          <div class="report-right">
-            <div class="report-arrow">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div class="report-kpis">
-              <div class="report-kpi"><div class="report-kpi-label">Revenue</div><div class="report-kpi-val">£304.5k</div></div>
-              <div class="report-kpi"><div class="report-kpi-label">Net P&L</div><div class="report-kpi-val neg">−£15.0k</div></div>
-              <div class="report-kpi"><div class="report-kpi-label">GP Margin</div><div class="report-kpi-val">19.4%</div></div>
-            </div>
+          <div class="kpi">
+            <span class="kpi-label">Campaigns</span>
+            <span class="kpi-val neu">12</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-updated">Updated 18 May 2026</span>
+          <div class="card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
           </div>
         </div>
       </a>
 
-      <!-- FEBRUARY — LIVE -->
-      <a class="report-card" href="ocushield_february_2026.html">
-        <div class="report-band archive"></div>
-        <div class="report-body">
-          <div class="report-month">
-            <div class="report-month-abbr">Feb</div>
-            <div class="report-month-year">2026</div>
-          </div>
-          <div class="report-divider"></div>
-          <div class="report-info">
-            <div class="report-title-row">
-              <span class="report-name">February 2026 · P&amp;L Variance Analysis</span>
-              <span class="badge badge-blue">Backdated</span>
-            </div>
-            <div class="report-desc">MoM vs January 2026 and YoY vs February 2025. Net loss −£20.3k. B2B Corporates spike and Eye Screening first appearance. Amazon ROW declining.</div>
-            <div class="report-meta-row">
-              <span class="report-meta-item">Generated 15 May 2026</span>
-              <span class="report-meta-item">Source: Xero Live</span>
-            </div>
-          </div>
-          <div class="report-right">
-            <div class="report-arrow">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div class="report-kpis">
-              <div class="report-kpi"><div class="report-kpi-label">Revenue</div><div class="report-kpi-val">£289.0k</div></div>
-              <div class="report-kpi"><div class="report-kpi-label">Net P&L</div><div class="report-kpi-val neg">−£20.3k</div></div>
-              <div class="report-kpi"><div class="report-kpi-label">GP Margin</div><div class="report-kpi-val">18.6%</div></div>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- MARCH — LIVE -->
-      <a class="report-card" href="ocushield_march_2026.html">
-        <div class="report-band archive"></div>
-        <div class="report-body">
-          <div class="report-month">
-            <div class="report-month-abbr">Mar</div>
-            <div class="report-month-year">2026</div>
-          </div>
-          <div class="report-divider"></div>
-          <div class="report-info">
-            <div class="report-title-row">
-              <span class="report-name">March 2026 · P&amp;L Variance Analysis</span>
-              <span class="badge badge-blue">Backdated</span>
-            </div>
-            <div class="report-desc">MoM vs February 2026 and YoY vs March 2025. Net loss −£58.8k inflated by £36.5k one-off settlement agreement. Underlying loss ~£22k. Eye Screening building.</div>
-            <div class="report-meta-row">
-              <span class="report-meta-item">Generated 15 May 2026</span>
-              <span class="report-meta-item">Source: Xero Live</span>
-            </div>
-          </div>
-          <div class="report-right">
-            <div class="report-arrow">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div class="report-kpis">
-              <div class="report-kpi"><div class="report-kpi-label">Revenue</div><div class="report-kpi-val">£302.7k</div></div>
-              <div class="report-kpi"><div class="report-kpi-label">Net P&L</div><div class="report-kpi-val neg">−£58.8k</div></div>
-              <div class="report-kpi"><div class="report-kpi-label">GP Margin</div><div class="report-kpi-val">20.4%</div></div>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- APRIL v2 — LIVE -->
-      <a class="report-card" href="ocushield_april_2026_v2.html">
-        <div class="report-band revised"></div>
-        <div class="report-body">
-          <div class="report-month">
-            <div class="report-month-abbr">Apr</div>
-            <div class="report-month-year">2026</div>
-          </div>
-          <div class="report-divider"></div>
-          <div class="report-info">
-            <div class="report-title-row">
-              <span class="report-name">April 2026 · P&amp;L Variance Analysis</span>
-              <span class="badge badge-green">✓ Latest</span>
-            </div>
-            <div class="report-desc">FM-restated: revenue £229.9k, net loss −£65.1k. Eye Screening corrected to £7.4k (£123k Medicash is a May prepayment, not April revenue). YTD loss −£159.2k. GP margin 8.8%.</div>
-            <div class="report-meta-row">
-              <span class="report-meta-item">
-                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 3.5V6l1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-                Updated 18 May 2026
-              </span>
-              <span class="report-meta-item">
-                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><rect x="1" y="2" width="10" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M1 5h10" stroke="currentColor" stroke-width="1.2"/></svg>
-                Source: Xero Live
-              </span>
-              <span class="report-meta-item">
-                <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                FM restated · BS at 30 Apr
-              </span>
-            </div>
-          </div>
-          <div class="report-right">
-            <div class="report-arrow">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div class="report-kpis">
-              <div class="report-kpi">
-                <div class="report-kpi-label">Revenue</div>
-                <div class="report-kpi-val">£353.4k</div>
-              </div>
-              <div class="report-kpi">
-                <div class="report-kpi-label">Net Loss</div>
-                <div class="report-kpi-val neg">−£65.1k</div>
-              </div>
-              <div class="report-kpi">
-                <div class="report-kpi-label">YTD P&amp;L</div>
-                <div class="report-kpi-val neg">−£159.2k</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-
-
-      <!-- MAY — coming soon -->
       <div class="coming-soon">
-        <div class="coming-soon-icon">📅</div>
+        <div class="coming-soon-icon">📊</div>
         <div>
-          <div class="coming-soon-title">May 2026 · P&amp;L Variance Analysis</div>
-          <div class="coming-soon-sub">Expected mid-June 2026 · Data will be sourced live from Xero using verified explicit date ranges</div>
+          <div class="coming-soon-title">Drop future marketing dashboards here</div>
+          <div class="coming-soon-sub">Upload each month's <code>ocushield-dashboard.html</code> to the repo and add a new card above for it to appear in this section.</div>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- REPORTING PROTOCOL NOTE -->
-  <div class="protocol-box">
-    <div class="protocol-icon">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2L2 6v6l7 4 7-4V6L9 2z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 10V7M9 12v.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
-    </div>
-    <div>
-      <div class="protocol-title">Xero API Reporting Protocol</div>
-      <div class="protocol-desc">All reports from May 2026 onwards use explicit start and end dates for every comparison period, with cross-call reconciliation checks. This prevents the Xero API date-range truncation issue identified during the April 2026 reporting cycle. A full protocol document is maintained alongside this repository.
-        <br><a class="protocol-link" href="ocushield_xero_reporting_protocol.md">View reporting protocol →</a>
-      </div>
-    </div>
-  </div>
+  <!-- ═══ FY2026 FINANCIAL REPORTS ═══ -->
+  <section>
+    <div class="section-label">FY2026 · Financial Reports</div>
+    <div class="reports-grid">
 
-  <!-- FY2025 ARCHIVE -->
+      <!-- May 2026 — coming soon -->
+      <div class="coming-soon">
+        <div class="coming-soon-icon">⏳</div>
+        <div>
+          <div class="coming-soon-title">May 2026 — Coming Soon</div>
+          <div class="coming-soon-sub">Report will be generated at month end once Xero data is finalised.</div>
+        </div>
+      </div>
+
+      <!-- April 2026 -->
+      <a class="report-card fin" href="ocushield_april_2026_v2.html">
+        <div class="card-top">
+          <div class="card-month">Apr 2026</div>
+          <span class="badge badge-teal">Published</span>
+        </div>
+        <div class="card-title">April 2026 · P&amp;L Variance Analysis</div>
+        <div class="card-desc">MoM vs March 2026 and YoY vs April 2025. Eye Screening revenue restated. Net loss month; corrected figures confirmed with FM.</div>
+        <div class="card-kpis">
+          <div class="kpi">
+            <span class="kpi-label">Revenue</span>
+            <span class="kpi-val neu">£230k</span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label">Net P&amp;L</span>
+            <span class="kpi-val neg">−£65.1k</span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label">YTD Loss</span>
+            <span class="kpi-val neg">−£159.2k</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-updated">Published 18 May 2026</span>
+          <div class="card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- March 2026 -->
+      <a class="report-card fin" href="ocushield_march_2026.html">
+        <div class="card-top">
+          <div class="card-month">Mar 2026</div>
+          <span class="badge badge-blue">Backdated</span>
+        </div>
+        <div class="card-title">March 2026 · P&amp;L Variance Analysis</div>
+        <div class="card-desc">MoM vs February 2026 and YoY vs March 2025. Net loss −£58.8k includes £36.5k one-off legal settlement. Underlying loss ~£22k.</div>
+        <div class="card-kpis">
+          <div class="kpi">
+            <span class="kpi-label">Revenue</span>
+            <span class="kpi-val neu">£208k</span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label">Net P&amp;L</span>
+            <span class="kpi-val neg">−£58.8k</span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label">YoY</span>
+            <span class="kpi-val neg">−28.4%</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-updated">Published 15 May 2026</span>
+          <div class="card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- February 2026 -->
+      <a class="report-card fin" href="ocushield_february_2026.html">
+        <div class="card-top">
+          <div class="card-month">Feb 2026</div>
+          <span class="badge badge-blue">Backdated</span>
+        </div>
+        <div class="card-title">February 2026 · P&amp;L Variance Analysis</div>
+        <div class="card-desc">MoM vs January 2026 and YoY vs February 2025. B2B revenue spike. Eye Screening first appears at £12.7k.</div>
+        <div class="card-kpis">
+          <div class="kpi">
+            <span class="kpi-label">Revenue</span>
+            <span class="kpi-val neu">£195k</span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label">Net P&amp;L</span>
+            <span class="kpi-val neg">−£20.3k</span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label">YoY</span>
+            <span class="kpi-val neg">−18.1%</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-updated">Published 15 May 2026</span>
+          <div class="card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- January 2026 -->
+      <a class="report-card fin" href="ocushield_january_2026.html">
+        <div class="card-top">
+          <div class="card-month">Jan 2026</div>
+          <span class="badge badge-blue">Backdated</span>
+        </div>
+        <div class="card-title">January 2026 · P&amp;L Variance Analysis</div>
+        <div class="card-desc">MoM vs December 2025 and YoY vs January 2025. Bad debt write-off flagged. YoY revenue −21.8%.</div>
+        <div class="card-kpis">
+          <div class="kpi">
+            <span class="kpi-label">Revenue</span>
+            <span class="kpi-val neu">£178k</span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label">Net P&amp;L</span>
+            <span class="kpi-val neg">−£15k</span>
+          </div>
+          <div class="kpi">
+            <span class="kpi-label">YoY</span>
+            <span class="kpi-val neg">−21.8%</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-updated">Published 15 May 2026</span>
+          <div class="card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ═══ FY2025 ARCHIVE ═══ -->
   <section>
     <div class="section-label">FY2025 · Archive</div>
     <div class="reports-grid">
-      <a class="report-card" href="ocushield_october_2025.html">
-        <div class="report-band archive"></div>
-        <div class="report-body">
-          <div class="report-month">
-            <div class="report-month-abbr">Oct</div>
-            <div class="report-month-year">2025</div>
+
+      <!-- December 2025 -->
+      <a class="report-card fin" href="ocushield_december_2025.html">
+        <div class="card-top">
+          <div class="card-month">Dec 2025</div>
+          <span class="badge badge-blue">Backdated</span>
+        </div>
+        <div class="card-title">December 2025 · P&amp;L Variance Analysis</div>
+        <div class="card-desc">MoM vs November 2025 and YoY vs December 2024. First loss month of H2 2025 at −£22.1k. Post-BF revenue hangover.</div>
+        <div class="card-kpis">
+          <div class="kpi">
+            <span class="kpi-label">Revenue</span>
+            <span class="kpi-val neu">£343.9k</span>
           </div>
-          <div class="report-divider"></div>
-          <div class="report-info">
-            <div class="report-title-row">
-              <span class="report-name">October 2025 · P&amp;L Variance Analysis</span>
-              <span class="badge badge-blue">Backdated</span>
-            </div>
-            <div class="report-desc">MoM vs September 2025 and YoY vs October 2024. Net profit £35.1k. McKinsey B2B at £84.6k is key driver. Strong Amazon ROW performance.</div>
-            <div class="report-meta-row">
-              <span class="report-meta-item">Generated 15 May 2026</span>
-              <span class="report-meta-item">Source: Xero Live</span>
-            </div>
+          <div class="kpi">
+            <span class="kpi-label">Net P&amp;L</span>
+            <span class="kpi-val neg">−£22.1k</span>
           </div>
-          <div class="report-right">
-            <div class="report-arrow">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div class="report-kpis">
-              <div class="report-kpi"><div class="report-kpi-label">Revenue</div><div class="report-kpi-val">£383.0k</div></div>
-              <div class="report-kpi"><div class="report-kpi-label">Net P&L</div><div class="report-kpi-val up">£35.1k</div></div>
-              <div class="report-kpi"><div class="report-kpi-label">GP Margin</div><div class="report-kpi-val">28.2%</div></div>
-            </div>
+          <div class="kpi">
+            <span class="kpi-label">YoY</span>
+            <span class="kpi-val neg">−16.8%</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-updated">Published 15 May 2026</span>
+          <div class="card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
           </div>
         </div>
       </a>
-      <a class="report-card" href="ocushield_november_2025.html">
-        <div class="report-band archive"></div>
-        <div class="report-body">
-          <div class="report-month">
-            <div class="report-month-abbr">Nov</div>
-            <div class="report-month-year">2025</div>
+
+      <!-- November 2025 -->
+      <a class="report-card fin" href="ocushield_november_2025.html">
+        <div class="card-top">
+          <div class="card-month">Nov 2025</div>
+          <span class="badge badge-blue">Backdated</span>
+        </div>
+        <div class="card-title">November 2025 · P&amp;L Variance Analysis</div>
+        <div class="card-desc">MoM vs October 2025 and YoY vs November 2024. Black Friday discounting surges. McKinsey drops £65k MoM.</div>
+        <div class="card-kpis">
+          <div class="kpi">
+            <span class="kpi-label">Revenue</span>
+            <span class="kpi-val neu">£393.4k</span>
           </div>
-          <div class="report-divider"></div>
-          <div class="report-info">
-            <div class="report-title-row">
-              <span class="report-name">November 2025 · P&amp;L Variance Analysis</span>
-              <span class="badge badge-blue">Backdated</span>
-            </div>
-            <div class="report-desc">MoM vs October 2025 and YoY vs November 2024. Record revenue £393k but only £10.5k profit. Black Friday discounting surges. McKinsey drops £65k MoM.</div>
-            <div class="report-meta-row">
-              <span class="report-meta-item">Generated 15 May 2026</span>
-              <span class="report-meta-item">Source: Xero Live</span>
-            </div>
+          <div class="kpi">
+            <span class="kpi-label">Net P&amp;L</span>
+            <span class="kpi-val pos">+£10.5k</span>
           </div>
-          <div class="report-right">
-            <div class="report-arrow">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div class="report-kpis">
-              <div class="report-kpi"><div class="report-kpi-label">Revenue</div><div class="report-kpi-val">£393.4k</div></div>
-              <div class="report-kpi"><div class="report-kpi-label">Net P&L</div><div class="report-kpi-val up">£10.5k</div></div>
-              <div class="report-kpi"><div class="report-kpi-label">GP Margin</div><div class="report-kpi-val">23.8%</div></div>
-            </div>
+          <div class="kpi">
+            <span class="kpi-label">YoY</span>
+            <span class="kpi-val pos">+23.8%</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-updated">Published 15 May 2026</span>
+          <div class="card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
           </div>
         </div>
       </a>
-      <a class="report-card" href="ocushield_december_2025.html">
-        <div class="report-band archive"></div>
-        <div class="report-body">
-          <div class="report-month">
-            <div class="report-month-abbr">Dec</div>
-            <div class="report-month-year">2025</div>
+
+      <!-- October 2025 -->
+      <a class="report-card fin" href="ocushield_october_2025.html">
+        <div class="card-top">
+          <div class="card-month">Oct 2025</div>
+          <span class="badge badge-blue">Backdated</span>
+        </div>
+        <div class="card-title">October 2025 · P&amp;L Variance Analysis</div>
+        <div class="card-desc">MoM vs September 2025 and YoY vs October 2024. Record revenue £393k but only £10.5k profit. Structural discounting costs persist.</div>
+        <div class="card-kpis">
+          <div class="kpi">
+            <span class="kpi-label">Revenue</span>
+            <span class="kpi-val neu">£393k</span>
           </div>
-          <div class="report-divider"></div>
-          <div class="report-info">
-            <div class="report-title-row">
-              <span class="report-name">December 2025 · P&amp;L Variance Analysis</span>
-              <span class="badge badge-blue">Backdated</span>
-            </div>
-            <div class="report-desc">MoM vs November 2025 and YoY vs December 2024. First loss month of H2 2025 at −£22.1k. Post-BF revenue hangover, structural discounting costs persist.</div>
-            <div class="report-meta-row">
-              <span class="report-meta-item">Generated 15 May 2026</span>
-              <span class="report-meta-item">Source: Xero Live</span>
-            </div>
+          <div class="kpi">
+            <span class="kpi-label">Net P&amp;L</span>
+            <span class="kpi-val pos">+£58.3k</span>
           </div>
-          <div class="report-right">
-            <div class="report-arrow">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <div class="report-kpis">
-              <div class="report-kpi"><div class="report-kpi-label">Revenue</div><div class="report-kpi-val">£343.9k</div></div>
-              <div class="report-kpi"><div class="report-kpi-label">Net P&L</div><div class="report-kpi-val neg">−£22.1k</div></div>
-              <div class="report-kpi"><div class="report-kpi-label">GP Margin</div><div class="report-kpi-val">16.8%</div></div>
-            </div>
+          <div class="kpi">
+            <span class="kpi-label">YoY</span>
+            <span class="kpi-val pos">+18.4%</span>
           </div>
         </div>
-      </a>
-    </div>
-  </section>
-
-
-  <!-- SUPERSEDED REPORTS -->
-  <section>
-    <div class="section-label">Superseded · Retained for Audit Trail</div>
-    <div class="reports-grid">
-
-      <a class="report-card" href="ocushield_april_2026_branded.html" style="opacity:.55;">
-        <div class="report-band" style="background:var(--mid);"></div>
-        <div class="report-body">
-          <div class="report-month">
-            <div class="report-month-abbr" style="color:var(--mid);">Apr</div>
-            <div class="report-month-year">2026</div>
-          </div>
-          <div class="report-divider"></div>
-          <div class="report-info">
-            <div class="report-title-row">
-              <span class="report-name" style="color:var(--dark);">April 2026 · P&amp;L Variance Analysis</span>
-              <span class="badge badge-mid">v1 — Superseded</span>
-            </div>
-            <div class="report-desc">Original version superseded by v2. March comparatives contained a Xero API date-range truncation error — Amazon ROW understated by £14,909, total revenue by £13,124. Retained for audit trail only. Use v2 for all reference purposes.</div>
-            <div class="report-meta-row">
-              <span class="report-meta-item">Published 15 May 2026</span>
-              <span class="report-meta-item" style="color:var(--os-orange);">⚠ Data error in March comparative column</span>
-              <span class="report-meta-item">Superseded by April 2026 v2</span>
-            </div>
-          </div>
-          <div class="report-right">
-            <div class="report-arrow" style="opacity:1;transform:none;">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
+        <div class="card-footer">
+          <span class="card-updated">Published 15 May 2026</span>
+          <div class="card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
           </div>
         </div>
       </a>
@@ -906,7 +626,7 @@
   <div class="footer-inner">
     <div>
       <div class="f-brand">Ocushield Limited</div>
-      <div class="f-note">Financial Intelligence Hub · Confidential — Internal use only · Data sourced from Xero</div>
+      <div class="f-note">Intelligence Hub · Confidential — Internal use only · Financial data sourced from Xero · Marketing data sourced from Facebook Ads via Supermetrics</div>
     </div>
     <div class="shield-row">
       <div class="f-shield" style="background:var(--os-teal);"></div>
