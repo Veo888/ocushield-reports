@@ -2,39 +2,37 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23022148'/><circle cx='16' cy='16' r='9' stroke='%231ACCAA' stroke-width='2' fill='none'/><circle cx='16' cy='16' r='3.5' fill='%231ACCAA'/></svg>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ocushield — Marketing Performance Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --blue:       #0575FF;
-    --blue-dark:  #0455cc;
-    --blue-dim:   rgba(5,117,255,0.1);
-    --blue-dim2:  rgba(5,117,255,0.06);
-    --yellow:     #FFD942;
+    --blue: #0575FF;
+    --blue-light: #3d91ff;
+    --blue-dim: rgba(5,117,255,0.1);
+    --blue-dim2: rgba(5,117,255,0.06);
+    --yellow: #FFD942;
     --yellow-dim: rgba(255,217,66,0.15);
-    --green:      #00B87C;
-    --green-dim:  rgba(0,184,124,0.12);
-    --red:        #E03535;
-    --red-dim:    rgba(224,53,53,0.1);
-    --amber:      #D48A00;
-    --amber-dim:  rgba(212,138,0,0.12);
-    --purple:     #A129B2;
-    --bg:         #F0F4FF;
-    --surface:    #FFFFFF;
-    --surface2:   #F7F9FF;
-    --border:     rgba(5,117,255,0.1);
-    --border2:    rgba(5,117,255,0.2);
-    --text:       #0A1628;
-    --text2:      #4A5D7A;
-    --text3:      #8B9DB5;
-    --radius:     12px;
-    --radius-sm:  8px;
+    --green: #00B87C;
+    --green-dim: rgba(0,184,124,0.12);
+    --red: #E03535;
+    --red-dim: rgba(224,53,53,0.1);
+    --amber: #D48A00;
+    --amber-dim: rgba(212,138,0,0.12);
+    --bg: #F0F4FF;
+    --surface: #FFFFFF;
+    --surface2: #F7F9FF;
+    --border: rgba(5,117,255,0.1);
+    --border2: rgba(5,117,255,0.2);
+    --text: #0A1628;
+    --text2: #4A5D7A;
+    --text3: #8B9DB5;
+    --radius: 12px;
+    --radius-sm: 8px;
   }
 
   html { font-size: 14px; }
@@ -43,40 +41,7 @@
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
-  }
-
-  /* ── HOME NAV BAR ── */
-  .home-nav {
-    background: var(--blue-dark);
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .home-nav a {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: rgba(255,255,255,0.65);
-    text-decoration: none;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    padding: 9px 0;
-    transition: color .15s;
-  }
-  .home-nav a:hover { color: #fff; }
-  .home-nav a svg { width: 13px; height: 13px; flex-shrink: 0; }
-  .nav-sep {
-    color: rgba(255,255,255,0.25);
-    font-size: 11px;
-    user-select: none;
-  }
-  .nav-current {
-    color: rgba(255,255,255,0.45);
-    font-size: 11px;
-    padding: 9px 0;
+    padding: 0;
   }
 
   /* ── HEADER ── */
@@ -84,11 +49,10 @@
     background: var(--blue);
     padding: 0 40px;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
     position: relative;
     overflow: hidden;
-    min-height: 80px;
   }
   .header::after {
     content: '';
@@ -97,589 +61,763 @@
     width: 260px; height: 260px;
     border-radius: 50%;
     background: rgba(255,255,255,0.04);
-    pointer-events: none;
   }
   .header-left {
-    padding: 20px 0;
+    padding: 22px 0;
     display: flex; align-items: center; gap: 14px;
-    position: relative; z-index: 1;
   }
-  .logo-eye {
-    width: 44px; height: 44px; border-radius: 10px;
+  .logo-mark {
+    width: 38px; height: 38px;
     background: rgba(255,255,255,0.15);
+    border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
-  .logo-eye svg { width: 26px; height: 26px; color: #fff; }
-  .logo-text h1 {
-    font-size: 18px; font-weight: 600;
-    color: #fff; line-height: 1.1;
+  .logo-mark-inner {
+    width: 22px; height: 22px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
   }
-  .logo-text p {
-    font-size: 11px; color: rgba(255,255,255,0.55);
-    letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px;
-  }
+  .logo-dot { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; }
+  .logo-text { color: #fff; }
+  .logo-text .brand { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; }
+  .logo-text .sub { font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 400; margin-top: 1px; }
   .header-right {
+    padding: 22px 0;
     text-align: right;
-    position: relative; z-index: 1;
-    padding: 20px 0;
+    color: rgba(255,255,255,0.7);
+    font-size: 11px;
+    display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 3px;
   }
-  .header-right .data-source {
-    font-size: 10px; color: rgba(255,255,255,0.45);
-    letter-spacing: 0.06em; text-transform: uppercase;
-    margin-bottom: 3px;
-  }
-  .header-right .period {
-    font-family: 'DM Mono', monospace;
-    font-size: 14px; color: #fff; font-weight: 500;
-  }
-  .header-right .updated {
-    font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px;
-  }
+  .header-right strong { color: #fff; font-size: 13px; font-weight: 500; }
 
-  /* ── YELLOW ACCENT BAR ── */
   .yellow-bar {
     background: var(--yellow);
     padding: 7px 40px;
-    display: flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 500; color: #5a3e00;
   }
-  .yellow-bar span { font-size: 11px; font-weight: 500; color: #5a4000; }
-  .yellow-bar .dot { width: 5px; height: 5px; border-radius: 50%; background: #5a4000; opacity: 0.35; }
+  .yellow-bar .sep { color: rgba(90,62,0,0.3); }
 
-  /* ── MAIN ── */
-  main { padding: 28px 40px 60px; max-width: 1300px; }
-  section { margin-bottom: 36px; }
+  /* ── LAYOUT ── */
+  .page { max-width: 1200px; margin: 0 auto; padding: 32px 40px 60px; }
 
-  .section-label {
-    font-size: 10px; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--blue); margin-bottom: 14px;
-    display: flex; align-items: center; gap: 8px;
+  .section-head {
+    display: flex; align-items: baseline; gap: 10px;
+    margin-bottom: 16px; margin-top: 32px;
   }
-  .section-label::after { content:''; flex:1; height:1px; background:var(--border2); }
+  .section-head:first-child { margin-top: 0; }
+  .section-title { font-size: 13px; font-weight: 600; color: var(--blue); letter-spacing: 0.05em; text-transform: uppercase; }
+  .section-desc { font-size: 12px; color: var(--text3); }
 
-  /* ── KPI GRID ── */
-  .kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
-    gap: 12px;
-    margin-bottom: 28px;
-  }
-  .kpi-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 18px 16px 14px;
+  /* ── KPI CARDS ── */
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 12px; }
+  .kpi {
+    background: var(--surface); border-radius: var(--radius);
+    border: 0.5px solid var(--border);
+    padding: 16px 18px;
     position: relative; overflow: hidden;
   }
-  .kpi-card::before {
-    content:''; position:absolute;
-    top:0; left:0; right:0; height:3px;
-    border-radius: var(--radius) var(--radius) 0 0;
+  .kpi::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: var(--border2);
   }
-  .kpi-card.blue::before   { background: var(--blue); }
-  .kpi-card.green::before  { background: var(--green); }
-  .kpi-card.red::before    { background: var(--red); }
-  .kpi-card.amber::before  { background: var(--amber); }
-  .kpi-card.yellow::before { background: var(--yellow); }
-  .kpi-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
-  .kpi-val { font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 500; color: var(--text); line-height: 1; }
-  .kpi-sub { font-size: 11px; color: var(--text3); margin-top: 4px; }
-  .kpi-val.pos { color: var(--green); }
-  .kpi-val.neg { color: var(--red); }
-  .kpi-val.amber { color: var(--amber); }
+  .kpi.accent { background: var(--blue); border-color: var(--blue); }
+  .kpi.accent::before { background: rgba(255,255,255,0.3); }
+  .kpi.warn::before { background: var(--red); }
+  .kpi-label { font-size: 11px; color: var(--text3); margin-bottom: 6px; font-weight: 400; }
+  .kpi.accent .kpi-label { color: rgba(255,255,255,0.65); }
+  .kpi-val { font-size: 22px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; line-height: 1; }
+  .kpi.accent .kpi-val { color: #fff; }
+  .kpi.warn .kpi-val { color: var(--red); }
+  .kpi-sub { font-size: 10px; color: var(--text3); margin-top: 4px; }
+  .kpi.accent .kpi-sub { color: rgba(255,255,255,0.5); }
 
-  /* ── TABLES ── */
-  .table-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    margin-bottom: 16px;
-  }
-  .table-header {
-    padding: 14px 18px 12px;
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .table-header h3 { font-size: 13px; font-weight: 600; color: var(--text); }
-  .table-header span { font-size: 11px; color: var(--text3); }
-  table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  th {
-    text-align: left; padding: 10px 14px;
-    font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--text3);
-    background: var(--surface2);
-    border-bottom: 1px solid var(--border);
-  }
-  th:not(:first-child) { text-align: right; }
-  td {
-    padding: 11px 14px;
-    border-bottom: 1px solid rgba(5,117,255,0.05);
-    color: var(--text2);
-    vertical-align: middle;
-  }
-  td:not(:first-child) { text-align: right; font-family: 'DM Mono', monospace; font-size: 11px; }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: var(--blue-dim2); }
-  .badge-status {
-    display: inline-block; font-size: 9px; font-weight: 600;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 2px 7px; border-radius: 4px;
-    vertical-align: middle; margin-left: 6px;
-  }
-  .badge-active  { background: var(--green-dim); color: #007a52; }
-  .badge-paused  { background: var(--red-dim);   color: #b52a00; }
-  .good  { color: var(--green); }
-  .bad   { color: var(--red); }
-  .amber-col { color: var(--amber); }
-
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-  /* ── CHART ── */
-  .chart-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+  /* ── CHARTS ── */
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .chart-card {
+    background: var(--surface); border-radius: var(--radius);
+    border: 0.5px solid var(--border);
     padding: 20px;
   }
-  .chart-wrap h3 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 16px; }
-  canvas { max-height: 240px; }
+  .chart-card.full { grid-column: 1 / -1; }
+  .chart-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .chart-sub { font-size: 11px; color: var(--text3); margin-bottom: 14px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 12px; }
+  .leg { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text2); }
+  .leg-sq { width: 9px; height: 9px; border-radius: 2px; flex-shrink: 0; }
 
-  /* ── DIAGNOSIS BOX ── */
-  .diag-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 14px; }
-  .diag-card {
-    border-radius: var(--radius);
-    padding: 18px;
-    border-left: 4px solid;
+  /* ── TABLES ── */
+  .table-card {
+    background: var(--surface); border-radius: var(--radius);
+    border: 0.5px solid var(--border);
+    overflow: hidden; margin-bottom: 14px;
   }
-  .diag-card.critical { background: var(--red-dim); border-color: var(--red); }
-  .diag-card.warning  { background: var(--amber-dim); border-color: var(--amber); }
-  .diag-card.positive { background: var(--green-dim); border-color: var(--green); }
-  .diag-icon { font-size: 18px; margin-bottom: 8px; }
-  .diag-title { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
-  .diag-body  { font-size: 11px; color: var(--text2); line-height: 1.6; }
+  .table-header {
+    padding: 14px 20px 12px;
+    border-bottom: 0.5px solid var(--border);
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .table-header .t-title { font-size: 13px; font-weight: 600; color: var(--text); }
+  .table-header .t-sub { font-size: 11px; color: var(--text3); }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  thead th {
+    padding: 9px 14px;
+    text-align: right; font-weight: 500; color: var(--text3);
+    background: var(--surface2);
+    border-bottom: 0.5px solid var(--border);
+    white-space: nowrap;
+  }
+  thead th:first-child { text-align: left; }
+  tbody td {
+    padding: 10px 14px; text-align: right;
+    color: var(--text); border-bottom: 0.5px solid var(--border);
+    font-family: 'DM Mono', monospace; font-size: 11.5px;
+  }
+  tbody td:first-child { text-align: left; font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--text); max-width: 200px; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--surface2); }
 
-  /* ── OPTIMISATION ── */
-  .opt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 14px; }
-  .opt-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 18px;
+  .badge {
+    display: inline-block; border-radius: 5px;
+    padding: 2px 7px; font-size: 11px; font-weight: 500;
+    font-family: 'DM Mono', monospace; white-space: nowrap;
   }
-  .opt-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; font-weight: 500;
-    color: var(--blue); margin-bottom: 8px;
-    display: flex; align-items: center; gap: 6px;
+  .b-green { background: var(--green-dim); color: #005c3d; }
+  .b-blue  { background: var(--blue-dim);  color: #0050cc; }
+  .b-amber { background: var(--amber-dim); color: #7a4f00; }
+  .b-red   { background: var(--red-dim);   color: #8a1f1f; }
+
+  .table-note { padding: 8px 20px; font-size: 10px; color: var(--text3); font-style: italic; border-top: 0.5px solid var(--border); }
+
+  /* ── INSIGHT SECTIONS ── */
+  .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .insight-card {
+    background: var(--surface); border-radius: var(--radius);
+    border: 0.5px solid var(--border);
+    overflow: hidden;
   }
-  .opt-num::before {
-    content: attr(data-n);
-    width: 20px; height: 20px; border-radius: 50%;
-    background: var(--blue-dim);
+  .insight-header {
+    padding: 14px 20px;
+    border-bottom: 0.5px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .insight-icon {
+    width: 30px; height: 30px; border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 10px; font-weight: 600; color: var(--blue);
-    flex-shrink: 0;
+    font-size: 14px; flex-shrink: 0;
   }
-  .opt-title { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
-  .opt-body  { font-size: 11px; color: var(--text2); line-height: 1.6; }
+  .insight-icon.up   { background: var(--green-dim); }
+  .insight-icon.down { background: var(--red-dim); }
+  .insight-icon.warn { background: var(--amber-dim); }
+  .insight-icon.info { background: var(--blue-dim); }
+  .insight-title { font-size: 13px; font-weight: 600; color: var(--text); }
+  .insight-body { padding: 16px 20px; }
+  .insight-body ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .insight-body li {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 12px; color: var(--text2); line-height: 1.55;
+  }
+  .insight-body li .bullet {
+    width: 18px; height: 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 600; flex-shrink: 0; margin-top: 1px;
+  }
+  .bullet.scale  { background: var(--green-dim); color: #005c3d; }
+  .bullet.pause  { background: var(--red-dim); color: #8a1f1f; }
+  .bullet.optim  { background: var(--amber-dim); color: #7a4f00; }
+  .bullet.cause  { background: var(--blue-dim); color: #0050cc; }
+  .bullet.fix    { background: #f0edff; color: #4a2db8; }
+  .insight-body li strong { color: var(--text); font-weight: 600; }
+
+  /* ── ROAS DIAGNOSIS ── */
+  .roas-card {
+    background: var(--surface); border-radius: var(--radius);
+    border: 0.5px solid var(--border);
+    overflow: hidden;
+  }
+  .roas-header {
+    background: linear-gradient(135deg, #0a1628 0%, #0c2152 100%);
+    padding: 20px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .roas-header-left .roas-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+  .roas-header-left .roas-title { font-size: 17px; font-weight: 600; color: #fff; margin-top: 3px; }
+  .roas-pills { display: flex; gap: 8px; }
+  .roas-pill {
+    background: rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(255,255,255,0.15);
+    border-radius: 20px; padding: 5px 12px;
+    font-size: 12px; font-family: 'DM Mono', monospace;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .roas-pill .pill-month { font-size: 9px; color: rgba(255,255,255,0.4); text-transform: uppercase; }
+  .roas-pill .pill-val { color: #fff; font-weight: 500; }
+  .roas-pill .pill-arrow { font-size: 10px; color: var(--red); }
+
+  .roas-body { padding: 20px 24px; }
+  .roas-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .roas-col-title { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 0.5px solid var(--border); }
+  .roas-item { display: flex; gap: 10px; margin-bottom: 14px; }
+  .roas-item:last-child { margin-bottom: 0; }
+  .roas-num { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .roas-num.cause { background: var(--red-dim); color: var(--red); }
+  .roas-num.fix   { background: var(--blue-dim); color: var(--blue); }
+  .roas-item-body .roas-item-title { font-size: 12.5px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .roas-item-body .roas-item-desc  { font-size: 11.5px; color: var(--text2); line-height: 1.55; }
+
+  /* ── ALERTS ── */
+  .alert {
+    border-radius: var(--radius-sm); padding: 12px 16px;
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 12px; margin-bottom: 14px;
+  }
+  .alert.warning { background: #fff8e6; border: 0.5px solid #f0c940; color: #7a4f00; }
+  .alert.info    { background: var(--blue-dim2); border: 0.5px solid var(--border2); color: #0050cc; }
+  .alert-icon { font-size: 15px; flex-shrink: 0; margin-top: 0px; }
+  .alert a { color: inherit; font-weight: 600; }
 
   /* ── FOOTER ── */
   .footer {
-    background: var(--blue-dark);
-    padding: 16px 40px;
-    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    text-align: center; padding: 24px 40px 40px;
+    font-size: 11px; color: var(--text3);
+    border-top: 0.5px solid var(--border);
+    margin-top: 8px;
   }
-  .footer p  { font-size: 10px; color: rgba(255,255,255,0.35); }
-  .footer a  { color: rgba(255,255,255,0.5); text-decoration:none; font-size:10px; }
-  .footer a:hover { color:#fff; }
-  .shield-row { display: flex; gap: 5px; flex-shrink: 0; }
-  .f-shield { width:9px; height:13px; border-radius:2px; opacity:.55; }
+  .footer strong { color: var(--text2); }
 
-  /* ── MOBILE ── */
-  @media (max-width:640px){
-    .home-nav, .header, .yellow-bar, main, .footer { padding-left:16px; padding-right:16px; }
-    .header { flex-direction: column; align-items: flex-start; padding-top:18px; padding-bottom:18px; gap:12px; }
-    .header-right { text-align:left; }
-    .two-col { grid-template-columns: 1fr; }
-    main { padding-top:20px; }
-    .shield-row { display:none; }
+  /* ── NAV TABS ── */
+  .tabs { display: flex; gap: 2px; background: var(--surface); border-radius: 10px; padding: 4px; border: 0.5px solid var(--border); width: fit-content; margin-bottom: 24px; }
+  .tab { padding: 7px 16px; border-radius: 7px; font-size: 12px; font-weight: 500; cursor: pointer; color: var(--text3); border: none; background: none; }
+  .tab.active { background: var(--blue); color: #fff; }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  @media (max-width: 700px) {
+    .page { padding: 20px; }
+    .header { padding: 0 20px; }
+    .yellow-bar { padding: 7px 20px; }
+    .chart-grid, .insight-grid, .roas-cols { grid-template-columns: 1fr; }
+    .chart-card.full { grid-column: 1; }
+    .roas-pills { display: none; }
   }
 </style>
 </head>
 <body>
 
-<!-- ── HOME NAV ── -->
-<nav class="home-nav">
-  <a href="index.html">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-      <polyline points="9 22 9 12 15 12 15 22"/>
-    </svg>
-    Reports Hub
-  </a>
-  <span class="nav-sep">/</span>
-  <span class="nav-current">Marketing Performance Dashboard</span>
-</nav>
-
-<!-- ── HEADER ── -->
-<header class="header">
+<div class="header">
   <div class="header-left">
-    <div class="logo-eye">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-        <circle cx="12" cy="12" r="3"/>
-      </svg>
+    <div class="logo-mark">
+      <div class="logo-mark-inner"><div class="logo-dot"></div></div>
     </div>
     <div class="logo-text">
-      <h1>Ocushield</h1>
-      <p>Marketing Performance</p>
+      <div class="brand">Ocushield</div>
+      <div class="sub">Marketing Intelligence</div>
     </div>
   </div>
   <div class="header-right">
-    <div class="data-source">Facebook Ads · All Accounts</div>
-    <div class="period">May 2026 · MTD</div>
-    <div class="updated">Updated 18 May 2026</div>
+    <span>Facebook Ads · All accounts</span>
+    <strong>May 2026 MTD &amp; Feb–Apr trend</strong>
+    <span>Generated 18 May 2026</span>
   </div>
-</header>
-
-<!-- ── YELLOW BAR ── -->
-<div class="yellow-bar">
-  <span>Facebook Ads</span>
-  <div class="dot"></div>
-  <span>3 accounts · act_1974250226185804, act_575217313008362, act_2315993708815763</span>
-  <div class="dot"></div>
-  <span>Google Ads reconnection pending</span>
 </div>
 
-<!-- ── MAIN ── -->
-<main>
+<div class="yellow-bar">
+  <span>📊 Ocushield Adverts</span><span class="sep">·</span>
+  <span>Ocushield Engagement Ads</span><span class="sep">·</span>
+  <span>Ocushield B2B</span><span class="sep">·</span>
+  <span>⚠️ Google Ads reconnecting</span>
+</div>
 
-  <!-- KPIs -->
-  <section>
-    <div class="section-label">May 2026 MTD · Summary</div>
-    <div class="kpi-grid">
-      <div class="kpi-card blue">
-        <div class="kpi-label">Total Spend</div>
-        <div class="kpi-val">£10,436</div>
-        <div class="kpi-sub">1–18 May 2026</div>
-      </div>
-      <div class="kpi-card amber">
-        <div class="kpi-label">Impressions</div>
-        <div class="kpi-val">1.84M</div>
-        <div class="kpi-sub">All campaigns</div>
-      </div>
-      <div class="kpi-card amber">
-        <div class="kpi-label">Clicks</div>
-        <div class="kpi-val">14,821</div>
-        <div class="kpi-sub">Link clicks</div>
-      </div>
-      <div class="kpi-card amber">
-        <div class="kpi-label">CTR</div>
-        <div class="kpi-val amber">0.80%</div>
-        <div class="kpi-sub">Link CTR avg</div>
-      </div>
-      <div class="kpi-card amber">
-        <div class="kpi-label">CPC</div>
-        <div class="kpi-val">£0.70</div>
-        <div class="kpi-sub">Cost per click</div>
-      </div>
-      <div class="kpi-card green">
-        <div class="kpi-label">Purchases</div>
-        <div class="kpi-val pos">218</div>
-        <div class="kpi-sub">FB pixel purchases</div>
-      </div>
-      <div class="kpi-card green">
-        <div class="kpi-label">Revenue</div>
-        <div class="kpi-val pos">£34,820</div>
-        <div class="kpi-sub">Purchase value</div>
-      </div>
-      <div class="kpi-card amber">
-        <div class="kpi-label">Blended ROAS</div>
-        <div class="kpi-val amber">3.34×</div>
-        <div class="kpi-sub">Revenue / Spend</div>
-      </div>
-      <div class="kpi-card red">
-        <div class="kpi-label">Cost / Purchase</div>
-        <div class="kpi-val">£47.87</div>
-        <div class="kpi-sub">CPP avg</div>
-      </div>
-      <div class="kpi-card blue">
-        <div class="kpi-label">Active Campaigns</div>
-        <div class="kpi-val">12</div>
-        <div class="kpi-sub">All accounts</div>
-      </div>
-    </div>
-  </section>
+<div class="page">
 
-  <!-- Monthly trend -->
-  <section>
-    <div class="section-label">3-Month ROAS Trend · Feb–Apr 2026</div>
-    <div class="chart-wrap">
-      <h3>Blended ROAS &amp; Spend by Month</h3>
-      <canvas id="trendChart"></canvas>
-    </div>
-  </section>
-
-  <!-- Top/Bottom campaigns -->
-  <section>
-    <div class="section-label">Campaign Performance · Top 5 &amp; Bottom 5 by ROAS</div>
-    <div class="two-col">
-
-      <div class="table-wrap">
-        <div class="table-header">
-          <h3>🏆 Top 5 Campaigns</h3>
-          <span>By ROAS · May MTD</span>
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Campaign</th>
-              <th>Spend</th>
-              <th>Revenue</th>
-              <th>ROAS</th>
-              <th>CPP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Retargeting — Warm Audiences<span class="badge-status badge-active">Active</span></td>
-              <td>£812</td><td>£6,820</td>
-              <td class="good">8.40×</td><td>£22.56</td>
-            </tr>
-            <tr>
-              <td>Screen Glasses — UK — Prospecting<span class="badge-status badge-active">Active</span></td>
-              <td>£1,240</td><td>£7,810</td>
-              <td class="good">6.30×</td><td>£28.37</td>
-            </tr>
-            <tr>
-              <td>Blue Light — DTC — Retargeting<span class="badge-status badge-active">Active</span></td>
-              <td>£540</td><td>£2,916</td>
-              <td class="good">5.40×</td><td>£30.00</td>
-            </tr>
-            <tr>
-              <td>Screen Filters — B2B — Lead Gen<span class="badge-status badge-active">Active</span></td>
-              <td>£680</td><td>£3,060</td>
-              <td class="good">4.50×</td><td>£34.00</td>
-            </tr>
-            <tr>
-              <td>Eye Health Awareness — UK<span class="badge-status badge-active">Active</span></td>
-              <td>£920</td><td>£3,680</td>
-              <td class="good">4.00×</td><td>£38.33</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="table-wrap">
-        <div class="table-header">
-          <h3>⚠️ Bottom 5 Campaigns</h3>
-          <span>By ROAS · May MTD</span>
-        </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Campaign</th>
-              <th>Spend</th>
-              <th>Revenue</th>
-              <th>ROAS</th>
-              <th>CPP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>US Prospecting — TOF — Broad<span class="badge-status badge-active">Active</span></td>
-              <td>£1,450</td><td>£1,218</td>
-              <td class="bad">0.84×</td><td>£120.83</td>
-            </tr>
-            <tr>
-              <td>International — ROW — Awareness<span class="badge-status badge-active">Active</span></td>
-              <td>£880</td><td>£880</td>
-              <td class="bad">1.00×</td><td>£110.00</td>
-            </tr>
-            <tr>
-              <td>Lookalike — 5% — US Purchasers<span class="badge-status badge-active">Active</span></td>
-              <td>£740</td><td>£1,036</td>
-              <td class="bad">1.40×</td><td>£82.22</td>
-            </tr>
-            <tr>
-              <td>Prospecting — Cold — Interest Stack<span class="badge-status badge-active">Active</span></td>
-              <td>£620</td><td>£1,054</td>
-              <td class="amber-col">1.70×</td><td>£68.89</td>
-            </tr>
-            <tr>
-              <td>Screen Glasses — AU — Prospecting<span class="badge-status badge-paused">Paused</span></td>
-              <td>£314</td><td>£628</td>
-              <td class="amber-col">2.00×</td><td>£52.33</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ROAS Diagnosis -->
-  <section>
-    <div class="section-label">ROAS Decline Diagnosis · Feb → Apr 2026</div>
-    <div class="diag-grid">
-      <div class="diag-card critical">
-        <div class="diag-icon">📉</div>
-        <div class="diag-title">ROAS declined from ~4.8× (Feb) to ~3.1× (Apr)</div>
-        <div class="diag-body">Blended ROAS fell 35% in 10 weeks. Spend remained relatively flat while purchase volumes and revenue dropped — indicating audience fatigue or creative wear-out rather than a budget scaling issue.</div>
-      </div>
-      <div class="diag-card critical">
-        <div class="diag-icon">🌍</div>
-        <div class="diag-title">US &amp; ROW campaigns dragging blended ROAS down</div>
-        <div class="diag-body">Non-UK prospecting is spending £3,070/mo at sub-1.5× ROAS. These markets have lower brand awareness and no social proof infrastructure. Disproportionate weight on these campaigns is the single biggest ROAS drag.</div>
-      </div>
-      <div class="diag-card warning">
-        <div class="diag-icon">🎨</div>
-        <div class="diag-title">Creative fatigue suspected on top-of-funnel</div>
-        <div class="diag-body">High frequency on TOF cold audiences likely means users have seen ads multiple times. CTR declining while CPMs hold steady is the classic symptom. Fresh creative sets needed urgently for prospecting campaigns.</div>
-      </div>
-      <div class="diag-card warning">
-        <div class="diag-icon">🔁</div>
-        <div class="diag-title">Retargeting pool shrinking</div>
-        <div class="diag-body">Strong retargeting ROAS (8.4×) with low spend suggests a thinning warm audience. If TOF is not filling the funnel efficiently, retargeting has fewer quality users to convert — compounding the overall ROAS decline.</div>
-      </div>
-      <div class="diag-card positive">
-        <div class="diag-icon">✅</div>
-        <div class="diag-title">UK DTC campaigns remain healthy</div>
-        <div class="diag-body">Core UK prospecting and retargeting campaigns are delivering 4–8× ROAS. The structural performance is there — the issue is budget allocation to underperforming international and broad interest campaigns pulling the average down.</div>
-      </div>
-      <div class="diag-card warning">
-        <div class="diag-icon">📊</div>
-        <div class="diag-title">No Google Ads data — blind spot</div>
-        <div class="diag-body">Google Ads disconnection means the full paid search picture is missing. If branded search or shopping campaigns are underperforming, this would compound the Facebook revenue decline without being visible in this dashboard.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Optimisation Advice -->
-  <section>
-    <div class="section-label">Optimisation Priorities</div>
-    <div class="opt-grid">
-      <div class="opt-card">
-        <div class="opt-num" data-n="1">IMMEDIATE</div>
-        <div class="opt-title">Pause or dramatically reduce US &amp; ROW prospecting</div>
-        <div class="opt-body">Reallocate the ~£2,330/mo currently burning at sub-1.5× ROAS in international markets to UK retargeting and proven UK prospecting audiences. This alone could lift blended ROAS by 0.5–0.8×.</div>
-      </div>
-      <div class="opt-card">
-        <div class="opt-num" data-n="2">IMMEDIATE</div>
-        <div class="opt-title">Refresh creative on cold prospecting campaigns</div>
-        <div class="opt-body">Commission 3–4 new creative sets for TOF: UGC-style testimonials, demonstration videos, and before/after eye health messaging. Rotate monthly to prevent frequency fatigue rebuilding.</div>
-      </div>
-      <div class="opt-card">
-        <div class="opt-num" data-n="3">THIS WEEK</div>
-        <div class="opt-title">Increase retargeting budget while pool is warm</div>
-        <div class="opt-body">Retargeting at 8.4× ROAS is your most efficient spend. Increase daily budget by 30–40% while the warm audience exists. Set frequency cap at 4–5 to avoid burnout.</div>
-      </div>
-      <div class="opt-card">
-        <div class="opt-num" data-n="4">THIS WEEK</div>
-        <div class="opt-title">Reconnect Google Ads to close the data blind spot</div>
-        <div class="opt-body">Without Google Ads data, optimisation decisions are incomplete. Reconnect via Supermetrics to understand branded search CPCs, Shopping ROAS, and whether paid search is complementing or cannibalising Facebook conversions.</div>
-      </div>
-      <div class="opt-card">
-        <div class="opt-num" data-n="5">THIS MONTH</div>
-        <div class="opt-title">Build UK lookalike audiences from purchaser data</div>
-        <div class="opt-body">1–2% lookalike from UK purchasers consistently outperforms broad interest targeting. If not already running, create these audiences from your pixel's purchase events and test against current interest stacks.</div>
-      </div>
-      <div class="opt-card">
-        <div class="opt-num" data-n="6">THIS MONTH</div>
-        <div class="opt-title">Establish a target ROAS floor per campaign type</div>
-        <div class="opt-body">Set campaign-level ROAS floors: retargeting ≥6×, warm prospecting ≥3×, cold prospecting ≥2×. Any campaign missing its floor for 7 consecutive days gets paused for creative refresh before reactivation.</div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- ── FOOTER ── -->
-<div class="footer">
-  <p>Ocushield Limited · Marketing Performance Dashboard · Confidential — Internal use only · Data: Facebook Ads via Supermetrics · <a href="index.html">← Reports Hub</a></p>
-  <div class="shield-row">
-    <div class="f-shield" style="background:#1ACCAA;"></div>
-    <div class="f-shield" style="background:#4AB217;"></div>
-    <div class="f-shield" style="background:#FCD112;"></div>
-    <div class="f-shield" style="background:#FF8507;"></div>
-    <div class="f-shield" style="background:#FF3C06;"></div>
-    <div class="f-shield" style="background:#A129B2;"></div>
-    <div class="f-shield" style="background:#FD83E7;"></div>
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active" onclick="showPanel('overview')">Overview</button>
+    <button class="tab" onclick="showPanel('campaigns')">Campaigns</button>
+    <button class="tab" onclick="showPanel('diagnosis')">ROAS Diagnosis</button>
+    <button class="tab" onclick="showPanel('actions')">Action Plan</button>
   </div>
+
+  <!-- ══════════════ OVERVIEW ══════════════ -->
+  <div class="panel active" id="panel-overview">
+
+    <div class="section-head">
+      <span class="section-title">MTD Performance</span>
+      <span class="section-desc">May 1–18, 2026 · Ocushield Adverts</span>
+    </div>
+    <div class="kpi-grid" style="margin-bottom:24px;">
+      <div class="kpi"><div class="kpi-label">Total spend</div><div class="kpi-val">£10,436</div></div>
+      <div class="kpi"><div class="kpi-label">Impressions</div><div class="kpi-val">804K</div></div>
+      <div class="kpi"><div class="kpi-label">Clicks</div><div class="kpi-val">10,375</div></div>
+      <div class="kpi"><div class="kpi-label">Link CTR</div><div class="kpi-val">0.93%</div></div>
+      <div class="kpi accent"><div class="kpi-label">Blended ROAS</div><div class="kpi-val">1.56×</div><div class="kpi-sub">vs 1.33× in April</div></div>
+      <div class="kpi"><div class="kpi-label">Purchases</div><div class="kpi-val">218</div></div>
+      <div class="kpi"><div class="kpi-label">Revenue</div><div class="kpi-val">£16,287</div><div class="kpi-sub">Meta attributed</div></div>
+      <div class="kpi"><div class="kpi-label">Cost / purchase</div><div class="kpi-val">£47.80</div></div>
+      <div class="kpi warn"><div class="kpi-label">Below 1× ROAS</div><div class="kpi-val">2</div><div class="kpi-sub">campaigns losing money</div></div>
+    </div>
+
+    <div class="section-head">
+      <span class="section-title">3-Month Trend</span>
+      <span class="section-desc">February – April 2026</span>
+    </div>
+
+    <div class="chart-grid">
+      <div class="chart-card">
+        <div class="chart-title">Spend vs revenue</div>
+        <div class="chart-sub">Monthly · all Ocushield accounts</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-sq" style="background:#0575FF"></div>Ad spend</div>
+          <div class="leg"><div class="leg-sq" style="background:#00B87C"></div>Revenue</div>
+        </div>
+        <div style="position:relative;height:200px;"><canvas id="c-spend" role="img" aria-label="Spend vs revenue Feb–Apr">Feb £24K/£44K Mar £27K/£42K Apr £19K/£26K</canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">ROAS &amp; cost per purchase</div>
+        <div class="chart-sub">Efficiency declining month on month</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-sq" style="background:#0575FF"></div>ROAS (×)</div>
+          <div class="leg"><div class="leg-sq" style="background:#FFD942;border:1px solid #c9a800"></div>Cost/purchase (£)</div>
+        </div>
+        <div style="position:relative;height:200px;"><canvas id="c-roas" role="img" aria-label="ROAS and CPP trend">ROAS: 1.79 1.54 1.33. CPP: £42 £55 £57</canvas></div>
+      </div>
+      <div class="chart-card full">
+        <div class="chart-title">Purchases &amp; impressions</div>
+        <div class="chart-sub">Volume declining despite stable impression count in Feb–Mar</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-sq" style="background:#0575FF"></div>Purchases</div>
+          <div class="leg"><div class="leg-sq" style="background:#b8d4ff;border:1px dashed #0575FF"></div>Impressions (K)</div>
+        </div>
+        <div style="position:relative;height:180px;"><canvas id="c-purch" role="img" aria-label="Purchases and impressions trend">Purchases: 575 493 339. Impressions: 1649K 1717K 1205K</canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ CAMPAIGNS ══════════════ -->
+  <div class="panel" id="panel-campaigns">
+
+    <div class="section-head" style="margin-top:0;">
+      <span class="section-title">Campaign Summary</span>
+      <span class="section-desc">May 2026 MTD · all accounts</span>
+    </div>
+    <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px;">
+      <div class="kpi"><div class="kpi-label">Active campaigns</div><div class="kpi-val">12</div></div>
+      <div class="kpi"><div class="kpi-label">With purchases</div><div class="kpi-val">11</div></div>
+      <div class="kpi warn"><div class="kpi-label">Sub 1× ROAS</div><div class="kpi-val">2</div></div>
+      <div class="kpi accent"><div class="kpi-label">Best ROAS</div><div class="kpi-val">11.36×</div><div class="kpi-sub">DPA retargeting</div></div>
+    </div>
+
+    <div class="table-card">
+      <div class="table-header">
+        <span class="t-title">Top 5 campaigns</span>
+        <span class="t-sub">Ranked by ROAS · campaigns with purchases only</span>
+      </div>
+      <table>
+        <thead><tr>
+          <th>Campaign</th><th>ROAS</th><th>Spend</th><th>Revenue</th><th>Purchases</th><th>CPP</th><th>CTR</th>
+        </tr></thead>
+        <tbody id="top5"></tbody>
+      </table>
+    </div>
+
+    <div class="table-card">
+      <div class="table-header">
+        <span class="t-title">Bottom 5 campaigns</span>
+        <span class="t-sub">Lowest performing · campaigns with purchases only</span>
+      </div>
+      <table>
+        <thead><tr>
+          <th>Campaign</th><th>ROAS</th><th>Spend</th><th>Revenue</th><th>Purchases</th><th>CPP</th><th>CTR</th>
+        </tr></thead>
+        <tbody id="bot5"></tbody>
+      </table>
+      <div class="table-note">* cc-us-pro-ad_recall excluded — no purchases recorded MTD</div>
+    </div>
+
+    <div class="table-card">
+      <div class="table-header">
+        <span class="t-title">All campaigns</span>
+        <span class="t-sub">Full breakdown · May 2026 MTD</span>
+      </div>
+      <table>
+        <thead><tr>
+          <th>Campaign</th><th>ROAS</th><th>Spend</th><th>Revenue</th><th>Purchases</th><th>CPP</th><th>CTR</th>
+        </tr></thead>
+        <tbody id="allcamp"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══════════════ ROAS DIAGNOSIS ══════════════ -->
+  <div class="panel" id="panel-diagnosis">
+
+    <div class="roas-card" style="margin-bottom:14px;">
+      <div class="roas-header">
+        <div class="roas-header-left">
+          <div class="roas-label">Performance diagnostic</div>
+          <div class="roas-title">Why is ROAS declining month on month?</div>
+        </div>
+        <div class="roas-pills">
+          <div class="roas-pill">
+            <span class="pill-month">Feb</span>
+            <span class="pill-val">1.79×</span>
+          </div>
+          <div class="roas-pill">
+            <span class="pill-month">Mar</span>
+            <span class="pill-val">1.54×</span>
+            <span class="pill-arrow">↓</span>
+          </div>
+          <div class="roas-pill">
+            <span class="pill-month">Apr</span>
+            <span class="pill-val">1.33×</span>
+            <span class="pill-arrow">↓</span>
+          </div>
+          <div class="roas-pill" style="border-color:rgba(5,117,255,0.4);">
+            <span class="pill-month">May MTD</span>
+            <span class="pill-val" style="color:#3d91ff;">1.56×</span>
+          </div>
+        </div>
+      </div>
+      <div class="roas-body">
+        <div class="roas-cols">
+          <div>
+            <div class="roas-col-title">Root causes</div>
+            <div class="roas-item">
+              <div class="roas-num cause">1</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Creative fatigue</div>
+                <div class="roas-item-desc">CTR dropped from 0.83% in Feb/Mar to 0.69% in April — a clear signal your audience has seen the same ads too many times. ABO structures concentrate spend on a few ad sets, burning through audiences faster.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num cause">2</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">US campaigns dragging the average</div>
+                <div class="roas-item-desc">Your US TOF campaigns run at 1.23× ROAS vs UK at 1.60×. If US spend share grew over this period, blended ROAS falls even if UK held steady.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num cause">3</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Audience overlap &amp; self-competition</div>
+                <div class="roas-item-desc">Multiple overlapping UK/US TOF campaigns (4+ simultaneously) means you're bidding against yourself, inflating CPCs and saturating the same people faster.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num cause">4</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Seasonality</div>
+                <div class="roas-item-desc">Feb–Mar are historically strong for health/wellness. April sees a natural post-Q1 consumer spending dip in the UK. Check last year's data before over-attributing to campaign issues.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num cause">5</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Attribution erosion</div>
+                <div class="roas-item-desc">More broad/TOF activity means more view-through conversions in the mix. Meta's reported ROAS drifts downward as stronger last-click conversions shrink as a proportion of spend.</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="roas-col-title">What to do</div>
+            <div class="roas-item">
+              <div class="roas-num fix">1</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">New creative immediately</div>
+                <div class="roas-item-desc">Audit frequency across main campaigns — if above 3–4 in 30 days, you have a fatigue problem. Brief UGC, testimonial and educational formats, not just reskins.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num fix">2</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Consolidate overlapping TOF campaigns</div>
+                <div class="roas-item-desc">Merge 4 overlapping UK/US campaigns into fewer, better-funded ones. Reduces self-competition and gives the algorithm more signal to optimise.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num fix">3</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Reallocate to DPA retargeting</div>
+                <div class="roas-item-desc">DPA BOF campaigns are at 11.36× and 7.03× ROAS but spending &lt;3% of budget. Shift 10–15% of budget from underperforming US campaigns here immediately.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num fix">4</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Pause the two loss-makers</div>
+                <div class="roas-item-desc">Stop cd-us-tof-asc-sales (0.55×) and US-TOF-Sales-Broad-ROAS (0.56×). Saves ~£800/month with negligible revenue impact.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num fix">5</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Connect Shopify for true attribution</div>
+                <div class="roas-item-desc">Meta-reported ROAS is self-attributed and inflated. You can't see true new vs returning customer revenue without your DTC backend connected.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-grid">
+      <div class="chart-card">
+        <div class="chart-title">ROAS decline — monthly</div>
+        <div class="chart-sub">All accounts combined</div>
+        <div style="position:relative;height:200px;"><canvas id="c-roas2" role="img" aria-label="ROAS Feb 1.79 Mar 1.54 Apr 1.33">ROAS Feb 1.79 Mar 1.54 Apr 1.33</canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">CTR decline — creative fatigue signal</div>
+        <div class="chart-sub">Link click-through rate by month</div>
+        <div style="position:relative;height:200px;"><canvas id="c-ctr" role="img" aria-label="CTR Feb 0.82 Mar 0.84 Apr 0.69">CTR: Feb 0.82% Mar 0.84% Apr 0.69%</canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ ACTION PLAN ══════════════ -->
+  <div class="panel" id="panel-actions">
+
+    <div class="section-head" style="margin-top:0;">
+      <span class="section-title">Optimisation Recommendations</span>
+      <span class="section-desc">Prioritised by impact · May 2026</span>
+    </div>
+
+    <div class="alert warning">
+      <span class="alert-icon">⚠️</span>
+      <span>2 campaigns are currently below 1× ROAS — every pound spent is losing money. Pausing these should be the first action.</span>
+    </div>
+
+    <div class="insight-grid">
+      <div class="insight-card">
+        <div class="insight-header">
+          <div class="insight-icon up">🚀</div>
+          <div class="insight-title">Scale — immediate opportunity</div>
+        </div>
+        <div class="insight-body">
+          <ul>
+            <li>
+              <div class="bullet scale">↑</div>
+              <div><strong>cd-ww-ret-bof-dpa-sales</strong> — 11.36× ROAS on just £221 spend. Massively underfunded relative to performance. Increase budget and find the ceiling — retargeting pool size is the only constraint.</div>
+            </li>
+            <li>
+              <div class="bullet scale">↑</div>
+              <div><strong>cd-ww-ret-bof-dpa-sales-cross_sell</strong> — 7.03× ROAS on £63 spend. Same situation. Both DPA campaigns combined are spending less than 3% of your budget for disproportionate returns.</div>
+            </li>
+            <li>
+              <div class="bullet scale">↑</div>
+              <div><strong>UKPlusUSA-TOF-Sales-Broad-Bid-Cap</strong> — 4.25× ROAS on £143. Broad bid cap is clearly working at this spend level. Test incrementally higher budgets to see if efficiency holds.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-header">
+          <div class="insight-icon down">🛑</div>
+          <div class="insight-title">Pause — stop the bleeding</div>
+        </div>
+        <div class="insight-body">
+          <ul>
+            <li>
+              <div class="bullet pause">✕</div>
+              <div><strong>cd-us-tof-asc-sales | lowest cost (phasing?)</strong> — 0.55× ROAS, £142 cost per purchase, 5 conversions on £708 spend. The campaign name already flags someone's doubt. Pause immediately.</div>
+            </li>
+            <li>
+              <div class="bullet pause">✕</div>
+              <div><strong>US-TOF-Sales-Broad-ROAS</strong> — 0.56× ROAS, £100.61 cost per purchase on a single conversion. Too small a sample but combined with poor US performance overall, consolidate into the better-performing US campaign.</div>
+            </li>
+            <li>
+              <div class="bullet pause">✕</div>
+              <div><strong>cc-us-pro-ad_recall</strong> — £538 spend with zero recorded purchases MTD. If this is pure brand awareness, set a very clear cap. If it's meant to drive sales, pause it now.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-header">
+          <div class="insight-icon warn">⚙️</div>
+          <div class="insight-title">Optimise — fix before scaling</div>
+        </div>
+        <div class="insight-body">
+          <ul>
+            <li>
+              <div class="bullet optim">~</div>
+              <div><strong>cd-uk-tof-sales | blue_light | ABO</strong> — your biggest campaign (£4,410) at only 1.60× ROAS. Audit creative frequency, test new angles. ABO may be limiting the best ad sets from getting budget — consider CBO.</div>
+            </li>
+            <li>
+              <div class="bullet optim">~</div>
+              <div><strong>cd-us-tof-sales | blue_light | ABO</strong> — 1.23× ROAS on £2,566. US significantly underperforms UK (1.23× vs 1.60×). Test US-specific creative and localised messaging before putting more budget in.</div>
+            </li>
+            <li>
+              <div class="bullet optim">~</div>
+              <div><strong>UK&amp;US-PRO-SALES-VIDEOVIEWFUNNEL</strong> — 1.08× ROAS on £907, barely breakeven. Clarify the objective: if this is awareness feeding retargeting, track it differently. If it's DR, the creative needs a rethink.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-header">
+          <div class="insight-icon info">📋</div>
+          <div class="insight-title">Longer term — strategic actions</div>
+        </div>
+        <div class="insight-body">
+          <ul>
+            <li>
+              <div class="bullet cause">→</div>
+              <div><strong>Connect Shopify</strong> — Meta ROAS is self-attributed. You can't see true new vs returning customers, real revenue, or cross-channel attribution without your DTC backend in Supermetrics.</div>
+            </li>
+            <li>
+              <div class="bullet cause">→</div>
+              <div><strong>Separate UK and US campaigns</strong> — the 0.37× ROAS gap suggests the same creative isn't landing equally. US needs localised proof points, pricing anchoring, and social proof.</div>
+            </li>
+            <li>
+              <div class="bullet cause">→</div>
+              <div><strong>Reconnect Google Ads</strong> — you're flying blind on your search performance. Once connected, we can assess total cross-channel efficiency and whether Google and Meta are duplicating conversions.</div>
+            </li>
+            <li>
+              <div class="bullet cause">→</div>
+              <div><strong>Refresh creative proactively</strong> — set a standing rule to introduce new creative every 4–6 weeks per campaign, before frequency triggers CTR decline rather than after.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert info" style="margin-top:14px;">
+      <span class="alert-icon">ℹ️</span>
+      <span><strong>Google Ads still pending</strong> — token reconnection required via <a href="https://hub.supermetrics.com/token-management">Supermetrics token management</a>. Google Ads data will be added to this dashboard once resolved.</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <strong>Ocushield Marketing Dashboard</strong> · Generated 18 May 2026 · Data via Supermetrics → Facebook Ads · Revenue figures are Meta-attributed and may differ from actual backend revenue
 </div>
 
 <script>
-// ── TREND CHART ──
-const ctx = document.getElementById('trendChart').getContext('2d');
-new Chart(ctx, {
+// ── TAB LOGIC ──
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── CAMPAIGN DATA ──
+const campaigns = [
+  {name:'cd-ww-ret-bof-dpa-sales',       roas:11.36, spend:221.48,  revenue:2516.84, purchases:33, cpp:6.71,   ctr:0.59},
+  {name:'cd-ww-ret-bof-dpa-sales-cross_sell', roas:7.03, spend:62.76, revenue:441.42, purchases:8, cpp:7.85, ctr:0.97},
+  {name:'UKPlusUSA-TOF-Sales-Broad-Bid-Cap', roas:4.25, spend:142.79, revenue:607.01, purchases:9, cpp:15.87, ctr:0.28},
+  {name:'UKPlusUSA-TOF-Sales-Broad-Bid-Cap ($60)',roas:2.42,spend:40.09,revenue:97.15,purchases:2,cpp:20.05,ctr:0.21},
+  {name:'cd-uk-tof-sales | blue_light | ABO',roas:1.60,spend:4410.07,revenue:7064.91,purchases:92,cpp:47.94,ctr:1.41},
+  {name:'cd-ww-ret-mof-sales',            roas:1.35, spend:704.78,  revenue:948.29,  purchases:17, cpp:41.46, ctr:0.69},
+  {name:'UK-TOF-Sales-Broad-ROAS',        roas:1.29, spend:34.40,   revenue:44.42,   purchases:1,  cpp:34.40, ctr:1.10},
+  {name:'cd-us-tof-sales | blue_light | ABO',roas:1.23,spend:2566.32,revenue:3149.40,purchases:40,cpp:64.16,ctr:1.31},
+  {name:'UK&US-PRO-SALES-VIDEOVIEWFUNNEL',roas:1.08, spend:906.71,  revenue:975.25,  purchases:10, cpp:90.67, ctr:0.63},
+  {name:'US-TOF-Sales-Broad-ROAS',        roas:0.56, spend:100.61,  revenue:56.00,   purchases:1,  cpp:100.61,ctr:0.67},
+  {name:'cd-us-tof-asc-sales | lowest cost (phasing?)',roas:0.55,spend:707.67,revenue:385.86,purchases:5,cpp:141.53,ctr:0.98},
+];
+
+function badge(r) {
+  if (r >= 3)   return `<span class="badge b-green">${r.toFixed(2)}×</span>`;
+  if (r >= 1.5) return `<span class="badge b-blue">${r.toFixed(2)}×</span>`;
+  if (r >= 1)   return `<span class="badge b-amber">${r.toFixed(2)}×</span>`;
+  return              `<span class="badge b-red">${r.toFixed(2)}×</span>`;
+}
+function sn(n, len) { return n.length > len ? n.slice(0,len-1)+'…' : n; }
+function row(c, len) {
+  return `<tr>
+    <td title="${c.name}">${sn(c.name, len||38)}</td>
+    <td>${badge(c.roas)}</td>
+    <td>£${c.spend.toLocaleString('en-GB',{maximumFractionDigits:0})}</td>
+    <td>£${c.revenue.toLocaleString('en-GB',{maximumFractionDigits:0})}</td>
+    <td>${c.purchases}</td>
+    <td>£${c.cpp.toFixed(2)}</td>
+    <td>${c.ctr.toFixed(2)}%</td>
+  </tr>`;
+}
+
+const sorted = [...campaigns].sort((a,b) => b.roas - a.roas);
+document.getElementById('top5').innerHTML    = sorted.slice(0,5).map(c=>row(c)).join('');
+document.getElementById('bot5').innerHTML    = sorted.slice(-5).reverse().map(c=>row(c)).join('');
+document.getElementById('allcamp').innerHTML = sorted.map(c=>row(c)).join('');
+
+// ── CHARTS ──
+const months = ['Feb','Mar','Apr'];
+const chartDefaults = {
+  responsive: true, maintainAspectRatio: false,
+  plugins: { legend: { display: false } }
+};
+
+new Chart(document.getElementById('c-spend'), {
   type: 'bar',
-  data: {
-    labels: ['February 2026', 'March 2026', 'April 2026'],
-    datasets: [
-      {
-        label: 'Spend (£)',
-        data: [9800, 10200, 10436],
-        backgroundColor: 'rgba(5,117,255,0.15)',
-        borderColor: 'rgba(5,117,255,0.5)',
-        borderWidth: 1.5,
-        borderRadius: 6,
-        yAxisID: 'y'
-      },
-      {
-        label: 'ROAS',
-        data: [4.8, 3.9, 3.1],
-        type: 'line',
-        borderColor: '#E03535',
-        backgroundColor: 'rgba(224,53,53,0.08)',
-        borderWidth: 2.5,
-        pointBackgroundColor: '#E03535',
-        pointRadius: 5,
-        tension: 0.3,
-        fill: true,
-        yAxisID: 'y1'
-      }
-    ]
-  },
-  options: {
-    responsive: true,
-    interaction: { mode: 'index', intersect: false },
-    plugins: {
-      legend: {
-        labels: { font: { family: 'DM Sans', size: 11 }, color: '#4A5D7A', boxWidth: 14 }
-      },
-      tooltip: {
-        callbacks: {
-          label: ctx => {
-            if (ctx.dataset.label === 'Spend (£)') return ` Spend: £${ctx.raw.toLocaleString()}`;
-            return ` ROAS: ${ctx.raw}×`;
-          }
-        }
-      }
-    },
+  data: { labels: months, datasets: [
+    { label:'Spend',   data:[24420,27113,19244], backgroundColor:'#0575FF' },
+    { label:'Revenue', data:[43772,41696,25688], backgroundColor:'#00B87C' }
+  ]},
+  options: { ...chartDefaults,
+    plugins: { legend:{display:false}, tooltip:{callbacks:{label:c=>'£'+c.parsed.y.toLocaleString()}} },
     scales: {
-      x: {
-        grid: { display: false },
-        ticks: { font: { family: 'DM Sans', size: 11 }, color: '#8B9DB5' }
-      },
-      y: {
-        position: 'left',
-        grid: { color: 'rgba(5,117,255,0.06)' },
-        ticks: {
-          font: { family: 'DM Mono', size: 10 }, color: '#8B9DB5',
-          callback: v => '£' + v.toLocaleString()
-        }
-      },
-      y1: {
-        position: 'right',
-        grid: { drawOnChartArea: false },
-        min: 0, max: 7,
-        ticks: {
-          font: { family: 'DM Mono', size: 10 }, color: '#E03535',
-          callback: v => v + '×'
-        }
+      x: { grid:{display:false}, ticks:{font:{size:11}} },
+      y: { ticks:{callback:v=>'£'+(v/1000).toFixed(0)+'K',font:{size:10}}, grid:{color:'rgba(0,0,0,0.04)'} }
+    }
+  }
+});
+
+function roasChart(id) {
+  new Chart(document.getElementById(id), {
+    type: 'line',
+    data: { labels: months, datasets: [
+      { label:'ROAS', data:[1.79,1.54,1.33], borderColor:'#0575FF', backgroundColor:'rgba(5,117,255,0.06)', fill:true, tension:0.35, pointRadius:6, pointBackgroundColor:'#0575FF', yAxisID:'y' },
+      { label:'CPP',  data:[42.47,55.00,56.77], borderColor:'#D48A00', backgroundColor:'transparent', borderDash:[5,3], tension:0.35, pointRadius:6, pointBackgroundColor:'#D48A00', yAxisID:'y2' }
+    ]},
+    options: { ...chartDefaults,
+      scales: {
+        x:  { grid:{display:false}, ticks:{font:{size:11}} },
+        y:  { position:'left',  ticks:{callback:v=>v.toFixed(2)+'×',font:{size:10}}, grid:{color:'rgba(0,0,0,0.04)'} },
+        y2: { position:'right', grid:{drawOnChartArea:false}, ticks:{callback:v=>'£'+v.toFixed(0),font:{size:10}} }
       }
+    }
+  });
+}
+roasChart('c-roas');
+roasChart('c-roas2');
+
+new Chart(document.getElementById('c-purch'), {
+  type: 'bar',
+  data: { labels: months, datasets: [
+    { label:'Purchases',   data:[575,493,339], backgroundColor:'#0575FF', yAxisID:'y' },
+    { label:'Impressions', data:[1649,1717,1205], type:'line', borderColor:'rgba(5,117,255,0.4)', borderDash:[5,3], backgroundColor:'transparent', tension:0.35, pointRadius:5, yAxisID:'y2' }
+  ]},
+  options: { ...chartDefaults,
+    plugins: { legend:{display:false}, tooltip:{callbacks:{label:c=>c.dataset.label==='Impressions'?c.parsed.y+'K':c.parsed.y}} },
+    scales: {
+      x:  { grid:{display:false}, ticks:{font:{size:11}} },
+      y:  { position:'left',  ticks:{font:{size:10}}, grid:{color:'rgba(0,0,0,0.04)'} },
+      y2: { position:'right', grid:{drawOnChartArea:false}, ticks:{callback:v=>v+'K',font:{size:10}} }
+    }
+  }
+});
+
+new Chart(document.getElementById('c-ctr'), {
+  type: 'line',
+  data: { labels: months, datasets: [{
+    label:'CTR', data:[0.82,0.84,0.69],
+    borderColor:'#E03535', backgroundColor:'rgba(224,53,53,0.07)', fill:true,
+    tension:0.35, pointRadius:6, pointBackgroundColor:'#E03535'
+  }]},
+  options: { ...chartDefaults,
+    scales: {
+      x: { grid:{display:false}, ticks:{font:{size:11}} },
+      y: { ticks:{callback:v=>v.toFixed(2)+'%',font:{size:10}}, grid:{color:'rgba(0,0,0,0.04)'}, min:0.5, max:1.0 }
     }
   }
 });
