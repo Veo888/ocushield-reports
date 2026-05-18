@@ -141,4 +141,74 @@ If any check fails: **re-pull with fully explicit dates before using the data.**
 
 ---
 
-*Protocol established following April 2026 reporting cycle. Review if Xero MCP tool version changes.*
+---
+
+## Issue 2 · FM Restatement / Prior Period Adjustment Contamination
+**Identified:** 18 May 2026  
+**Affected report:** April 2026
+
+### What happened
+
+The April 2026 API pull returned Eye Screening revenue of £130,824. This appeared plausible given the growing Eye Screening pipeline and was used in the initial report. The FM subsequently identified it as incorrect — the correct April figure per Xero's native P&L was £7,401. The £123,424 discrepancy appears to have been caused by a prior period adjustment or reallocation posted by the FM that was temporarily reflected in the API response before being reversed.
+
+**Impact:** April revenue overstated by £123,424. Net P&L swung from an apparent +£58,305 profit to a confirmed −£65,118 loss.
+
+### Root cause
+
+When the FM makes journal entries, credit note adjustments, or prior period corrections, the API can temporarily return figures that include those in-flight adjustments. The API snapshot reflects the ledger state at the moment of the call — if a correction is mid-posting, the figure may be inflated or deflated relative to the finalised position.
+
+### The fix — mandatory FM sign-off cross-check
+
+**Before publishing any report, cross-check the API `total_income` figure against Xero's own native P&L report.** These should match to the penny. If they don't, the FM has likely made or is making adjustments — wait for the ledger to settle and re-pull.
+
+The Xero native report link is returned in every API response as `xero_report_link`. Always open it and verify total revenue before building the report.
+
+---
+
+## Mandatory Cross-Check · API vs Native Xero Report
+
+Add this as a final step after all 5 API calls:
+
+| Check | Method | Pass condition |
+|-------|--------|----------------|
+| **Total revenue match** | Open `xero_report_link`; compare `total_income` to native P&L | Match to the penny |
+| **Top account sanity** | Compare top 3–5 income accounts from API to native report | No account variance >£100 |
+| **FM confirmation** | If FM has made adjustments this month, confirm ledger is closed before pulling | FM sign-off before report build |
+| **Unusual spike check** | Any account >2x MoM — verify against native Xero before using | Flag and hold if unexplained |
+
+---
+
+## Issue 3 · Prepayment vs Revenue Misclassification Risk
+**Identified:** 18 May 2026
+
+### Context
+
+The £123k Medicash payment (6-month contract May–Oct 2026, paid upfront 1 May) initially appeared in the API data as April Eye Screening revenue. Correct accruals treatment:
+
+- **Cash:** received May, sits as deferred income on balance sheet
+- **Revenue:** ~£20,500/month recognised over 6-month term (May–Oct)
+- **April P&L:** £0 — contract had not started
+
+### Rule for future reports
+
+When a large Eye Screening or B2B payment appears in the API, always confirm with the FM:
+1. Is this a single-month delivery or a multi-month prepayment?
+2. Has it been coded as revenue or deferred income in Xero?
+3. Does the amount match the native Xero P&L?
+
+### Medicash revenue recognition schedule
+
+| Month | Revenue | Cumulative |
+|-------|---------|------------|
+| May 2026 | ~£20,500 | £20,500 |
+| Jun 2026 | ~£20,500 | £41,000 |
+| Jul 2026 | ~£20,500 | £61,500 |
+| Aug 2026 | ~£20,500 | £82,000 |
+| Sep 2026 | ~£20,500 | £102,500 |
+| Oct 2026 | ~£20,500 | £123,000 |
+
+*Exact monthly figure subject to FM confirmation of contract value and start date.*
+
+---
+
+*Protocol last updated 18 May 2026. Issues 1–3 all identified during the April 2026 reporting cycle.*
