@@ -888,6 +888,7 @@ function row(c, len) {
   </tr>`;
 }
 
+const sorted = [...campaigns].sort((a,b) => b.roas - a.roas);
 document.getElementById('top5').innerHTML    = sorted.slice(0,5).map(c=>row(c)).join('');
 document.getElementById('bot5').innerHTML    = sorted.slice(-5).reverse().map(c=>row(c)).join('');
 document.getElementById('allcamp').innerHTML = sorted.map(c=>row(c)).join('');
