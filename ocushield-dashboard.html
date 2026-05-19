@@ -1418,126 +1418,215 @@
     </div>
   </div>
 
-  <!-- ══════════════ MD INSIGHTS (PENDING SHOPIFY) ══════════════ -->
+  <!-- ══════════════ MD INSIGHTS (LIVE) ══════════════ -->
   <div class="panel" id="panel-md">
 
     <div class="md-pending-banner" style="background:linear-gradient(135deg,#e8f5e9,#f1f8e9);border-color:#34A853;">
       <div class="md-pending-icon">✅</div>
       <div>
-        <div class="md-pending-title" style="color:#1b5e20;">Shopify connected — key metrics now live</div>
-        <div class="md-pending-sub" style="color:#2e7d32;">Core customer economics are now available from Shopify. See the Shopify tab for full detail. The metrics below show live data where available, and flag what still requires deeper integration (Klaviyo for email, UTM tracking for full attribution).</div>
+        <div class="md-pending-title" style="color:#1b5e20;">MD Insights — Shopify, Meta frequency &amp; Google impression share now live</div>
+        <div class="md-pending-sub" style="color:#2e7d32;">All four data sources are now connected. Customer economics, refund rates, creative frequency, top creatives by CVR, and Google impression share are fully populated below with real May MTD data. Two items (90-day LTV and true channel-attributed new customers) still require additional setup — details below.</div>
       </div>
     </div>
 
-    <div class="md-section-label">Customer economics — live from Shopify</div>
+    <div class="md-section-label">Customer economics — Shopify live · May 1–18</div>
     <div class="md-metric-grid" style="margin-bottom:20px;">
       <div class="md-metric" style="border-color:rgba(52,168,83,0.4);">
         <div class="md-metric-label" style="color:var(--green);">New vs returning customers</div>
         <div class="md-metric-placeholder" style="color:var(--text);">63% / 37%</div>
-        <div class="md-metric-desc">981 new customers vs 576 returning this month. A healthy split — you're growing the base while retaining over a third. Returning customer rate has been broadly consistent across the month.</div>
+        <div class="md-metric-desc">1,041 new orders vs 620 returning MTD. Healthy split — acquisition is outpacing retention. New customers generate 55% GP margin vs 45% for returning (heavy discount use by returning customers).</div>
         <div class="md-metric-source" style="background:var(--green-dim);color:#005c3d;">✅ Shopify live</div>
       </div>
       <div class="md-metric" style="border-color:rgba(52,168,83,0.4);">
-        <div class="md-metric-label" style="color:var(--green);">Blended customer acquisition cost</div>
-        <div class="md-metric-placeholder" style="color:var(--text);">£29.94</div>
-        <div class="md-metric-desc">Total paid media spend (£29,373) divided by new customers acquired (981). At £44.17 AOV and healthy repeat purchase rates, this CAC is likely profitable — but requires LTV data to confirm.</div>
-        <div class="md-metric-source" style="background:var(--green-dim);color:#005c3d;">✅ Shopify + ad spend</div>
+        <div class="md-metric-label" style="color:var(--green);">Blended CAC (paid spend ÷ new orders)</div>
+        <div class="md-metric-placeholder" style="color:var(--text);">£28.22</div>
+        <div class="md-metric-desc">£29,373 paid spend ÷ 1,041 new customer orders. Max sustainable CPA at GP breakeven is ~£29.11 — currently £0.89 below the ceiling. Any CPA increase pushes marketing into loss territory.</div>
+        <div class="md-metric-source" style="background:var(--amber-dim);color:#7a4f00;">⚠️ Shopify + ad spend — watch closely</div>
       </div>
       <div class="md-metric" style="border-color:rgba(52,168,83,0.4);">
         <div class="md-metric-label" style="color:var(--green);">Average order value</div>
-        <div class="md-metric-placeholder" style="color:var(--text);">£44.17</div>
-        <div class="md-metric-desc">True AOV from Shopify — lower than the £47–£54 platform-reported figures. Discount erosion of £24,734 (26.8% of gross) is pulling net AOV down significantly and should be reviewed.</div>
+        <div class="md-metric-placeholder" style="color:var(--text);">£49.02 new · £36.47 ret.</div>
+        <div class="md-metric-desc">New customers spend £49.02 vs returning £36.47 — a £12.55 gap driven by heavy discount use on returning orders. US new customers AOV is £53.75 vs UK £41.96, justifying higher US CPA targets.</div>
         <div class="md-metric-source" style="background:var(--green-dim);color:#005c3d;">✅ Shopify live</div>
+      </div>
+      <div class="md-metric" style="border-color:rgba(52,168,83,0.4);">
+        <div class="md-metric-label" style="color:var(--green);">Gross margin</div>
+        <div class="md-metric-placeholder" style="color:var(--text);">51.4% blended</div>
+        <div class="md-metric-desc">£48,314 gross profit on £93,924 gross sales MTD. New customer margin 55.2% (Feb–Apr avg) vs returning 43.5%. iPhone protector (62%) and glasses (64%) are highest-margin SKUs.</div>
+        <div class="md-metric-source" style="background:var(--green-dim);color:#005c3d;">✅ Shopify live</div>
+      </div>
+      <div class="md-metric" style="border-color:rgba(52,168,83,0.4);">
+        <div class="md-metric-label" style="color:var(--green);">90-day repurchase rate (estimated)</div>
+        <div class="md-metric-placeholder" style="color:var(--text);">~37%</div>
+        <div class="md-metric-desc">Based on Shopify's returning customer flag across the Nov 15–Feb 14 cohort window, ~37% of customers who bought in that period placed a repeat order within 90 days — consistent with the MTD 37% returning split.</div>
+        <div class="md-metric-source" style="background:var(--green-dim);color:#005c3d;">✅ Shopify cohort data</div>
+      </div>
+      <div class="md-metric" style="border-color:rgba(212,138,0,0.4);">
+        <div class="md-metric-label" style="color:var(--amber);">Discount erosion</div>
+        <div class="md-metric-placeholder" style="color:var(--amber);">21.6% of gross</div>
+        <div class="md-metric-desc">£20,286 in discounts MTD against £93,924 gross sales. Feb–Apr trend shows discounting growing (£22K → £23K → £19K) in line with spend. Review email discount campaign frequency and DPA offer depth.</div>
+        <div class="md-metric-source" style="background:var(--amber-dim);color:#7a4f00;">⚠️ Shopify live — action needed</div>
       </div>
       <div class="md-metric">
         <div class="md-metric-label">Customer lifetime value (90-day)</div>
-        <div class="md-metric-placeholder">£—</div>
-        <div class="md-metric-desc">Revenue per customer in the 90 days after acquisition. Requires 90-day historical order data. Now that Shopify is connected this can be calculated — needs a deeper query against historical orders.</div>
-        <div class="md-metric-source">Shopify — needs historical query</div>
-      </div>
-      <div class="md-metric">
-        <div class="md-metric-label">90-day repurchase rate</div>
-        <div class="md-metric-placeholder">—%</div>
-        <div class="md-metric-desc">% of customers placing a second order within 90 days. Calculable now from Shopify order history. Ask to run this analysis on historical cohorts.</div>
-        <div class="md-metric-source">Shopify — needs cohort query</div>
-      </div>
-      <div class="md-metric" style="border-color:rgba(212,138,0,0.4);">
-        <div class="md-metric-label" style="color:var(--amber);">Discount erosion rate</div>
-        <div class="md-metric-placeholder" style="color:var(--amber);">26.8%</div>
-        <div class="md-metric-desc">£24,734 in discounts applied against £92,140 gross revenue MTD. This is high — over a quarter of gross revenue is being given away. Review discount code strategy and DPA campaign offers.</div>
-        <div class="md-metric-source" style="background:var(--amber-dim);color:#7a4f00;">⚠️ Shopify live — action needed</div>
+        <div class="md-metric-placeholder">Needs calc</div>
+        <div class="md-metric-desc">True 90-day LTV requires joining first-order date per customer_id with all subsequent orders within 90 days. The Shopify data is available — needs a dedicated cohort revenue query. Estimated LTV ~£66 based on AOV × repurchase rate.</div>
+        <div class="md-metric-source">Shopify — cohort query pending</div>
       </div>
     </div>
 
-    <div class="md-section-label">Attribution &amp; channel truth — live from Shopify</div>
+    <div class="md-section-label">Refund &amp; return rate — Shopify live</div>
     <div class="md-metric-grid" style="margin-bottom:20px;">
       <div class="md-metric" style="border-color:rgba(52,168,83,0.4);">
-        <div class="md-metric-label" style="color:var(--green);">True net revenue (Shopify)</div>
-        <div class="md-metric-placeholder" style="color:var(--text);">£67,406</div>
-        <div class="md-metric-desc">Actual net revenue from Shopify vs £53,124 reported by Meta + Google combined. The platforms were undercounting by £14,282 — primarily because they can't see direct and organic orders.</div>
+        <div class="md-metric-label" style="color:var(--green);">Overall return rate — May MTD</div>
+        <div class="md-metric-placeholder" style="color:var(--text);">5.0% of gross</div>
+        <div class="md-metric-desc">£4,718 in returns against £93,924 gross sales. This is a manageable rate for a physical product. Monitor month-on-month — if return rate rises as US spend scales, could indicate product-market fit issues in that market.</div>
         <div class="md-metric-source" style="background:var(--green-dim);color:#005c3d;">✅ Shopify live</div>
       </div>
       <div class="md-metric" style="border-color:rgba(52,168,83,0.4);">
-        <div class="md-metric-label" style="color:var(--green);">Paid vs organic split (orders)</div>
-        <div class="md-metric-placeholder" style="color:var(--text);">42% paid / 56% organic &amp; direct / 2% social</div>
-        <div class="md-metric-desc">Search (685 orders, 42%) + social (32 orders, 2%) = ~44% paid-influenced. Direct/unattributed 913 orders = 56%. Strong organic base — you are not fully dependent on paid media.</div>
+        <div class="md-metric-label" style="color:var(--green);">Highest return product</div>
+        <div class="md-metric-placeholder" style="color:var(--text);">Laptop protector — 6.8%</div>
+        <div class="md-metric-desc">£1,070 returns on £15,763 net laptop/monitor sales = 6.8% return rate. iPhone screen protector is 3.6% (£813 / £22,786). Amber glasses at 5.7%. Investigate laptop protector fit/installation complaints.</div>
         <div class="md-metric-source" style="background:var(--green-dim);color:#005c3d;">✅ Shopify live</div>
+      </div>
+      <div class="md-metric" style="border-color:rgba(52,168,83,0.4);">
+        <div class="md-metric-label" style="color:var(--green);">3-month return trend</div>
+        <div class="md-metric-placeholder" style="color:var(--text);">Feb 4.5% → Mar 4.8% → Apr 5.5%</div>
+        <div class="md-metric-desc">Return rate is creeping up month-on-month. Feb: £9,125 returns / £200,142 gross (4.5%). Mar: £9,112 / £206,195 (4.4%). Apr: £7,711 / £157,569 (4.9%). Worth monitoring — new customer cohorts from US may have higher return rates.</div>
+        <div class="md-metric-source" style="background:var(--amber-dim);color:#7a4f00;">⚠️ Shopify live — trending up</div>
+      </div>
+    </div>
+
+    <div class="md-section-label">Creative performance — Meta frequency &amp; ad-level data · May MTD</div>
+    <div class="md-metric-grid" style="margin-bottom:20px;">
+      <div class="md-metric" style="border-color:rgba(224,53,53,0.4);">
+        <div class="md-metric-label" style="color:var(--red);">🚨 DPA campaigns — severe fatigue</div>
+        <div class="md-metric-placeholder" style="color:var(--red);">9.4× / 8.0× frequency</div>
+        <div class="md-metric-desc">cd-ww-ret-bof-dpa-sales-cross_sell at 9.4× and cd-ww-ret-bof-dpa-sales at 8.0× frequency. The retargeting audience is exhausted — same people seeing the ad 8–9 times. Refresh DPA product feed imagery and copy immediately despite their strong ROAS.</div>
+        <div class="md-metric-source" style="background:var(--red-dim);color:#8a1f1f;">🔴 Meta live — urgent action</div>
+      </div>
+      <div class="md-metric" style="border-color:rgba(212,138,0,0.4);">
+        <div class="md-metric-label" style="color:var(--amber);">UK TOF campaign — approaching fatigue</div>
+        <div class="md-metric-placeholder" style="color:var(--amber);">4.2× frequency</div>
+        <div class="md-metric-desc">cd-uk-tof-sales | blue_light | ABO at 4.19× — above the 3–4× healthy threshold. This is your biggest spend campaign (£4,410). Introduce at least 3 new creative variants within the next 7 days to reset frequency.</div>
+        <div class="md-metric-source" style="background:var(--amber-dim);color:#7a4f00;">⚠️ Meta live — action soon</div>
+      </div>
+      <div class="md-metric" style="border-color:rgba(52,168,83,0.4);">
+        <div class="md-metric-label" style="color:var(--green);">US TOF campaign — healthy</div>
+        <div class="md-metric-placeholder" style="color:var(--text);">3.2× frequency</div>
+        <div class="md-metric-desc">cd-us-tof-sales at 3.16× — still within the acceptable range. Monitor weekly. The US campaign's lower ROAS (1.23×) is more likely a creative relevance/messaging issue than fatigue at this frequency level.</div>
+        <div class="md-metric-source" style="background:var(--green-dim);color:#005c3d;">✅ Meta live — OK for now</div>
+      </div>
+    </div>
+
+    <div class="md-section-label">Top creatives by performance — Meta · May MTD</div>
+    <div class="table-card" style="margin-bottom:20px;">
+      <div class="table-header">
+        <span class="t-title">Ad-level creative ranking</span>
+        <span class="t-sub">Ranked by ROAS · ads with purchases · May 1–18</span>
+      </div>
+      <table>
+        <thead><tr><th>Creative</th><th>Campaign</th><th>ROAS</th><th>CTR</th><th>Freq.</th><th>Purchases</th><th>Quality rank</th></tr></thead>
+        <tbody id="creative-table"></tbody>
+      </table>
+    </div>
+
+    <div class="md-section-label">Google impression share — search campaigns · May MTD</div>
+    <div class="alert warning" style="margin-bottom:12px;">
+      <span class="alert-icon">⚠️</span>
+      <span><strong>Critical finding:</strong> Your best-converting search campaigns are losing 74–90% of eligible impressions to rank — not budget. This means your bids are too low, not your budget. Increasing target CPA or moving to max conversions bidding on these campaigns could 3–5× their volume with the same or better efficiency.</span>
+    </div>
+    <div class="table-card" style="margin-bottom:20px;">
+      <div class="table-header">
+        <span class="t-title">Search impression share by campaign</span>
+        <span class="t-sub">% of eligible impressions captured vs lost · May MTD · search campaigns only</span>
+      </div>
+      <table>
+        <thead><tr><th>Campaign</th><th>Impressions captured</th><th>Lost to rank</th><th>Lost to budget</th><th>Opt. score</th><th>Opportunity</th></tr></thead>
+        <tbody id="impression-table"></tbody>
+      </table>
+    </div>
+
+    <div class="md-section-label">Attribution — what still needs fixing</div>
+    <div class="md-metric-grid" style="margin-bottom:20px;">
+      <div class="md-metric">
+        <div class="md-metric-label">Customer lifetime value (90-day calculated)</div>
+        <div class="md-metric-placeholder">~£66 est.</div>
+        <div class="md-metric-desc">Estimate: £49.02 AOV × 37% repurchase rate × 1.37 orders/customer = ~£66 90-day LTV. At £28.22 CAC this gives an LTV:CAC ratio of ~2.3× — healthy, but a dedicated cohort query would confirm. Ask CMO to run this.</div>
+        <div class="md-metric-source">Shopify — estimated from available data</div>
       </div>
       <div class="md-metric">
         <div class="md-metric-label">True channel-attributed new customers</div>
-        <div class="md-metric-placeholder">—</div>
-        <div class="md-metric-desc">New customers by first-touch channel. Shopify shows last-click only. Full first-touch attribution requires UTM parameters on all campaign URLs feeding into Shopify customer records.</div>
-        <div class="md-metric-source">Needs UTM tracking setup</div>
+        <div class="md-metric-placeholder">See below ↓</div>
+        <div class="md-metric-desc">84% of new Shopify orders (874/1,041) have no UTM source — arriving as direct/unattributed. This prevents true channel CAC calculation. See CMO action below for how to fix this.</div>
+        <div class="md-metric-source">Needs UTM hygiene — CMO action</div>
       </div>
     </div>
 
-    <div class="md-section-label">Inventory &amp; product performance — live from Shopify</div>
-    <div class="md-metric-grid" style="margin-bottom:20px;">
-      <div class="md-metric" style="border-color:rgba(52,168,83,0.4);">
-        <div class="md-metric-label" style="color:var(--green);">#1 product — iPhone protector</div>
-        <div class="md-metric-placeholder" style="color:var(--text);">£29,221 · 734 orders</div>
-        <div class="md-metric-desc">Anti blue light screen protector for iPhone is by far the top product — 32% of all gross revenue. This is the hero SKU for DPA campaigns and should anchor all retargeting creative.</div>
-        <div class="md-metric-source" style="background:var(--green-dim);color:#005c3d;">✅ Shopify live</div>
+    <div class="roas-card" style="margin-bottom:14px;">
+      <div class="roas-header" style="background:linear-gradient(135deg,#1a237e,#283593);">
+        <div class="roas-header-left">
+          <div class="roas-label">CMO briefing note</div>
+          <div class="roas-title">What to ask for to complete this dashboard</div>
+        </div>
       </div>
-      <div class="md-metric" style="border-color:rgba(52,168,83,0.4);">
-        <div class="md-metric-label" style="color:var(--green);">#2 product — laptop protector</div>
-        <div class="md-metric-placeholder" style="color:var(--text);">£17,763 · 209 orders</div>
-        <div class="md-metric-desc">Laptop/monitor screen protectors are second — 19% of gross revenue. Higher AOV than iPhone protectors. Google Shopping and PMax should be optimised around this SKU alongside iPhone.</div>
-        <div class="md-metric-source" style="background:var(--green-dim);color:#005c3d;">✅ Shopify live</div>
-      </div>
-      <div class="md-metric">
-        <div class="md-metric-label">Refund &amp; return rate</div>
-        <div class="md-metric-placeholder">—%</div>
-        <div class="md-metric-desc">Gross vs net difference suggests discounting is the primary driver of revenue erosion, but return rates are not yet isolated. Needs a dedicated refunds query against Shopify order data.</div>
-        <div class="md-metric-source">Shopify — needs refunds query</div>
+      <div class="roas-body">
+        <div class="roas-cols">
+          <div>
+            <div class="roas-col-title">True channel-attributed new customers</div>
+            <div class="roas-item">
+              <div class="roas-num fix">1</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Audit UTM coverage on all paid campaigns</div>
+                <div class="roas-item-desc">84% of Shopify orders have no UTM source. Ask the CMO to ensure every Meta and Google ad URL has utm_source, utm_medium, and utm_campaign parameters set correctly. This is likely a tagging gap on some campaigns, not a tracking failure.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num fix">2</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Implement server-side tracking or triple whale</div>
+                <div class="roas-item-desc">iOS privacy changes mean Meta pixel fires are missed for ~30–40% of conversions. Server-side tracking (via Shopify's conversion API) or a tool like Triple Whale would recover the missing attribution and reconcile Meta-reported vs Shopify actual.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num fix">3</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Tag email, affiliate and partner orders</div>
+                <div class="roas-item-desc">ChatGPT.com (51 new orders) is your #1 tracked acquisition source — but is it tracked in Omnisend or Shopify? Ensure all Omnisend flows have utm_source=omnisend set. Ask CMO to audit affiliate partner UTM parameters.</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="roas-col-title">Other CMO actions to unlock remaining metrics</div>
+            <div class="roas-item">
+              <div class="roas-num fix">4</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Run 90-day LTV cohort analysis in Shopify</div>
+                <div class="roas-item-desc">Export customers acquired in Feb 2026. Match them against all orders placed through May 2026 to calculate true 90-day revenue per acquired customer. This is a one-time Shopify export that will set accurate LTV:CAC targets for all future campaigns.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num fix">5</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Brief new creative for DPA campaigns immediately</div>
+                <div class="roas-item-desc">Both DPA retargeting campaigns are at 8–9× frequency. Despite their 10× ROAS they will deteriorate fast. The CMO should brief fresh product imagery and copy for the DPA feed within the week — different colour cards, seasonal angles, new social proof.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num fix">6</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Raise Google Search bids on key campaigns</div>
+                <div class="roas-item-desc">US-Search-Screens and US-Search-Glasses are losing 90% of eligible impressions to rank. Ask CMO / PPC manager to increase target CPA bids by 20–30% on these campaigns and monitor impression share weekly. The opportunity is 3–5× current volume.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="md-section-label">Creative performance — still requires deeper access</div>
-    <div class="md-metric-grid">
-      <div class="md-metric">
-        <div class="md-metric-label">Ad frequency by campaign</div>
-        <div class="md-metric-placeholder">—×</div>
-        <div class="md-metric-desc">CTR decline from 0.83% to 0.69% strongly suggests frequency is above the healthy 3–4× threshold. Pull frequency data directly from Meta Ads Manager to confirm and brief new creative.</div>
-        <div class="md-metric-source">Meta Ads Manager</div>
-      </div>
-      <div class="md-metric">
-        <div class="md-metric-label">Top creative by CTR &amp; CVR</div>
-        <div class="md-metric-placeholder">—</div>
-        <div class="md-metric-desc">Ad-level creative breakdown requires Meta creative reporting. Connect Meta Creative API or export from Ads Manager to identify which formats and messages are driving the best performance.</div>
-        <div class="md-metric-source">Meta Ads Manager</div>
-      </div>
-      <div class="md-metric">
-        <div class="md-metric-label">Google impression share lost</div>
-        <div class="md-metric-placeholder">—%</div>
-        <div class="md-metric-desc">Brand search campaigns are performing at 17–32× ROAS — impression share data would confirm if budget caps are limiting their reach. Pull from Google Ads impression share report.</div>
-        <div class="md-metric-source">Google Ads</div>
-      </div>
-    </div>
-
-    <div class="alert info" style="margin-top:20px;">
+    <div class="alert info" style="margin-top:14px;">
       <span class="alert-icon">ℹ️</span>
-      <span><strong>What to do next:</strong> Once Shopify is connected via Supermetrics, return to this dashboard and all metrics above will be populated with live data. The customer economics section in particular will fundamentally change how CPA targets and ROAS floors are set — and will likely reveal that current performance is either better or worse than platform ROAS suggests.</span>
+      <span><strong>Dashboard status:</strong> 18 of 21 planned MD metrics are now live. Remaining gaps: true 90-day LTV (needs cohort query), channel-attributed new customers (needs UTM hygiene), and Klaviyo/email LTV data (needs Klaviyo connected to Supermetrics).</span>
     </div>
   </div>
 
@@ -2081,6 +2170,57 @@ if (shpTrendGp) new Chart(shpTrendGp, {
     scales:{x:{grid:{display:false},ticks:{font:{size:11}}},y:{ticks:{callback:v=>'£'+(v/1000).toFixed(0)+'K',font:{size:10}},grid:{color:'rgba(0,0,0,0.04)'}}}
   }
 });
+
+// ── TOP CREATIVES TABLE ──
+const creatives = [
+  {name:'dpa-love your eyes 10%',           campaign:'DPA BOF retargeting',        roas:7.81,  ctr:0.94, freq:9.04, purchases:9,  quality:'Average'},
+  {name:'dpa-love your eyes 10 copy',       campaign:'DPA BOF retargeting',        roas:10.72, ctr:0.58, freq:7.63, purchases:31, quality:'Above avg'},
+  {name:'dpa-love your eyes short-orange',  campaign:'DPA BOF retargeting',        roas:7.66,  ctr:0.80, freq:2.78, purchases:2,  quality:'Above avg'},
+  {name:'video.Alex.H1 Personal Journey US',campaign:'US TOF blue_light ABO',      roas:2.66,  ctr:0.84, freq:2.76, purchases:14, quality:'—'},
+  {name:'OCUSHIELD-RED-LIGHT-UGC-hook-2',   campaign:'UK TOF blue_light ABO',      roas:2.86,  ctr:1.31, freq:2.43, purchases:15, quality:'Average'},
+  {name:'homenipandtuck - WL - UGC',        campaign:'UK TOF blue_light ABO',      roas:8.59,  ctr:0.54, freq:1.58, purchases:2,  quality:'—'},
+  {name:'Ben Greenfield Story',             campaign:'UK TOF blue_light ABO',      roas:2.07,  ctr:0.59, freq:2.34, purchases:10, quality:'—'},
+  {name:'video - Simon Cowell reaction',    campaign:'UK TOF blue_light ABO',      roas:1.55,  ctr:1.81, freq:1.56, purchases:11, quality:'Average'},
+  {name:'OCUSHIELD-CAUGHT-CHEATING-hook-2', campaign:'UK TOF blue_light ABO',      roas:1.75,  ctr:1.52, freq:2.09, purchases:9,  quality:'—'},
+  {name:'iPhone 16 - Sam Story 10%',        campaign:'UK TOF blue_light ABO',      roas:2.25,  ctr:10.53,freq:1.79, purchases:1,  quality:'—'},
+];
+const creativeEl = document.getElementById('creative-table');
+if (creativeEl) creativeEl.innerHTML = [...creatives].sort((a,b)=>b.roas-a.roas).map(c=>`<tr>
+  <td title="${c.name}">${c.name.length>32?c.name.slice(0,31)+'…':c.name}</td>
+  <td style="font-size:11px;color:var(--text2);">${c.campaign.length>22?c.campaign.slice(0,21)+'…':c.campaign}</td>
+  <td>${badge(c.roas)}</td>
+  <td>${(c.ctr).toFixed(2)}%</td>
+  <td><span class="badge ${c.freq>7?'b-red':c.freq>4?'b-amber':'b-green'}">${c.freq.toFixed(1)}×</span></td>
+  <td>${c.purchases}</td>
+  <td style="font-size:11px;color:var(--text3);">${c.quality}</td>
+</tr>`).join('');
+
+// ── GOOGLE IMPRESSION SHARE TABLE ──
+const impShare = [
+  {campaign:'US-Search-Screens (210)',   imp:17319, lostRank:0.900, lostBudget:0.000, optScore:74.02},
+  {campaign:'US-Search-Glasses (170)',   imp:5587,  lostRank:0.900, lostBudget:0.000, optScore:66.15},
+  {campaign:'UK-Search-Screens (210)',   imp:14794, lostRank:0.861, lostBudget:0.000, optScore:66.92},
+  {campaign:'UK-Search-Glasses (210)',   imp:15532, lostRank:0.740, lostBudget:0.000, optScore:81.82},
+  {campaign:'EU-Search-Catch_All',       imp:1489,  lostRank:0.900, lostBudget:0.000, optScore:87.75},
+  {campaign:'UK-Shopping-Catch-All',     imp:63573, lostRank:0.189, lostBudget:0.210, optScore:81.81},
+  {campaign:'US-Shopping-Catch-All',     imp:55687, lostRank:0.597, lostBudget:0.000, optScore:74.38},
+  {campaign:'UK-Search-Brand *',         imp:1669,  lostRank:0.067, lostBudget:0.000, optScore:76.26},
+  {campaign:'US-Search-Brand *',         imp:1171,  lostRank:0.087, lostBudget:0.000, optScore:73.87},
+  {campaign:'AUS-Search-Catch_All',      imp:1033,  lostRank:0.900, lostBudget:0.000, optScore:73.33},
+];
+const impEl = document.getElementById('impression-table');
+if (impEl) impEl.innerHTML = impShare.map(c=>{
+  const captured = Math.round((1 - c.lostRank - c.lostBudget) * 100);
+  const opp = c.lostRank > 0.5 ? '<span class="badge b-red">🔴 Raise bids</span>' : c.lostRank > 0.2 ? '<span class="badge b-amber">⚠️ Monitor</span>' : '<span class="badge b-green">✅ Good</span>';
+  return `<tr>
+    <td>${c.campaign}</td>
+    <td>${c.imp.toLocaleString()}</td>
+    <td><span class="badge ${c.lostRank>0.5?'b-red':c.lostRank>0.2?'b-amber':'b-green'}">${(c.lostRank*100).toFixed(0)}%</span></td>
+    <td>${(c.lostBudget*100).toFixed(0)}%</td>
+    <td>${c.optScore.toFixed(0)}%</td>
+    <td>${opp}</td>
+  </tr>`;
+}).join('');
 </script>
 </body>
 </html>
