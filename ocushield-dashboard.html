@@ -1130,98 +1130,152 @@
 
     <div class="section-head" style="margin-top:0;">
       <span class="section-title">Shopify — True Revenue</span>
-      <span class="section-desc">May 1–19, 2026 · Backend actuals · 1,631 orders</span>
+      <span class="section-desc">May 1–18, 2026 · Backend actuals · not platform-attributed</span>
     </div>
 
     <div class="kpi-grid" style="margin-bottom:24px;">
-      <div class="kpi accent"><div class="kpi-label">Gross revenue</div><div class="kpi-val">£92,140</div><div class="kpi-sub">before discounts &amp; returns</div></div>
-      <div class="kpi accent"><div class="kpi-label">Net revenue</div><div class="kpi-val">£67,406</div><div class="kpi-sub">after discounts &amp; returns</div></div>
-      <div class="kpi accent"><div class="kpi-label">Total orders</div><div class="kpi-val">1,631</div><div class="kpi-sub">vs 891 platform-reported</div></div>
-      <div class="kpi"><div class="kpi-label">Average order value</div><div class="kpi-val">£44.17</div><div class="kpi-sub">Shopify true AOV</div></div>
-      <div class="kpi"><div class="kpi-label">New customers</div><div class="kpi-val">981</div><div class="kpi-sub">63% of all customers</div></div>
-      <div class="kpi"><div class="kpi-label">Returning customers</div><div class="kpi-val">576</div><div class="kpi-sub">37% returning rate</div></div>
-      <div class="kpi"><div class="kpi-label">Blended CAC (paid)</div><div class="kpi-val">£29.94</div><div class="kpi-sub">£29,373 spend ÷ 981 new customers</div></div>
-      <div class="kpi"><div class="kpi-label">Discount erosion</div><div class="kpi-val">£24,734</div><div class="kpi-sub">26.8% of gross revenue</div></div>
-      <div class="kpi warn"><div class="kpi-label">Platform overcount</div><div class="kpi-val">+740</div><div class="kpi-sub">orders missed by Meta + Google</div></div>
+      <div class="kpi accent"><div class="kpi-label">Gross sales</div><div class="kpi-val">£93,924</div><div class="kpi-sub">before discounts &amp; returns</div></div>
+      <div class="kpi accent"><div class="kpi-label">Net sales</div><div class="kpi-val">£69,014</div><div class="kpi-sub">after discounts &amp; returns</div></div>
+      <div class="kpi accent"><div class="kpi-label">Gross profit</div><div class="kpi-val">£48,314</div><div class="kpi-sub">51.4% blended margin</div></div>
+      <div class="kpi"><div class="kpi-label">Total orders</div><div class="kpi-val">1,661</div><div class="kpi-sub">vs 891 platform-reported</div></div>
+      <div class="kpi"><div class="kpi-label">New customer orders</div><div class="kpi-val">1,041</div><div class="kpi-sub">63% of all orders</div></div>
+      <div class="kpi"><div class="kpi-label">Returning orders</div><div class="kpi-val">620</div><div class="kpi-sub">37% of all orders</div></div>
+      <div class="kpi"><div class="kpi-label">New customer AOV</div><div class="kpi-val">£49.02</div><div class="kpi-sub">Shopify actuals</div></div>
+      <div class="kpi"><div class="kpi-label">Returning AOV</div><div class="kpi-val">£36.47</div><div class="kpi-sub">lower due to discounts</div></div>
+      <div class="kpi"><div class="kpi-label">Blended CAC (paid)</div><div class="kpi-val">£28.22</div><div class="kpi-sub">£29,373 spend ÷ 1,041 new orders</div></div>
+      <div class="kpi warn"><div class="kpi-label">Discount erosion</div><div class="kpi-val">£20,286</div><div class="kpi-sub">21.6% of gross sales</div></div>
+      <div class="kpi warn"><div class="kpi-label">Returns</div><div class="kpi-val">£4,718</div><div class="kpi-sub">5.0% of gross sales</div></div>
+      <div class="kpi"><div class="kpi-label">Max sustainable CPA</div><div class="kpi-val">~£27</div><div class="kpi-sub">gross profit ÷ orders at breakeven</div></div>
     </div>
 
-    <!-- CHANNEL ATTRIBUTION -->
+    <div class="alert info" style="margin-bottom:20px;">
+      <span class="alert-icon">💡</span>
+      <span><strong>The big reveal:</strong> Shopify shows £93,924 gross sales vs Meta+Google's combined claim of £53,124. Your paid platforms were <em>undercounting</em> by £40,800 — most revenue flows through direct, organic and email which the ad platforms can't see. Your true blended ROAS is significantly higher than 1.81×.</span>
+    </div>
+
+    <!-- NEW vs RETURNING -->
     <div class="section-head">
-      <span class="section-title">Channel Attribution — Shopify Last-Click</span>
-      <span class="section-desc">Where orders actually originated · May 1–19</span>
+      <span class="section-title">New vs Returning Customers — May MTD</span>
+      <span class="section-desc">May 1–18 · 1,661 total orders · Shopify actual</span>
     </div>
 
     <div class="chart-grid" style="margin-bottom:14px;">
       <div class="chart-card">
-        <div class="chart-title">Orders by channel</div>
-        <div class="chart-sub">Shopify last-click attribution · 1,631 total orders</div>
-        <div style="position:relative;height:220px;"><canvas id="c-shp-orders-donut" role="img" aria-label="Orders by channel donut chart"></canvas></div>
+        <div class="chart-title">Orders — new vs returning</div>
+        <div class="chart-sub">63% new acquisition · healthy ratio</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-sq" style="background:#0575FF"></div>New (1,041)</div>
+          <div class="leg"><div class="leg-sq" style="background:#34A853"></div>Returning (620)</div>
+        </div>
+        <div style="position:relative;height:200px;"><canvas id="c-shp-orders-donut" role="img" aria-label="New vs returning orders donut"></canvas></div>
       </div>
       <div class="chart-card">
-        <div class="chart-title">Gross revenue by channel</div>
-        <div class="chart-sub">£92,140 total · search and direct dominant</div>
-        <div style="position:relative;height:220px;"><canvas id="c-shp-rev-donut" role="img" aria-label="Revenue by channel donut chart"></canvas></div>
+        <div class="chart-title">Revenue &amp; gross profit — new vs returning</div>
+        <div class="chart-sub">New customers drive higher gross profit per order</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-sq" style="background:#0575FF"></div>Gross sales</div>
+          <div class="leg"><div class="leg-sq" style="background:#34A853"></div>Gross profit</div>
+        </div>
+        <div style="position:relative;height:200px;"><canvas id="c-shp-rev-donut" role="img" aria-label="Revenue and profit new vs returning"></canvas></div>
       </div>
     </div>
 
-    <!-- PAID vs ORGANIC TABLE -->
-    <div class="table-card" style="margin-bottom:14px;">
+    <!-- CHANNEL ATTRIBUTION -->
+    <div class="section-head">
+      <span class="section-title">Channel Attribution — UTM Source</span>
+      <span class="section-desc">May 1–18 · Shopify last-click · new customers only</span>
+    </div>
+
+    <div class="table-card" style="margin-bottom:8px;">
       <div class="table-header">
-        <span class="t-title">Paid vs organic &amp; direct — full breakdown</span>
-        <span class="t-sub">May 1–19 · Shopify referrer data · ranked by gross sales</span>
+        <span class="t-title">New customer orders by source</span>
+        <span class="t-sub">Ranked by orders · UTM source from Shopify checkout · new customers only</span>
       </div>
       <table>
-        <thead><tr>
-          <th>Source / Channel</th><th>Type</th><th>Gross sales</th><th>Net sales</th><th>Orders</th><th>AOV</th><th>New cust.</th><th>Return rate</th>
-        </tr></thead>
+        <thead><tr><th>Source</th><th>Medium</th><th>Orders</th><th>Gross sales</th><th>Net sales</th><th>Gross profit</th><th>GP margin</th></tr></thead>
         <tbody id="shp-channel-table"></tbody>
       </table>
     </div>
-
-    <!-- PAID MEDIA ATTRIBUTION NOTE -->
     <div class="alert warning" style="margin-bottom:20px;">
       <span class="alert-icon">⚠️</span>
-      <span><strong>Important attribution context:</strong> Shopify uses last-click attribution. Google search (662 orders, £34,929) captures conversions that were likely initiated by Meta ads. Facebook + Instagram combined show only 32 orders (£1,413) in Shopify — a significant undercount of Meta's true influence. The actual picture sits between Shopify's last-click and Meta's self-reported view-through numbers.</span>
+      <span><strong>Attribution gap:</strong> 874 new customer orders (84%) have no UTM source — they arrived via direct, organic, or untracked referrals. Meta and Instagram combined show only ~38 tracked orders in Shopify, but their true influence is much larger. The actual paid contribution sits between Shopify's last-click view and Meta/Google's self-reported numbers. <strong>ChatGPT.com is now your #1 tracked acquisition source</strong> — worth noting for content strategy.</span>
     </div>
 
-    <!-- NEW vs RETURNING TREND -->
+    <!-- TOP PRODUCTS -->
     <div class="section-head">
-      <span class="section-title">New vs Returning Customer Trend</span>
-      <span class="section-desc">Daily · May 1–19 · 63% new / 37% returning overall</span>
-    </div>
-    <div class="chart-card full" style="margin-bottom:14px;">
-      <div class="chart-title">New vs returning customers — daily</div>
-      <div class="chart-sub">Consistent new customer acquisition with strong returning base</div>
-      <div class="legend">
-        <div class="leg"><div class="leg-sq" style="background:#0575FF"></div>New customers</div>
-        <div class="leg"><div class="leg-sq" style="background:#34A853"></div>Returning customers</div>
-      </div>
-      <div style="position:relative;height:220px;"><canvas id="c-shp-new-ret" role="img" aria-label="New vs returning customers daily trend"></canvas></div>
+      <span class="section-title">Top Products by Gross Profit</span>
+      <span class="section-desc">May 1–18 · ranked by gross profit · Shopify actuals</span>
     </div>
 
-    <!-- TOP 10 PRODUCTS -->
-    <div class="section-head">
-      <span class="section-title">Top 10 Products by Revenue</span>
-      <span class="section-desc">May 1–19 · Shopify actual sales</span>
-    </div>
     <div class="chart-card full" style="margin-bottom:14px;">
-      <div class="chart-title">Gross vs net revenue by product</div>
-      <div class="chart-sub">Discount erosion visible across all products · iPhone protector dominates at £29,221</div>
+      <div class="chart-title">Gross sales vs gross profit — top 8 products</div>
+      <div class="chart-sub">Margin gap = COGS + discounts + returns · glasses have highest % margin</div>
       <div class="legend">
         <div class="leg"><div class="leg-sq" style="background:#0575FF"></div>Gross sales</div>
-        <div class="leg"><div class="leg-sq" style="background:#34A853"></div>Net sales</div>
+        <div class="leg"><div class="leg-sq" style="background:#34A853"></div>Gross profit</div>
       </div>
-      <div style="position:relative;height:320px;"><canvas id="c-shp-products" role="img" aria-label="Top 10 products gross vs net revenue"></canvas></div>
+      <div style="position:relative;height:300px;"><canvas id="c-shp-products" role="img" aria-label="Top products gross sales vs gross profit"></canvas></div>
+    </div>
+
+    <div class="table-card" style="margin-bottom:24px;">
+      <div class="table-header">
+        <span class="t-title">Top 10 products — full breakdown</span>
+        <span class="t-sub">May 1–18 · ranked by gross profit</span>
+      </div>
+      <table>
+        <thead><tr><th>Product</th><th>Units</th><th>Gross sales</th><th>Gross profit</th><th>GP margin</th><th>Returns</th><th>Return rate</th></tr></thead>
+        <tbody id="shp-products-table"></tbody>
+      </table>
+    </div>
+
+    <!-- 3-MONTH TREND -->
+    <div class="section-head">
+      <span class="section-title">3-Month Shopify Trend — Feb to Apr 2026</span>
+      <span class="section-desc">Backend actuals · new vs returning split · full months</span>
+    </div>
+
+    <div class="chart-grid" style="margin-bottom:14px;">
+      <div class="chart-card">
+        <div class="chart-title">Gross sales by customer type</div>
+        <div class="chart-sub">New customer revenue holding flat Feb–Mar then declining in Apr</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-sq" style="background:#0575FF"></div>New customers</div>
+          <div class="leg"><div class="leg-sq" style="background:#34A853"></div>Returning customers</div>
+        </div>
+        <div style="position:relative;height:200px;"><canvas id="c-shp-trend-rev" role="img" aria-label="Shopify revenue trend by customer type"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Gross profit by customer type</div>
+        <div class="chart-sub">New customer profit significantly higher per order than returning</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-sq" style="background:#0575FF"></div>New GP</div>
+          <div class="leg"><div class="leg-sq" style="background:#34A853"></div>Returning GP</div>
+        </div>
+        <div style="position:relative;height:200px;"><canvas id="c-shp-trend-gp" role="img" aria-label="Shopify gross profit trend by customer type"></canvas></div>
+      </div>
     </div>
 
     <div class="table-card">
       <div class="table-header">
-        <span class="t-title">Top 10 products — detail</span>
-        <span class="t-sub">May 1–19 · ranked by gross sales</span>
+        <span class="t-title">3-month Shopify actuals — Feb to Apr 2026</span>
+        <span class="t-sub">New vs returning split · full month data · backend verified</span>
       </div>
-      <table>
-        <thead><tr><th>Product</th><th>Gross sales</th><th>Net sales</th><th>Orders</th><th>Discount erosion</th><th>Share of revenue</th></tr></thead>
-        <tbody id="shp-products-table"></tbody>
+      <table id="shp-trend-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Month</th>
+            <th style="text-align:left;">Type</th>
+            <th>Orders</th>
+            <th>Gross sales</th>
+            <th>Net sales</th>
+            <th>Gross profit</th>
+            <th>GP margin</th>
+            <th>AOV</th>
+            <th>Discounts</th>
+            <th>Returns</th>
+          </tr>
+        </thead>
+        <tbody id="shp-trend-body"></tbody>
       </table>
     </div>
 
@@ -1234,13 +1288,13 @@
       <div class="fd-hero-left">
         <div class="fd-eyebrow">Finance Director Briefing · May 2026</div>
         <div class="fd-title">Marketing performance &amp;<br>capital allocation review</div>
-        <div class="fd-sub">Prepared by Marketing · Facebook Ads + Google Ads · May 1–18 vs Apr 1–18 (like-for-like)</div>
+        <div class="fd-sub">Prepared by Marketing · Shopify verified + Facebook Ads + Google Ads · May 1–18 · Shopify now connected ✅</div>
       </div>
       <div class="fd-hero-right">
-        <div class="fd-stat warn"><div class="fd-stat-val">£29K</div><div class="fd-stat-label">MTD spend</div></div>
-        <div class="fd-stat warn"><div class="fd-stat-val">1.81×</div><div class="fd-stat-label">Blended ROAS</div></div>
-        <div class="fd-stat bad"><div class="fd-stat-val">-17.3%</div><div class="fd-stat-label">Revenue vs Apr</div></div>
-        <div class="fd-stat good"><div class="fd-stat-val">£50K</div><div class="fd-stat-label">Est. monthly run rate</div></div>
+        <div class="fd-stat good"><div class="fd-stat-val">£93,924</div><div class="fd-stat-label">True gross sales</div></div>
+        <div class="fd-stat good"><div class="fd-stat-val">51.4%</div><div class="fd-stat-label">Gross margin</div></div>
+        <div class="fd-stat warn"><div class="fd-stat-val">£29,373</div><div class="fd-stat-label">Paid media spend</div></div>
+        <div class="fd-stat good"><div class="fd-stat-val">£48,314</div><div class="fd-stat-label">Gross profit</div></div>
       </div>
     </div>
 
@@ -1249,34 +1303,37 @@
       <div class="fd-card">
         <div class="fd-card-head">
           <div class="fd-card-icon" style="background:var(--blue-dim);">📊</div>
-          <div class="fd-card-title">P&amp;L snapshot — marketing</div>
+          <div class="fd-card-title">P&amp;L snapshot — marketing (Shopify verified)</div>
         </div>
         <div class="fd-card-body">
           <div class="fd-row"><span class="fd-row-label">MTD ad spend (May 1–18)</span><span class="fd-row-val">£29,373</span></div>
-          <div class="fd-row"><span class="fd-row-label">Platform-attributed revenue</span><span class="fd-row-val">£53,124 <span class="tag tag-amber">self-reported</span></span></div>
-          <div class="fd-row"><span class="fd-row-label">Blended ROAS</span><span class="fd-row-val">1.81× <span class="tag tag-amber">overlapping</span></span></div>
-          <div class="fd-row"><span class="fd-row-label">Est. monthly spend run rate</span><span class="fd-row-val">~£50,000</span></div>
-          <div class="fd-row"><span class="fd-row-label">Est. monthly revenue run rate</span><span class="fd-row-val">~£90,600</span></div>
-          <div class="fd-row"><span class="fd-row-label">Marketing spend as % of revenue</span><span class="fd-row-val">~55% <span class="tag tag-red">high</span></span></div>
-          <div class="fd-row"><span class="fd-row-label">Confirmed wasted spend (MTD)</span><span class="fd-row-val">~£808 <span class="tag tag-red">2 campaigns</span></span></div>
-          <div class="fd-row"><span class="fd-row-label">Annualised waste if unaddressed</span><span class="fd-row-val">~£9,700</span></div>
+          <div class="fd-row"><span class="fd-row-label">Shopify gross sales (verified)</span><span class="fd-row-val">£93,924 <span class="tag tag-green">backend verified</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Shopify net sales</span><span class="fd-row-val">£69,014</span></div>
+          <div class="fd-row"><span class="fd-row-label">Gross profit</span><span class="fd-row-val">£48,314 <span class="tag tag-green">51.4% margin</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Total orders (Shopify)</span><span class="fd-row-val">1,661 orders</span></div>
+          <div class="fd-row"><span class="fd-row-label">New customer orders</span><span class="fd-row-val">1,041 <span class="tag tag-blue">63% of total</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Blended CAC (paid spend ÷ new orders)</span><span class="fd-row-val">£28.22</span></div>
+          <div class="fd-row"><span class="fd-row-label">Max sustainable CPA (at GP breakeven)</span><span class="fd-row-val">~£29.11 <span class="tag tag-amber">currently at £28.22</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Discount erosion (21.6% of gross)</span><span class="fd-row-val">£20,286 <span class="tag tag-red">high</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Returns (5.0% of gross)</span><span class="fd-row-val">£4,718</span></div>
+          <div class="fd-row"><span class="fd-row-label">Confirmed wasted ad spend (MTD)</span><span class="fd-row-val">~£808 <span class="tag tag-red">2 campaigns</span></span></div>
         </div>
       </div>
 
       <div class="fd-card">
         <div class="fd-card-head">
-          <div class="fd-card-icon" style="background:var(--red-dim);">⚠️</div>
-          <div class="fd-card-title">Key risks &amp; caveats</div>
+          <div class="fd-card-icon" style="background:var(--amber-dim);">⚠️</div>
+          <div class="fd-card-title">Key risks &amp; findings</div>
         </div>
         <div class="fd-card-body">
-          <div class="fd-row"><span class="fd-row-label">Revenue double-counting risk</span><span class="fd-row-val"><span class="tag tag-red">HIGH</span></span></div>
-          <div class="fd-row" style="padding-left:8px;"><span class="fd-row-label" style="font-size:11px;color:var(--text3);">Meta + Google both claim same conversions. True combined revenue is lower than £53K reported.</span></div>
-          <div class="fd-row"><span class="fd-row-label">No backend revenue validation</span><span class="fd-row-val"><span class="tag tag-red">HIGH</span></span></div>
-          <div class="fd-row" style="padding-left:8px;"><span class="fd-row-label" style="font-size:11px;color:var(--text3);">Shopify not yet connected. All ROAS figures are platform self-reported, not verified against actual orders.</span></div>
-          <div class="fd-row"><span class="fd-row-label">Revenue trend declining</span><span class="fd-row-val"><span class="tag tag-amber">MEDIUM</span></span></div>
-          <div class="fd-row" style="padding-left:8px;"><span class="fd-row-label" style="font-size:11px;color:var(--text3);">Combined revenue down 17.3% vs same period last month. Meta ROAS declined from 1.42× to 1.56× (improving MTD vs Apr 1-18) but Google CPA deteriorated 40%.</span></div>
+          <div class="fd-row"><span class="fd-row-label">Shopify now connected ✅</span><span class="fd-row-val"><span class="tag tag-green">RESOLVED</span></span></div>
+          <div class="fd-row" style="padding-left:8px;"><span class="fd-row-label" style="font-size:11px;color:var(--text3);">Revenue double-counting risk is now resolved. Shopify backend shows £93,924 gross sales — £40,800 more than platforms reported. Paid media was undercounting, not overcounting.</span></div>
+          <div class="fd-row"><span class="fd-row-label">Discount erosion is high</span><span class="fd-row-val"><span class="tag tag-red">HIGH</span></span></div>
+          <div class="fd-row" style="padding-left:8px;"><span class="fd-row-label" style="font-size:11px;color:var(--text3);">£20,286 in discounts MTD (21.6% of gross sales). Returning customers especially heavy discount users. Review whether email discount campaigns are cannibalising full-price repeat orders.</span></div>
+          <div class="fd-row"><span class="fd-row-label">CAC vs max sustainable CPA</span><span class="fd-row-val"><span class="tag tag-amber">WATCH</span></span></div>
+          <div class="fd-row" style="padding-left:8px;"><span class="fd-row-label" style="font-size:11px;color:var(--text3);">Current blended CAC is £28.22 vs max sustainable CPA of ~£29.11 at GP breakeven. Very thin margin — any CPA increase pushes marketing into loss. LTV analysis needed urgently.</span></div>
           <div class="fd-row"><span class="fd-row-label">US market underperforming</span><span class="fd-row-val"><span class="tag tag-amber">MEDIUM</span></span></div>
-          <div class="fd-row" style="padding-left:8px;"><span class="fd-row-label" style="font-size:11px;color:var(--text3);">US campaigns on both Meta and Google consistently generate lower ROAS than UK. Significant budget allocated with sub-optimal returns.</span></div>
+          <div class="fd-row" style="padding-left:8px;"><span class="fd-row-label" style="font-size:11px;color:var(--text3);">US Meta ROAS 1.23× vs UK 1.60×. However Shopify shows US new customer AOV is £53.75 vs UK £41.96 — US customers spend more per order, which justifies a higher CPA target for US campaigns.</span></div>
         </div>
       </div>
 
@@ -1891,149 +1948,116 @@ new Chart(document.getElementById('c-goog-geo-roas'), {
   }
 });
 
-// ── SHOPIFY DATA ──
 const shpChannels = [
-  {source:'Google Search',     type:'Paid Search',    gross:34928.9,  net:29231.83, orders:662, aov:45.78, newCust:471, retRate:0.279},
-  {source:'Direct / Unknown',  type:'Direct',         gross:32784.12, net:18918.34, orders:573, aov:37.04, newCust:272, retRate:0.512},
-  {source:'Ocushield (direct)',type:'Brand Direct',   gross:15917.82, net:12726.66, orders:256, aov:52.59, newCust:158, retRate:0.360},
-  {source:'Instagram',         type:'Paid Social',    gross:889.36,   net:771.62,  orders:20,  aov:38.58, newCust:18,  retRate:0.100},
-  {source:'Bing Search',       type:'Paid Search',    gross:948.71,   net:703.47,  orders:13,  aov:60.78, newCust:9,   retRate:0.308},
-  {source:'SafeOpt',           type:'Partner',        gross:1114.0,   net:923.5,   orders:13,  aov:74.41, newCust:7,   retRate:0.462},
-  {source:'Capital One Shop.', type:'Partner',        gross:914.13,   net:728.88,  orders:11,  aov:68.10, newCust:8,   retRate:0.273},
-  {source:'SaleGains',         type:'Partner',        gross:819.87,   net:688.89,  orders:13,  aov:52.99, newCust:9,   retRate:0.308},
-  {source:'Facebook',          type:'Paid Social',    gross:523.81,   net:451.62,  orders:12,  aov:37.98, newCust:7,   retRate:0.417},
-  {source:'DuckDuckGo',        type:'Organic Search', gross:591.34,   net:493.14,  orders:7,   aov:70.45, newCust:3,   retRate:0.571},
-  {source:'ChatGPT',           type:'AI Referral',    gross:297.73,   net:51.67,   orders:8,   aov:32.99, newCust:7,   retRate:0.125},
-  {source:'SimplyCodes',       type:'Partner',        gross:439.38,   net:310.62,  orders:4,   aov:87.80, newCust:1,   retRate:0.750},
-  {source:'Linktree',          type:'Social',         gross:257.22,   net:225.51,  orders:6,   aov:37.59, newCust:5,   retRate:0.167},
-  {source:'Yahoo Search',      type:'Organic Search', gross:93.71,    net:80.04,   orders:3,   aov:26.68, newCust:2,   retRate:0.333},
-  {source:'Email (Gmail)',      type:'Email',          gross:58.41,    net:52.57,   orders:1,   aov:52.57, newCust:1,   retRate:0.000},
+  {source:'Direct / unattributed', medium:'—',         orders:874, gross:51273, net:39237, gp:28002},
+  {source:'ChatGPT.com',           medium:'various',    orders:51,  gross:3065,  net:2351,  gp:1739},
+  {source:'Facebook / Instagram',  medium:'paid',       orders:31,  gross:1613,  net:1341,  gp:986},
+  {source:'SafeOpt',               medium:'affiliate',  orders:18,  gross:1413,  net:1184,  gp:864},
+  {source:'Omnisend (email)',       medium:'email',      orders:16,  gross:1163,  net:962,   gp:669},
+  {source:'Bing / Microsoft',      medium:'cpc',        orders:14,  gross:1239,  net:1022,  gp:656},
+  {source:'Refersion affiliates',  medium:'affiliate',  orders:7,   gross:392,   net:324,   gp:224},
+  {source:'EyeJust.com',           medium:'partner',    orders:7,   gross:276,   net:244,   gp:193},
+  {source:'Linktree',              medium:'social',     orders:7,   gross:283,   net:249,   gp:180},
+  {source:'SAS Affiliate',         medium:'affiliate',  orders:6,   gross:320,   net:264,   gp:182},
+  {source:'Google (cpc tracked)',  medium:'cpc',        orders:6,   gross:358,   net:287,   gp:197},
 ];
-
-const typeColors = {
-  'Paid Search':    '#0575FF',
-  'Direct':         '#8B9DB5',
-  'Brand Direct':   '#0EA86E',
-  'Paid Social':    '#D85A30',
-  'Partner':        '#D48A00',
-  'Organic Search': '#34A853',
-  'AI Referral':    '#7F77DD',
-  'Social':         '#FF6B6B',
-  'Email':          '#E03535',
-};
-
-function typeTag(type) {
-  const col = typeColors[type] || '#888';
-  return `<span style="display:inline-block;border-radius:4px;padding:1px 6px;font-size:10px;font-weight:500;background:${col}22;color:${col};">${type}</span>`;
-}
-
-document.getElementById('shp-channel-table').innerHTML = shpChannels.map(c => `<tr>
-  <td style="font-weight:500;">${c.source}</td>
-  <td>${typeTag(c.type)}</td>
-  <td>£${c.gross.toLocaleString('en-GB',{maximumFractionDigits:0})}</td>
-  <td>£${c.net.toLocaleString('en-GB',{maximumFractionDigits:0})}</td>
+const shpEl = document.getElementById('shp-channel-table');
+if (shpEl) shpEl.innerHTML = shpChannels.map(c=>`<tr>
+  <td>${c.source}</td>
+  <td><span class="badge b-blue" style="font-family:'DM Sans',sans-serif;">${c.medium}</span></td>
   <td>${c.orders}</td>
-  <td>£${c.aov.toFixed(2)}</td>
-  <td>${c.newCust}</td>
-  <td>${(c.retRate*100).toFixed(1)}%</td>
+  <td>£${c.gross.toLocaleString()}</td>
+  <td>£${c.net.toLocaleString()}</td>
+  <td>£${c.gp.toLocaleString()}</td>
+  <td>${Math.round(c.gp/c.gross*100)}%</td>
 </tr>`).join('');
 
-// Channel donut charts
-const chanLabels  = ['Google Search','Direct/Unknown','Brand Direct','Paid Social','Partners','Other'];
-const chanOrders  = [662, 573, 256, 32, 41, 67];
-const chanRevenue = [34929, 32784, 15918, 1413, 3287, 3809];
-const donutColors = ['#0575FF','#8B9DB5','#0EA86E','#D85A30','#D48A00','#7F77DD'];
-
-new Chart(document.getElementById('c-shp-orders-donut'), {
-  type: 'doughnut',
-  data: { labels: chanLabels, datasets: [{ data: chanOrders, backgroundColor: donutColors, borderWidth: 2, borderColor: '#fff' }] },
-  options: { responsive:true, maintainAspectRatio:false,
-    plugins: { legend:{ position:'right', labels:{ font:{size:10}, boxWidth:10 } },
-      tooltip:{ callbacks:{ label: c => `${c.label}: ${c.parsed} orders (${(c.parsed/1631*100).toFixed(1)}%)` } } }
-  }
-});
-new Chart(document.getElementById('c-shp-rev-donut'), {
-  type: 'doughnut',
-  data: { labels: chanLabels, datasets: [{ data: chanRevenue, backgroundColor: donutColors, borderWidth: 2, borderColor: '#fff' }] },
-  options: { responsive:true, maintainAspectRatio:false,
-    plugins: { legend:{ position:'right', labels:{ font:{size:10}, boxWidth:10 } },
-      tooltip:{ callbacks:{ label: c => `${c.label}: £${c.parsed.toLocaleString()} (${(c.parsed/92140*100).toFixed(1)}%)` } } }
-  }
-});
-
-// New vs returning daily trend
-const shpDays   = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19'];
-const shpTotal  = [80,78,65,80,91,108,78,76,67,87,106,111,112,93,78,82,81,98,39];
-const shpReturn = [42,35,28,40,42,35,20,29,23,31,43,41,29,28,27,32,28,36,13];
-const shpNew    = shpTotal.map((t,i) => t - shpReturn[i]);
-
-new Chart(document.getElementById('c-shp-new-ret'), {
-  type: 'bar',
-  data: { labels: shpDays.map(d => 'May '+d), datasets: [
-    { label:'New customers',      data: shpNew,    backgroundColor:'#0575FF', stack:'s' },
-    { label:'Returning customers', data: shpReturn, backgroundColor:'#34A853', stack:'s' }
-  ]},
-  options: { ...chartDefaults,
-    plugins: { legend:{ display:true, position:'top', labels:{ font:{size:11}, boxWidth:10 } },
-      tooltip:{ callbacks:{ footer: items => `Total: ${items.reduce((a,i)=>a+i.parsed.y,0)} customers` } } },
-    scales: {
-      x: { grid:{display:false}, ticks:{font:{size:10}}, stacked:true },
-      y: { stacked:true, ticks:{font:{size:10}}, grid:{color:'rgba(0,0,0,0.04)'} }
-    }
-  }
-});
-
-// Top 10 products
 const shpProducts = [
-  {name:'iPhone screen protector',     gross:29221.18, net:22249.77, orders:734},
-  {name:'Laptop/monitor protector',    gross:17762.58, net:11944.1,  orders:209},
-  {name:'Blue light glasses M&W',      gross:11530.75, net:9349.66,  orders:281},
-  {name:'MacBook privacy filter',      gross:8271.0,   net:6306.12,  orders:185},
-  {name:'Amber blue light glasses',    gross:7735.16,  net:5825.1,   orders:139},
-  {name:'iPad screen protector',       gross:5682.85,  net:4408.32,  orders:153},
-  {name:'Privacy screen protector',    gross:2807.94,  net:1906.61,  orders:114},
-  {name:'Ocuglow therapy panel',       gross:2505.93,  net:1934.18,  orders:13},
-  {name:'EMF Protection (Stasis)',     gross:2067.36,  net:1587.89,  orders:118},
-  {name:'Oculamp all-day light',       gross:1212.05,  net:693.21,   orders:19},
+  {name:'iPhone screen protector',   units:901, gross:29856, gp:18494, returns:813,  margin:61.9},
+  {name:'Blue light glasses M&W',    units:309, gross:11836, gp:7536,  returns:439,  margin:63.7},
+  {name:'Laptop/monitor protector',  units:278, gross:17963, gp:7550,  returns:1070, margin:42.0},
+  {name:'MacBook privacy filter',    units:197, gross:8405,  gp:3794,  returns:287,  margin:45.1},
+  {name:'Amber glasses',             units:155, gross:7903,  gp:4948,  returns:343,  margin:62.6},
+  {name:'iPad screen protector',     units:180, gross:5718,  gp:3098,  returns:145,  margin:54.2},
+  {name:'Kids blue light glasses',   units:52,  gross:1164,  gp:649,   returns:0,    margin:55.8},
+  {name:'Privacy filter iPhone',     units:133, gross:2899,  gp:1266,  returns:16,   margin:43.7},
 ];
-const totalGross = 92140.19;
 
-new Chart(document.getElementById('c-shp-products'), {
-  type: 'bar',
-  data: {
-    labels: shpProducts.map(p => p.name),
-    datasets: [
-      { label:'Gross sales', data: shpProducts.map(p=>p.gross), backgroundColor:'#0575FF' },
-      { label:'Net sales',   data: shpProducts.map(p=>p.net),   backgroundColor:'#34A853' },
+const shpProdChart = document.getElementById('c-shp-products');
+if (shpProdChart) new Chart(shpProdChart, {
+  type:'bar',
+  data:{
+    labels:shpProducts.map(p=>p.name.length>24?p.name.slice(0,23)+'…':p.name),
+    datasets:[
+      {label:'Gross sales', data:shpProducts.map(p=>p.gross), backgroundColor:'#0575FF'},
+      {label:'Gross profit',data:shpProducts.map(p=>p.gp),    backgroundColor:'#34A853'}
     ]
   },
-  options: { ...chartDefaults,
-    indexAxis: 'y',
-    plugins: { legend:{ display:true, position:'top', labels:{ font:{size:11}, boxWidth:10 } },
-      tooltip:{ callbacks:{ label: c => `£${c.parsed.x.toLocaleString('en-GB',{maximumFractionDigits:0})}` } } },
-    scales: {
-      x: { ticks:{callback:v=>'£'+(v/1000).toFixed(0)+'K',font:{size:10}}, grid:{color:'rgba(0,0,0,0.04)'} },
-      y: { grid:{display:false}, ticks:{font:{size:10}} }
-    }
+  options:{...chartDefaults, indexAxis:'y',
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'£'+c.parsed.x.toLocaleString()}}},
+    scales:{x:{ticks:{callback:v=>'£'+(v/1000).toFixed(0)+'K',font:{size:10}},grid:{color:'rgba(0,0,0,0.04)'}},y:{grid:{display:false},ticks:{font:{size:10}}}}
   }
 });
 
-document.getElementById('shp-products-table').innerHTML = shpProducts.map((p,i) => {
-  const erosion = p.gross - p.net;
-  const erosionPct = (erosion/p.gross*100).toFixed(1);
-  const share = (p.gross/totalGross*100).toFixed(1);
-  return `<tr>
-    <td><strong>#${i+1}</strong> ${p.name}</td>
-    <td>£${p.gross.toLocaleString('en-GB',{maximumFractionDigits:0})}</td>
-    <td>£${p.net.toLocaleString('en-GB',{maximumFractionDigits:0})}</td>
-    <td>${p.orders}</td>
-    <td>£${erosion.toLocaleString('en-GB',{maximumFractionDigits:0})} (${erosionPct}%)</td>
-    <td><div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;">
-      <div style="width:${Math.round(parseFloat(share)*2)}px;height:6px;background:#0575FF;border-radius:3px;"></div>
-      ${share}%
-    </div></td>
-  </tr>`;
-}).join('');
+const shpProdEl = document.getElementById('shp-products-table');
+if (shpProdEl) shpProdEl.innerHTML = shpProducts.map(p=>`<tr>
+  <td>${p.name}</td>
+  <td>${p.units}</td>
+  <td>£${p.gross.toLocaleString()}</td>
+  <td>£${p.gp.toLocaleString()}</td>
+  <td><span class="badge ${p.margin>55?'b-green':p.margin>45?'b-blue':'b-amber'}">${p.margin.toFixed(1)}%</span></td>
+  <td>£${p.returns.toLocaleString()}</td>
+  <td>${p.returns>0?((p.returns/p.gross*100).toFixed(1)+'%'):'—'}</td>
+</tr>`).join('');
+
+const shpTrend = [
+  {month:'February', type:'New',       orders:2252, gross:133622, net:104478, gp:76386, margin:57.2, aov:49.54, disc:22052, ret:7103},
+  {month:'February', type:'Returning', orders:1230, gross:66520,  net:44205,  gp:30355, margin:45.6, aov:37.53, disc:20361, ret:2022},
+  {month:'March',    type:'New',       orders:2230, gross:133623, net:103379, gp:75280, margin:56.3, aov:49.55, disc:23127, ret:7151},
+  {month:'March',    type:'Returning', orders:1171, gross:72572,  net:46580,  gp:32015, margin:44.1, aov:41.41, disc:24079, ret:1961},
+  {month:'April',    type:'New',       orders:1701, gross:100109, net:76584,  gp:55291, margin:55.2, aov:48.41, disc:17759, ret:5770},
+  {month:'April',    type:'Returning', orders:1051, gross:57460,  net:36800,  gp:24528, margin:42.7, aov:36.58, disc:19010, ret:1940},
+];
+const shpTrendEl = document.getElementById('shp-trend-body');
+if (shpTrendEl) shpTrendEl.innerHTML = shpTrend.map((r,i)=>`
+  <tr style="${i%2===0?'border-top:2px solid var(--border2);':''}">
+    <td style="font-weight:${i%2===0?600:400}">${i%2===0?r.month:''}</td>
+    <td><span class="badge" style="background:${r.type==='New'?'#0575FF18':'#34A85318'};color:${r.type==='New'?'#0575FF':'#34A853'};font-family:DM Sans,sans-serif;">${r.type}</span></td>
+    <td>${r.orders.toLocaleString()}</td>
+    <td>£${(r.gross/1000).toFixed(1)}K</td>
+    <td>£${(r.net/1000).toFixed(1)}K</td>
+    <td>£${(r.gp/1000).toFixed(1)}K</td>
+    <td><span class="badge ${r.margin>55?'b-green':r.margin>45?'b-blue':'b-amber'}">${r.margin.toFixed(1)}%</span></td>
+    <td>£${r.aov.toFixed(2)}</td>
+    <td>£${(r.disc/1000).toFixed(1)}K</td>
+    <td>£${(r.ret/1000).toFixed(1)}K</td>
+  </tr>`).join('');
+
+const tMonths = ['Feb','Mar','Apr'];
+const shpTrendRev = document.getElementById('c-shp-trend-rev');
+if (shpTrendRev) new Chart(shpTrendRev, {
+  type:'bar',
+  data:{labels:tMonths,datasets:[
+    {label:'New',      data:[133622,133623,100109],backgroundColor:'#0575FF'},
+    {label:'Returning',data:[66520, 72572, 57460], backgroundColor:'#34A853'}
+  ]},
+  options:{...chartDefaults,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'£'+c.parsed.y.toLocaleString()}}},
+    scales:{x:{grid:{display:false},ticks:{font:{size:11}}},y:{ticks:{callback:v=>'£'+(v/1000).toFixed(0)+'K',font:{size:10}},grid:{color:'rgba(0,0,0,0.04)'}}}
+  }
+});
+const shpTrendGp = document.getElementById('c-shp-trend-gp');
+if (shpTrendGp) new Chart(shpTrendGp, {
+  type:'bar',
+  data:{labels:tMonths,datasets:[
+    {label:'New GP',      data:[76386,75280,55291],backgroundColor:'#0575FF'},
+    {label:'Returning GP',data:[30355,32015,24528],backgroundColor:'#34A853'}
+  ]},
+  options:{...chartDefaults,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'£'+c.parsed.y.toLocaleString()}}},
+    scales:{x:{grid:{display:false},ticks:{font:{size:11}}},y:{ticks:{callback:v=>'£'+(v/1000).toFixed(0)+'K',font:{size:10}},grid:{color:'rgba(0,0,0,0.04)'}}}
+  }
+});
 </script>
 </body>
 </html>
