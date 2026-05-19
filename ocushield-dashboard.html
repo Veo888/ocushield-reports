@@ -547,6 +547,61 @@
         <div style="position:relative;height:180px;"><canvas id="c-purch" role="img" aria-label="Purchases and impressions trend">Purchases: 575 493 339. Impressions: 1649K 1717K 1205K</canvas></div>
       </div>
     </div>
+
+    <div class="section-head">
+      <span class="section-title">UK vs US Attribution — Meta</span>
+      <span class="section-desc">May 1–18, 2026 · by country of user · top markets shown</span>
+    </div>
+
+    <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:14px;">
+      <div class="kpi" style="border-top:3px solid #012169;">
+        <div class="kpi-label">🇬🇧 UK spend</div><div class="kpi-val">£5,749</div><div class="kpi-sub">55% of total</div>
+      </div>
+      <div class="kpi" style="border-top:3px solid #012169;">
+        <div class="kpi-label">🇬🇧 UK ROAS</div><div class="kpi-val">1.76×</div><div class="kpi-sub">138 purchases · £41.66 CPA</div>
+      </div>
+      <div class="kpi" style="border-top:3px solid #B22234;">
+        <div class="kpi-label">🇺🇸 US spend</div><div class="kpi-val">£4,839</div><div class="kpi-sub">46% of total</div>
+      </div>
+      <div class="kpi warn" style="border-top:3px solid #B22234;">
+        <div class="kpi-label">🇺🇸 US ROAS</div><div class="kpi-val">1.18×</div><div class="kpi-sub">75 purchases · £64.52 CPA</div>
+      </div>
+    </div>
+
+    <div class="chart-grid" style="margin-bottom:14px;">
+      <div class="chart-card">
+        <div class="chart-title">Spend &amp; revenue — UK vs US</div>
+        <div class="chart-sub">Meta · May MTD · UK significantly more efficient</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-sq" style="background:#012169"></div>UK spend</div>
+          <div class="leg"><div class="leg-sq" style="background:#4169E1"></div>UK revenue</div>
+          <div class="leg"><div class="leg-sq" style="background:#B22234"></div>US spend</div>
+          <div class="leg"><div class="leg-sq" style="background:#FF6B6B"></div>US revenue</div>
+        </div>
+        <div style="position:relative;height:200px;"><canvas id="c-meta-geo-bar" role="img" aria-label="Meta UK vs US spend and revenue"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">ROAS &amp; CPA by country</div>
+        <div class="chart-sub">UK outperforms US by 0.58× — confirmed cross-channel</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-sq" style="background:#0575FF"></div>ROAS (×)</div>
+          <div class="leg"><div class="leg-sq" style="background:#D48A00;border:1px dashed #D48A00"></div>CPA (£)</div>
+        </div>
+        <div style="position:relative;height:200px;"><canvas id="c-meta-geo-roas" role="img" aria-label="Meta ROAS and CPA by country"></canvas></div>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <div class="table-header">
+        <span class="t-title">All markets with purchases — Meta</span>
+        <span class="t-sub">May 1–18 · ranked by spend · countries with purchases only</span>
+      </div>
+      <table>
+        <thead><tr><th>Country</th><th>Spend</th><th>Revenue</th><th>ROAS</th><th>Purchases</th><th>CPA</th><th>CTR</th></tr></thead>
+        <tbody id="meta-geo-table"></tbody>
+      </table>
+      <div class="table-note">India (£10, 27.6× ROAS), Singapore (£9, 39.0×), Turkey (£2, 43.0×) and other small markets excluded from charts for scale but included in table</div>
+    </div>
   </div>
 
   <!-- ══════════════ GOOGLE ADS ══════════════ -->
@@ -607,6 +662,74 @@
           <th>Campaign</th><th>ROAS</th><th>Spend</th><th>Conv. value</th><th>Conv.</th><th>CPA</th><th>CTR</th>
         </tr></thead>
         <tbody id="g-allcamp"></tbody>
+      </table>
+    </div>
+
+    <div class="section-head">
+      <span class="section-title">UK vs US Attribution — Google</span>
+      <span class="section-desc">May 1–18, 2026 · GeographicView · top markets by spend</span>
+    </div>
+
+    <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:14px;">
+      <div class="kpi" style="border-top:3px solid #012169;">
+        <div class="kpi-label">🇬🇧 UK spend</div><div class="kpi-val">£7,150</div><div class="kpi-sub">38% of total</div>
+      </div>
+      <div class="kpi" style="border-top:3px solid #012169;">
+        <div class="kpi-label">🇬🇧 UK ROAS</div><div class="kpi-val">2.69×</div><div class="kpi-sub">395 conv. · £18.10 CPA</div>
+      </div>
+      <div class="kpi" style="border-top:3px solid #B22234;">
+        <div class="kpi-label">🇺🇸 US spend</div><div class="kpi-val">£7,272</div><div class="kpi-sub">38% of total</div>
+      </div>
+      <div class="kpi" style="border-top:3px solid #B22234;">
+        <div class="kpi-label">🇺🇸 US ROAS</div><div class="kpi-val">2.61×</div><div class="kpi-sub">353 conv. · £20.63 CPA</div>
+      </div>
+    </div>
+
+    <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:14px;">
+      <div class="kpi" style="border-top:3px solid #34A853;">
+        <div class="kpi-label">🇦🇺 Australia spend</div><div class="kpi-val">£512</div><div class="kpi-sub">ROAS 2.30× · 19 conv.</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">UK + US share of spend</div><div class="kpi-val">76%</div><div class="kpi-sub">remaining 24% across 60+ markets</div>
+      </div>
+      <div class="kpi accent">
+        <div class="kpi-label">UK vs US ROAS gap</div><div class="kpi-val">+0.08×</div><div class="kpi-sub">much closer than Meta (0.58× gap)</div>
+      </div>
+    </div>
+
+    <div class="chart-grid" style="margin-bottom:14px;">
+      <div class="chart-card">
+        <div class="chart-title">Spend &amp; revenue — UK vs US vs AUS</div>
+        <div class="chart-sub">Google · May MTD · UK and US near-parity unlike Meta</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-sq" style="background:#012169"></div>UK spend</div>
+          <div class="leg"><div class="leg-sq" style="background:#4169E1"></div>UK revenue</div>
+          <div class="leg"><div class="leg-sq" style="background:#B22234"></div>US spend</div>
+          <div class="leg"><div class="leg-sq" style="background:#FF6B6B"></div>US revenue</div>
+          <div class="leg"><div class="leg-sq" style="background:#34A853"></div>AUS spend</div>
+          <div class="leg"><div class="leg-sq" style="background:#00B87C"></div>AUS revenue</div>
+        </div>
+        <div style="position:relative;height:220px;"><canvas id="c-goog-geo-bar" role="img" aria-label="Google UK vs US vs AUS spend and revenue"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">ROAS &amp; CPA by country — Google</div>
+        <div class="chart-sub">Unlike Meta, UK and US perform similarly on Google</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-sq" style="background:#34A853"></div>ROAS (×)</div>
+          <div class="leg"><div class="leg-sq" style="background:#D48A00;border:1px dashed #D48A00"></div>CPA (£)</div>
+        </div>
+        <div style="position:relative;height:220px;"><canvas id="c-goog-geo-roas" role="img" aria-label="Google ROAS and CPA by country"></canvas></div>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <div class="table-header">
+        <span class="t-title">All markets with spend — Google</span>
+        <span class="t-sub">May 1–18 · ranked by spend · top 15 markets</span>
+      </div>
+      <table>
+        <thead><tr><th>Country</th><th>Spend</th><th>Conv. value</th><th>ROAS</th><th>Conv.</th><th>CPA</th><th>CTR</th></tr></thead>
+        <tbody id="goog-geo-table"></tbody>
       </table>
     </div>
   </div>
@@ -1535,6 +1658,133 @@ new Chart(document.getElementById('c-g-roas'), {
   ]},
   options: { ...chartDefaults,
     scales: { x:{grid:{display:false},ticks:{font:{size:11}}}, y:{ticks:{callback:v=>v.toFixed(2)+'×',font:{size:10}},grid:{color:'rgba(0,0,0,0.04)'},min:1.0,max:3.0}}
+  }
+});
+
+// ── META GEO DATA ──
+const metaGeo = [
+  {country:'🇬🇧 United Kingdom', code:'GB', spend:5748.91, revenue:10112.43, roas:1.759,  purchases:138, cpa:41.66, ctr:1.19},
+  {country:'🇺🇸 United States',  code:'US', spend:4838.68, revenue:5721.31,  roas:1.1824, purchases:75,  cpa:64.52, ctr:0.53},
+  {country:'🇮🇳 India',          code:'IN', spend:10.33,   revenue:285.10,   roas:27.61,  purchases:6,   cpa:1.72,  ctr:0.34},
+  {country:'🇦🇺 Australia',      code:'AU', spend:28.94,   revenue:48.94,    roas:1.691,  purchases:1,   cpa:28.94, ctr:0.98},
+  {country:'🇨🇦 Canada',         code:'CA', spend:21.21,   revenue:54.14,    roas:2.553,  purchases:1,   cpa:21.21, ctr:0.66},
+  {country:'🇸🇬 Singapore',      code:'SG', spend:8.83,    revenue:343.94,   roas:38.97,  purchases:2,   cpa:4.41,  ctr:0.38},
+  {country:'🇹🇷 Türkiye',        code:'TR', spend:2.42,    revenue:104.09,   roas:42.98,  purchases:1,   cpa:2.42,  ctr:0.27},
+  {country:'🇵🇷 Puerto Rico',    code:'PR', spend:5.64,    revenue:194.07,   roas:34.38,  purchases:2,   cpa:2.82,  ctr:0.36},
+];
+
+function metaGeoRow(c) {
+  return `<tr>
+    <td>${c.country}</td>
+    <td>£${c.spend.toLocaleString('en-GB',{maximumFractionDigits:0})}</td>
+    <td>£${c.revenue.toLocaleString('en-GB',{maximumFractionDigits:0})}</td>
+    <td>${badge(c.roas)}</td>
+    <td>${c.purchases}</td>
+    <td>£${c.cpa.toFixed(2)}</td>
+    <td>${(c.ctr).toFixed(2)}%</td>
+  </tr>`;
+}
+document.getElementById('meta-geo-table').innerHTML = metaGeo.map(metaGeoRow).join('');
+
+new Chart(document.getElementById('c-meta-geo-bar'), {
+  type: 'bar',
+  data: {
+    labels: ['United Kingdom', 'United States'],
+    datasets: [
+      { label:'Spend',   data:[5748.91, 4838.68], backgroundColor:['#012169','#B22234'] },
+      { label:'Revenue', data:[10112.43, 5721.31], backgroundColor:['#4169E1','#FF6B6B'] },
+    ]
+  },
+  options: { ...chartDefaults,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'£'+c.parsed.y.toLocaleString()}}},
+    scales:{x:{grid:{display:false},ticks:{font:{size:11}}},y:{ticks:{callback:v=>'£'+(v/1000).toFixed(0)+'K',font:{size:10}},grid:{color:'rgba(0,0,0,0.04)'}}}
+  }
+});
+
+new Chart(document.getElementById('c-meta-geo-roas'), {
+  type: 'bar',
+  data: {
+    labels: ['🇬🇧 UK', '🇺🇸 US', '🇦🇺 AUS', '🇨🇦 CA'],
+    datasets: [
+      { label:'ROAS', data:[1.76, 1.18, 1.69, 2.55], backgroundColor:['#012169','#B22234','#34A853','#D48A00'], yAxisID:'y' },
+      { label:'CPA',  data:[41.66, 64.52, 28.94, 21.21], type:'line', borderColor:'#D48A00', backgroundColor:'transparent', borderDash:[5,3], tension:0.3, pointRadius:5, pointBackgroundColor:'#D48A00', yAxisID:'y2' }
+    ]
+  },
+  options: { ...chartDefaults,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{grid:{display:false},ticks:{font:{size:11}}},
+      y:{position:'left', ticks:{callback:v=>v.toFixed(2)+'×',font:{size:10}}, grid:{color:'rgba(0,0,0,0.04)'}, min:0, max:3},
+      y2:{position:'right', grid:{drawOnChartArea:false}, ticks:{callback:v=>'£'+v.toFixed(0),font:{size:10}}}
+    }
+  }
+});
+
+// ── GOOGLE GEO DATA ──
+const googGeo = [
+  {country:'🇬🇧 United Kingdom', spend:7150.28, revenue:19238.88, roas:2.691, conv:395.11, cpa:18.10, ctr:2.07},
+  {country:'🇺🇸 United States',  spend:7271.94, revenue:18946.04, roas:2.605, conv:352.52, cpa:20.63, ctr:2.10},
+  {country:'🇦🇺 Australia',      spend:512.45,  revenue:1180.21,  roas:2.303, conv:19,     cpa:26.97, ctr:1.02},
+  {country:'🇮🇪 Ireland',        spend:44.86,   revenue:35.73,    roas:0.797, conv:1,      cpa:44.86, ctr:11.06},
+  {country:'🇧🇪 Belgium',        spend:15.55,   revenue:107.92,   roas:6.938, conv:2,      cpa:7.78,  ctr:8.02},
+  {country:'🇮🇳 India',          spend:18.72,   revenue:100.00,   roas:5.343, conv:1,      cpa:18.72, ctr:26.06},
+  {country:'🇵🇷 Puerto Rico',    spend:12.38,   revenue:68.50,    roas:5.533, conv:1,      cpa:12.38, ctr:1.94},
+  {country:'🇸🇬 Singapore',      spend:4.68,    revenue:219.79,   roas:46.99, conv:4,      cpa:1.17,  ctr:23.61},
+  {country:'🇸🇪 Sweden',         spend:6.76,    revenue:78.67,    roas:11.63, conv:1,      cpa:6.76,  ctr:5.22},
+  {country:'🇲🇾 Malaysia',       spend:5.68,    revenue:92.83,    roas:16.34, conv:2,      cpa:2.84,  ctr:20.00},
+  {country:'🇦🇪 UAE',            spend:6.99,    revenue:51.10,    roas:7.31,  conv:1,      cpa:6.99,  ctr:34.69},
+  {country:'🇳🇱 Netherlands',    spend:23.06,   revenue:0,        roas:0,     conv:0,      cpa:null,  ctr:6.86},
+  {country:'🇨🇭 Switzerland',    spend:20.06,   revenue:0,        roas:0,     conv:0,      cpa:null,  ctr:6.83},
+  {country:'🇯🇪 Jersey',         spend:12.99,   revenue:0,        roas:0,     conv:0,      cpa:null,  ctr:9.45},
+  {country:'🇩🇰 Denmark',        spend:5.35,    revenue:0,        roas:0,     conv:0,      cpa:null,  ctr:3.96},
+];
+
+function googGeoRow(c) {
+  const roasBadge = c.roas > 0 ? badge(c.roas) : `<span class="badge comp-neu">—</span>`;
+  const cpaStr = c.cpa ? '£'+c.cpa.toFixed(2) : '—';
+  return `<tr>
+    <td>${c.country}</td>
+    <td>£${c.spend.toLocaleString('en-GB',{maximumFractionDigits:0})}</td>
+    <td>£${c.revenue.toLocaleString('en-GB',{maximumFractionDigits:0})}</td>
+    <td>${roasBadge}</td>
+    <td>${c.conv > 0 ? c.conv.toFixed(c.conv % 1 === 0 ? 0 : 0) : '—'}</td>
+    <td>${cpaStr}</td>
+    <td>${c.ctr.toFixed(2)}%</td>
+  </tr>`;
+}
+document.getElementById('goog-geo-table').innerHTML = googGeo.map(googGeoRow).join('');
+
+new Chart(document.getElementById('c-goog-geo-bar'), {
+  type: 'bar',
+  data: {
+    labels: ['United Kingdom', 'United States', 'Australia'],
+    datasets: [
+      { label:'Spend',   data:[7150.28, 7271.94, 512.45], backgroundColor:['#012169','#B22234','#34A853'] },
+      { label:'Revenue', data:[19238.88, 18946.04, 1180.21], backgroundColor:['#4169E1','#FF6B6B','#00B87C'] },
+    ]
+  },
+  options: { ...chartDefaults,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'£'+c.parsed.y.toLocaleString()}}},
+    scales:{x:{grid:{display:false},ticks:{font:{size:11}}},y:{ticks:{callback:v=>'£'+(v/1000).toFixed(0)+'K',font:{size:10}},grid:{color:'rgba(0,0,0,0.04)'}}}
+  }
+});
+
+new Chart(document.getElementById('c-goog-geo-roas'), {
+  type: 'bar',
+  data: {
+    labels: ['🇬🇧 UK', '🇺🇸 US', '🇦🇺 AUS', '🇮🇪 IE'],
+    datasets: [
+      { label:'ROAS', data:[2.691, 2.605, 2.303, 0.797], backgroundColor:['#012169','#B22234','#34A853','#D48A00'], yAxisID:'y' },
+      { label:'CPA',  data:[18.10, 20.63, 26.97, 44.86], type:'line', borderColor:'#D48A00', backgroundColor:'transparent', borderDash:[5,3], tension:0.3, pointRadius:5, pointBackgroundColor:'#D48A00', yAxisID:'y2' }
+    ]
+  },
+  options: { ...chartDefaults,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{grid:{display:false},ticks:{font:{size:11}}},
+      y:{position:'left', ticks:{callback:v=>v.toFixed(2)+'×',font:{size:10}}, grid:{color:'rgba(0,0,0,0.04)'}, min:0, max:3.5},
+      y2:{position:'right', grid:{drawOnChartArea:false}, ticks:{callback:v=>'£'+v.toFixed(0),font:{size:10}}}
+    }
   }
 });
 </script>
