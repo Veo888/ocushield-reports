@@ -318,14 +318,68 @@
   .panel { display: none; }
   .panel.active { display: block; }
 
-  @media (max-width: 700px) {
-    .page { padding: 20px; }
-    .header { padding: 0 20px; }
-    .yellow-bar { padding: 7px 20px; }
-    .chart-grid, .insight-grid, .roas-cols { grid-template-columns: 1fr; }
-    .chart-card.full { grid-column: 1; }
-    .roas-pills { display: none; }
+  /* ── FD SUMMARY ── */
+  .fd-hero {
+    background: linear-gradient(135deg, #0a1628 0%, #0c2152 100%);
+    border-radius: var(--radius); padding: 28px 32px; margin-bottom: 16px;
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;
   }
+  .fd-hero-left .fd-eyebrow { font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .fd-hero-left .fd-title { font-size: 22px; font-weight: 600; color: #fff; letter-spacing: -0.02em; line-height: 1.2; }
+  .fd-hero-left .fd-sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 6px; }
+  .fd-hero-right { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+  .fd-stat { background: rgba(255,255,255,0.07); border: 0.5px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 12px 16px; text-align: center; min-width: 100px; }
+  .fd-stat-val { font-size: 20px; font-weight: 600; color: #fff; font-family: 'DM Mono', monospace; }
+  .fd-stat-label { font-size: 10px; color: rgba(255,255,255,0.45); margin-top: 3px; }
+  .fd-stat.good .fd-stat-val { color: #5effc4; }
+  .fd-stat.warn .fd-stat-val { color: #ffdb58; }
+  .fd-stat.bad  .fd-stat-val { color: #ff7a7a; }
+
+  .fd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .fd-card { background: var(--surface); border-radius: var(--radius); border: 0.5px solid var(--border); overflow: hidden; }
+  .fd-card-head { padding: 14px 18px 12px; border-bottom: 0.5px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .fd-card-icon { width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+  .fd-card-title { font-size: 13px; font-weight: 600; color: var(--text); }
+  .fd-card-body { padding: 16px 18px; }
+  .fd-row { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; border-bottom: 0.5px solid var(--border); font-size: 12px; }
+  .fd-row:last-child { border-bottom: none; }
+  .fd-row-label { color: var(--text2); }
+  .fd-row-val { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; color: var(--text); display: flex; align-items: center; gap: 6px; }
+  .fd-row-val .tag { font-size: 10px; border-radius: 4px; padding: 1px 5px; font-family: 'DM Sans', sans-serif; }
+  .tag-green { background: var(--green-dim); color: #005c3d; }
+  .tag-red   { background: var(--red-dim);   color: #8a1f1f; }
+  .tag-amber { background: var(--amber-dim); color: #7a4f00; }
+  .tag-blue  { background: var(--blue-dim);  color: #0050cc; }
+
+  .fd-proposal { background: var(--surface); border-radius: var(--radius); border: 0.5px solid var(--border); padding: 20px; margin-bottom: 14px; }
+  .fd-proposal-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 0.5px solid var(--border); display: flex; align-items: center; gap: 8px; }
+  .fd-proposals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 12px; }
+  .fd-prop-item { background: var(--surface2); border-radius: 8px; border: 0.5px solid var(--border); padding: 14px; }
+  .fd-prop-num { width: 24px; height: 24px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
+  .fd-prop-title { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .fd-prop-desc { font-size: 11px; color: var(--text2); line-height: 1.55; }
+  .fd-prop-impact { display: inline-block; margin-top: 8px; font-size: 10px; font-weight: 600; color: var(--blue); background: var(--blue-dim); border-radius: 4px; padding: 2px 7px; }
+
+  /* ── MD INSIGHTS (pending) ── */
+  .md-pending-banner {
+    background: linear-gradient(135deg, #fff8e6, #fffcf0);
+    border: 1px solid #f0c940; border-radius: var(--radius);
+    padding: 24px 28px; margin-bottom: 20px;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .md-pending-icon { font-size: 28px; flex-shrink: 0; }
+  .md-pending-title { font-size: 16px; font-weight: 600; color: #5a3e00; margin-bottom: 4px; }
+  .md-pending-sub { font-size: 12px; color: #7a5500; line-height: 1.6; }
+
+  .md-metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 12px; }
+  .md-metric { background: var(--surface); border-radius: var(--radius); border: 0.5px dashed rgba(212,138,0,0.4); padding: 16px 18px; position: relative; overflow: hidden; }
+  .md-metric::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--amber), transparent); }
+  .md-metric-label { font-size: 11px; color: var(--amber); font-weight: 600; margin-bottom: 4px; }
+  .md-metric-placeholder { font-size: 22px; font-weight: 600; color: var(--text3); letter-spacing: -0.02em; }
+  .md-metric-desc { font-size: 11px; color: var(--text3); margin-top: 4px; line-height: 1.4; }
+  .md-metric-source { display: inline-block; margin-top: 8px; font-size: 10px; color: var(--amber); background: var(--amber-dim); border-radius: 4px; padding: 1px 6px; }
+
+  .md-section-label { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; margin: 20px 0 10px; }
 </style>
 </head>
 <body>
@@ -365,6 +419,8 @@
     <button class="tab" onclick="showPanel('campaigns')">Meta Campaigns</button>
     <button class="tab" onclick="showPanel('diagnosis')">ROAS Diagnosis</button>
     <button class="tab" onclick="showPanel('actions')">Action Plan</button>
+    <button class="tab" onclick="showPanel('fd')" style="background:linear-gradient(135deg,#0a1628,#0c2152);color:#fff;border-radius:7px;">FD Summary</button>
+    <button class="tab" onclick="showPanel('md')" style="border:0.5px dashed var(--amber);color:var(--amber);">MD Insights ⏳</button>
   </div>
 
   <!-- ══════════════ CROSS-CHANNEL OVERVIEW ══════════════ -->
@@ -942,6 +998,263 @@
     <div class="alert info" style="margin-top:14px;">
       <span class="alert-icon">ℹ️</span>
       <span><strong>Next step: connect Shopify</strong> — Google Ads is now live. Connecting your Shopify store will add true revenue, new vs returning customer data, and cross-channel deduplication to this dashboard. <a href="https://hub.supermetrics.com">Connect via Supermetrics →</a></span>
+    </div>
+  </div>
+
+  <!-- ══════════════ FD SUMMARY ══════════════ -->
+  <div class="panel" id="panel-fd">
+
+    <div class="fd-hero">
+      <div class="fd-hero-left">
+        <div class="fd-eyebrow">Finance Director Briefing · May 2026</div>
+        <div class="fd-title">Marketing performance &amp;<br>capital allocation review</div>
+        <div class="fd-sub">Prepared by Marketing · Facebook Ads + Google Ads · May 1–18 vs Apr 1–18 (like-for-like)</div>
+      </div>
+      <div class="fd-hero-right">
+        <div class="fd-stat warn"><div class="fd-stat-val">£29K</div><div class="fd-stat-label">MTD spend</div></div>
+        <div class="fd-stat warn"><div class="fd-stat-val">1.81×</div><div class="fd-stat-label">Blended ROAS</div></div>
+        <div class="fd-stat bad"><div class="fd-stat-val">-17.3%</div><div class="fd-stat-label">Revenue vs Apr</div></div>
+        <div class="fd-stat good"><div class="fd-stat-val">£50K</div><div class="fd-stat-label">Est. monthly run rate</div></div>
+      </div>
+    </div>
+
+    <div class="fd-grid">
+
+      <div class="fd-card">
+        <div class="fd-card-head">
+          <div class="fd-card-icon" style="background:var(--blue-dim);">📊</div>
+          <div class="fd-card-title">P&amp;L snapshot — marketing</div>
+        </div>
+        <div class="fd-card-body">
+          <div class="fd-row"><span class="fd-row-label">MTD ad spend (May 1–18)</span><span class="fd-row-val">£29,373</span></div>
+          <div class="fd-row"><span class="fd-row-label">Platform-attributed revenue</span><span class="fd-row-val">£53,124 <span class="tag tag-amber">self-reported</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Blended ROAS</span><span class="fd-row-val">1.81× <span class="tag tag-amber">overlapping</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Est. monthly spend run rate</span><span class="fd-row-val">~£50,000</span></div>
+          <div class="fd-row"><span class="fd-row-label">Est. monthly revenue run rate</span><span class="fd-row-val">~£90,600</span></div>
+          <div class="fd-row"><span class="fd-row-label">Marketing spend as % of revenue</span><span class="fd-row-val">~55% <span class="tag tag-red">high</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Confirmed wasted spend (MTD)</span><span class="fd-row-val">~£808 <span class="tag tag-red">2 campaigns</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Annualised waste if unaddressed</span><span class="fd-row-val">~£9,700</span></div>
+        </div>
+      </div>
+
+      <div class="fd-card">
+        <div class="fd-card-head">
+          <div class="fd-card-icon" style="background:var(--red-dim);">⚠️</div>
+          <div class="fd-card-title">Key risks &amp; caveats</div>
+        </div>
+        <div class="fd-card-body">
+          <div class="fd-row"><span class="fd-row-label">Revenue double-counting risk</span><span class="fd-row-val"><span class="tag tag-red">HIGH</span></span></div>
+          <div class="fd-row" style="padding-left:8px;"><span class="fd-row-label" style="font-size:11px;color:var(--text3);">Meta + Google both claim same conversions. True combined revenue is lower than £53K reported.</span></div>
+          <div class="fd-row"><span class="fd-row-label">No backend revenue validation</span><span class="fd-row-val"><span class="tag tag-red">HIGH</span></span></div>
+          <div class="fd-row" style="padding-left:8px;"><span class="fd-row-label" style="font-size:11px;color:var(--text3);">Shopify not yet connected. All ROAS figures are platform self-reported, not verified against actual orders.</span></div>
+          <div class="fd-row"><span class="fd-row-label">Revenue trend declining</span><span class="fd-row-val"><span class="tag tag-amber">MEDIUM</span></span></div>
+          <div class="fd-row" style="padding-left:8px;"><span class="fd-row-label" style="font-size:11px;color:var(--text3);">Combined revenue down 17.3% vs same period last month. Meta ROAS declined from 1.42× to 1.56× (improving MTD vs Apr 1-18) but Google CPA deteriorated 40%.</span></div>
+          <div class="fd-row"><span class="fd-row-label">US market underperforming</span><span class="fd-row-val"><span class="tag tag-amber">MEDIUM</span></span></div>
+          <div class="fd-row" style="padding-left:8px;"><span class="fd-row-label" style="font-size:11px;color:var(--text3);">US campaigns on both Meta and Google consistently generate lower ROAS than UK. Significant budget allocated with sub-optimal returns.</span></div>
+        </div>
+      </div>
+
+      <div class="fd-card">
+        <div class="fd-card-head">
+          <div class="fd-card-icon" style="background:var(--green-dim);">✅</div>
+          <div class="fd-card-title">Channel efficiency — Apr 1–18 vs May 1–18</div>
+        </div>
+        <div class="fd-card-body">
+          <div class="fd-row"><span class="fd-row-label">Meta spend</span><span class="fd-row-val">£12,912 → £10,436 <span class="tag tag-green">-19.2%</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Meta ROAS</span><span class="fd-row-val">1.42× → 1.56× <span class="tag tag-green">improving</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Meta CPA</span><span class="fd-row-val">£54.94 → £47.80 <span class="tag tag-green">-13.0%</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Google spend</span><span class="fd-row-val">£17,620 → £18,937 <span class="tag tag-amber">+7.5%</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Google ROAS</span><span class="fd-row-val">2.61× → 1.95× <span class="tag tag-red">declining</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Google CPA</span><span class="fd-row-val">£20.09 → £28.14 <span class="tag tag-red">+40.1%</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Combined conversions</span><span class="fd-row-val">1,112 → 891 <span class="tag tag-red">-19.9%</span></span></div>
+        </div>
+      </div>
+
+      <div class="fd-card">
+        <div class="fd-card-head">
+          <div class="fd-card-icon" style="background:var(--green-dim);">💰</div>
+          <div class="fd-card-title">Immediate savings available</div>
+        </div>
+        <div class="fd-card-body">
+          <div class="fd-row"><span class="fd-row-label">Meta: cd-us-tof-asc-sales (0.55× ROAS)</span><span class="fd-row-val">~£708/mo <span class="tag tag-red">pause</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Meta: US-TOF-Sales-Broad-ROAS (0.56×)</span><span class="fd-row-val">~£101/mo <span class="tag tag-red">pause</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Google: US-PMax-zombie states (1.39×)</span><span class="fd-row-val">~£415/mo <span class="tag tag-amber">review</span></span></div>
+          <div class="fd-row"><span class="fd-row-label">Google: EU-Search-Catch_All (1.41×)</span><span class="fd-row-val">~£194/mo <span class="tag tag-amber">review</span></span></div>
+          <div class="fd-row" style="border-top: 1px solid var(--border); margin-top: 4px; padding-top: 10px;"><span class="fd-row-label" style="font-weight:600;">Total recoverable/month</span><span class="fd-row-val" style="color:var(--green);font-weight:600;">~£1,418</span></div>
+          <div class="fd-row"><span class="fd-row-label">Annualised</span><span class="fd-row-val" style="color:var(--green);font-weight:600;">~£17,000</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="fd-proposal">
+      <div class="fd-proposal-title">📋 Proposals for Finance Director approval</div>
+      <div class="fd-proposals-grid">
+        <div class="fd-prop-item">
+          <div class="fd-prop-num">1</div>
+          <div class="fd-prop-title">Set minimum ROAS floor of 1.5×</div>
+          <div class="fd-prop-desc">Any campaign below 1.5× ROAS for 14 consecutive days is automatically paused pending review. Creates a governance framework and spending discipline across both channels.</div>
+          <div class="fd-prop-impact">Impact: ~£17K/yr savings + prevents future waste</div>
+        </div>
+        <div class="fd-prop-item">
+          <div class="fd-prop-num">2</div>
+          <div class="fd-prop-title">Ring-fence brand search budget</div>
+          <div class="fd-prop-desc">UK and US brand search generates 17–32× ROAS — the most efficient spend in the account. Propose a protected floor of £500/month that is never subject to budget cuts or reallocation.</div>
+          <div class="fd-prop-impact">Impact: protects highest-ROI spend from cuts</div>
+        </div>
+        <div class="fd-prop-item">
+          <div class="fd-prop-num">3</div>
+          <div class="fd-prop-title">Connect Shopify — data governance</div>
+          <div class="fd-prop-desc">We are spending ~£50K/month on paid media and cannot verify the return against actual orders. Shopify integration via Supermetrics resolves this. One-time ops task, no ongoing cost.</div>
+          <div class="fd-prop-impact">Impact: true P&amp;L visibility on marketing spend</div>
+        </div>
+        <div class="fd-prop-item">
+          <div class="fd-prop-num">4</div>
+          <div class="fd-prop-title">Shift ROAS targets to contribution margin</div>
+          <div class="fd-prop-desc">Agree a maximum CPA based on gross margin per order rather than a ROAS multiple. If avg order value is £X at Y% gross margin, the sustainable CPA ceiling is calculable and consistent with profitability targets.</div>
+          <div class="fd-prop-impact">Impact: aligns marketing KPIs with actual P&amp;L</div>
+        </div>
+        <div class="fd-prop-item">
+          <div class="fd-prop-num">5</div>
+          <div class="fd-prop-title">Approve creative refresh budget</div>
+          <div class="fd-prop-desc">Meta ROAS decline is primarily a creative fatigue issue (CTR -17% in 2 months). A modest investment in new UGC and creative production now protects the £50K/month media spend. Estimated cost: £3–5K.</div>
+          <div class="fd-prop-impact">Impact: reverse ROAS decline on Meta TOF campaigns</div>
+        </div>
+        <div class="fd-prop-item">
+          <div class="fd-prop-num">6</div>
+          <div class="fd-prop-title">US market strategy review</div>
+          <div class="fd-prop-desc">US campaigns underperform UK on both Meta (1.23× vs 1.60×) and Google (US PMax 1.85× vs UK 2.00–2.42×). Propose a 30-day pause on US TOF spend increase pending a landing page, pricing and messaging review for the US market.</div>
+          <div class="fd-prop-impact">Impact: stops scaling a market that isn't converting</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert info">
+      <span class="alert-icon">ℹ️</span>
+      <span><strong>Important caveat for FD:</strong> All revenue figures are platform self-reported (Meta and Google) and subject to double-counting across channels. True net revenue attributable to paid media will be confirmed once Shopify is connected and cross-channel deduplication is applied. These figures should be treated as directional, not as verified P&amp;L inputs.</span>
+    </div>
+  </div>
+
+  <!-- ══════════════ MD INSIGHTS (PENDING SHOPIFY) ══════════════ -->
+  <div class="panel" id="panel-md">
+
+    <div class="md-pending-banner">
+      <div class="md-pending-icon">⏳</div>
+      <div>
+        <div class="md-pending-title">Awaiting Shopify connection — metrics will populate automatically</div>
+        <div class="md-pending-sub">The following metrics have been identified as critical for a complete marketing director view but require Shopify data to calculate. Once Operations has connected Shopify via Supermetrics, return here and these panels will be populated with real data. All placeholders below represent what will be shown and why each metric matters.</div>
+      </div>
+    </div>
+
+    <div class="md-section-label">Customer economics — requires Shopify</div>
+    <div class="md-metric-grid" style="margin-bottom:20px;">
+      <div class="md-metric">
+        <div class="md-metric-label">New vs returning customers</div>
+        <div class="md-metric-placeholder">—%</div>
+        <div class="md-metric-desc">% of orders from first-time vs repeat buyers. Critical for understanding whether paid media is acquiring new customers or just recycling existing ones through retargeting.</div>
+        <div class="md-metric-source">Shopify orders API</div>
+      </div>
+      <div class="md-metric">
+        <div class="md-metric-label">Blended customer acquisition cost</div>
+        <div class="md-metric-placeholder">£—</div>
+        <div class="md-metric-desc">Total marketing spend ÷ new customers acquired (not conversions). The true cost of growing your customer base, independent of platform ROAS claims.</div>
+        <div class="md-metric-source">Shopify + Supermetrics</div>
+      </div>
+      <div class="md-metric">
+        <div class="md-metric-label">Average order value</div>
+        <div class="md-metric-placeholder">£—</div>
+        <div class="md-metric-desc">Real AOV from Shopify orders, not platform-estimated. Needed to set a rational CPA ceiling based on gross margin. Enables contribution margin-based ROAS targets.</div>
+        <div class="md-metric-source">Shopify orders API</div>
+      </div>
+      <div class="md-metric">
+        <div class="md-metric-label">Customer lifetime value (90-day)</div>
+        <div class="md-metric-placeholder">£—</div>
+        <div class="md-metric-desc">Revenue per customer in the 90 days after acquisition. Determines whether a £47 CPA is cheap or expensive. If LTV is £120, a £47 CPA is highly profitable.</div>
+        <div class="md-metric-source">Shopify customer history</div>
+      </div>
+      <div class="md-metric">
+        <div class="md-metric-label">90-day repurchase rate</div>
+        <div class="md-metric-placeholder">—%</div>
+        <div class="md-metric-desc">% of customers who place a second order within 90 days. The single most important retention signal — tells you if your product creates habitual buyers or one-time purchasers.</div>
+        <div class="md-metric-source">Shopify customer history</div>
+      </div>
+      <div class="md-metric">
+        <div class="md-metric-label">Gross margin per order</div>
+        <div class="md-metric-placeholder">—%</div>
+        <div class="md-metric-desc">Revenue minus COGS per order. Needed to calculate the maximum sustainable CPA. Currently marketing is optimising to a ROAS target that may not reflect true profitability.</div>
+        <div class="md-metric-source">Shopify + product costs</div>
+      </div>
+    </div>
+
+    <div class="md-section-label">Attribution &amp; channel truth — requires Shopify</div>
+    <div class="md-metric-grid" style="margin-bottom:20px;">
+      <div class="md-metric">
+        <div class="md-metric-label">True combined revenue (deduplicated)</div>
+        <div class="md-metric-placeholder">£—</div>
+        <div class="md-metric-desc">Actual orders placed in Shopify, not the sum of Meta + Google reported conversions. Resolves double-counting where both platforms claim credit for the same sale.</div>
+        <div class="md-metric-source">Shopify orders API</div>
+      </div>
+      <div class="md-metric">
+        <div class="md-metric-label">Paid vs organic revenue split</div>
+        <div class="md-metric-placeholder">—% / —%</div>
+        <div class="md-metric-desc">How much revenue is driven by paid media vs organic search, direct, email, and other channels. Critical for understanding the true dependency on paid spend.</div>
+        <div class="md-metric-source">Shopify + UTM tracking</div>
+      </div>
+      <div class="md-metric">
+        <div class="md-metric-label">Channel-attributed new customers</div>
+        <div class="md-metric-placeholder">— Meta / — Google</div>
+        <div class="md-metric-desc">First-touch attribution by channel for new customers only. Answers which channel is actually driving customer acquisition vs which is capturing existing demand.</div>
+        <div class="md-metric-source">Shopify + UTM tracking</div>
+      </div>
+    </div>
+
+    <div class="md-section-label">Inventory &amp; product performance — requires Shopify</div>
+    <div class="md-metric-grid" style="margin-bottom:20px;">
+      <div class="md-metric">
+        <div class="md-metric-label">Best-selling products (by revenue)</div>
+        <div class="md-metric-placeholder">—</div>
+        <div class="md-metric-desc">Top products by revenue this month. Identifies where to concentrate ad spend and which DPA product feeds are driving retargeting performance.</div>
+        <div class="md-metric-source">Shopify products API</div>
+      </div>
+      <div class="md-metric">
+        <div class="md-metric-label">Conversion rate by product</div>
+        <div class="md-metric-placeholder">—%</div>
+        <div class="md-metric-desc">Which products convert best from paid traffic. Informs which SKUs to feature in Meta DPA and Google Shopping campaigns to improve overall account ROAS.</div>
+        <div class="md-metric-source">Shopify + UTM tracking</div>
+      </div>
+      <div class="md-metric">
+        <div class="md-metric-label">Refund &amp; return rate</div>
+        <div class="md-metric-placeholder">—%</div>
+        <div class="md-metric-desc">Returns reduce true revenue and gross margin. A high return rate on a specific product inflates reported ROAS vs actual. Should be factored into CPA targets.</div>
+        <div class="md-metric-source">Shopify orders API</div>
+      </div>
+    </div>
+
+    <div class="md-section-label">Creative performance — requires Meta API deeper access</div>
+    <div class="md-metric-grid">
+      <div class="md-metric">
+        <div class="md-metric-label">Ad frequency by campaign</div>
+        <div class="md-metric-placeholder">—×</div>
+        <div class="md-metric-desc">Average times a person has seen each ad. The primary creative fatigue signal — above 3–4 in 30 days and CTR typically falls. Currently the CTR decline suggests frequency is high.</div>
+        <div class="md-metric-source">Meta Ads Manager</div>
+      </div>
+      <div class="md-metric">
+        <div class="md-metric-label">Top creative by CTR &amp; CVR</div>
+        <div class="md-metric-placeholder">—</div>
+        <div class="md-metric-desc">Ad-level breakdown showing which specific creatives drive clicks and which convert. Informs the creative brief and avoids wasting production budget on formats that don't work.</div>
+        <div class="md-metric-source">Meta Ads Manager</div>
+      </div>
+      <div class="md-metric">
+        <div class="md-metric-label">Google impression share lost</div>
+        <div class="md-metric-placeholder">—%</div>
+        <div class="md-metric-desc">% of eligible impressions not captured due to budget or rank. If brand search impression share is &lt;90%, budget is being left on the table for the highest-ROAS campaigns in the account.</div>
+        <div class="md-metric-source">Google Ads</div>
+      </div>
+    </div>
+
+    <div class="alert info" style="margin-top:20px;">
+      <span class="alert-icon">ℹ️</span>
+      <span><strong>What to do next:</strong> Once Shopify is connected via Supermetrics, return to this dashboard and all metrics above will be populated with live data. The customer economics section in particular will fundamentally change how CPA targets and ROAS floors are set — and will likely reveal that current performance is either better or worse than platform ROAS suggests.</span>
     </div>
   </div>
 
