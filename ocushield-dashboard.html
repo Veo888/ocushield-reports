@@ -140,8 +140,21 @@
   .kpi-val { font-size: 22px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; line-height: 1; }
   .kpi.accent .kpi-val { color: #fff; }
   .kpi.warn .kpi-val { color: var(--red); }
-  .kpi-sub { font-size: 10px; color: var(--text3); margin-top: 4px; }
-  .kpi.accent .kpi-sub { color: rgba(255,255,255,0.5); }
+  .kpi-comp { margin-top: 8px; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+  .kpi-comp .comp-badge {
+    display: inline-flex; align-items: center; gap: 3px;
+    border-radius: 4px; padding: 2px 6px;
+    font-size: 10px; font-weight: 600; font-family: 'DM Mono', monospace;
+    white-space: nowrap;
+  }
+  .comp-up   { background: rgba(0,184,124,0.12); color: #005c3d; }
+  .comp-down { background: rgba(224,53,53,0.1);  color: #8a1f1f; }
+  .comp-neu  { background: rgba(90,106,133,0.1); color: #4a5d7a; }
+  .kpi.accent .comp-badge.comp-up   { background: rgba(255,255,255,0.2); color: #d4ffef; }
+  .kpi.accent .comp-badge.comp-down { background: rgba(255,80,80,0.25);  color: #ffd4d4; }
+  .kpi.accent .comp-badge.comp-neu  { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); }
+  .kpi-comp .comp-label { font-size: 10px; color: var(--text3); }
+  .kpi.accent .comp-label { color: rgba(255,255,255,0.5); }
 
   /* ── CHARTS ── */
   .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -361,17 +374,18 @@
       <span class="section-title">Combined MTD — May 2026</span>
       <span class="section-desc">Facebook Ads + Google Ads · May 1–18</span>
     </div>
-    <div class="kpi-grid" style="margin-bottom:24px;">
-      <div class="kpi accent"><div class="kpi-label">Total spend</div><div class="kpi-val">£29,373</div><div class="kpi-sub">Meta £10,436 · Google £18,937</div></div>
-      <div class="kpi accent"><div class="kpi-label">Total revenue</div><div class="kpi-val">£53,124</div><div class="kpi-sub">Meta £16,287 · Google £36,837</div></div>
-      <div class="kpi accent"><div class="kpi-label">Blended ROAS</div><div class="kpi-val">1.81×</div><div class="kpi-sub">Meta 1.56× · Google 1.95×</div></div>
-      <div class="kpi"><div class="kpi-label">Total impressions</div><div class="kpi-val">1.58M</div><div class="kpi-sub">Meta 804K · Google 580K</div></div>
-      <div class="kpi"><div class="kpi-label">Total clicks</div><div class="kpi-val">21,527</div><div class="kpi-sub">Meta 10,375 · Google 11,152</div></div>
-      <div class="kpi"><div class="kpi-label">Total conversions</div><div class="kpi-val">891</div><div class="kpi-sub">Meta 218 purchases · Google 673</div></div>
-      <div class="kpi"><div class="kpi-label">Meta CPA</div><div class="kpi-val">£47.80</div><div class="kpi-sub">cost per purchase</div></div>
-      <div class="kpi"><div class="kpi-label">Google CPA</div><div class="kpi-val">£28.14</div><div class="kpi-sub">cost per conversion</div></div>
-      <div class="kpi warn"><div class="kpi-label">Loss-making</div><div class="kpi-val">2</div><div class="kpi-sub">Meta campaigns &lt;1× ROAS</div></div>
+    <div class="kpi-grid" style="margin-bottom:12px;">
+      <div class="kpi accent"><div class="kpi-label">Total spend</div><div class="kpi-val">£29,373</div><div class="kpi-sub">Meta £10,436 · Google £18,937</div><div class="kpi-comp" id="comp-spend"></div></div>
+      <div class="kpi accent"><div class="kpi-label">Total revenue</div><div class="kpi-val">£53,124</div><div class="kpi-sub">Meta £16,287 · Google £36,837</div><div class="kpi-comp" id="comp-rev"></div></div>
+      <div class="kpi accent"><div class="kpi-label">Blended ROAS</div><div class="kpi-val">1.81×</div><div class="kpi-sub">Meta 1.56× · Google 1.95×</div><div class="kpi-comp" id="comp-roas"></div></div>
+      <div class="kpi"><div class="kpi-label">Total impressions</div><div class="kpi-val">1.58M</div><div class="kpi-sub">Meta 804K · Google 580K</div><div class="kpi-comp" id="comp-imp"></div></div>
+      <div class="kpi"><div class="kpi-label">Total clicks</div><div class="kpi-val">21,527</div><div class="kpi-sub">Meta 10,375 · Google 11,152</div><div class="kpi-comp" id="comp-clicks"></div></div>
+      <div class="kpi"><div class="kpi-label">Total conversions</div><div class="kpi-val">891</div><div class="kpi-sub">Meta 218 purchases · Google 673</div><div class="kpi-comp" id="comp-conv"></div></div>
+      <div class="kpi"><div class="kpi-label">Meta CPA</div><div class="kpi-val">£47.80</div><div class="kpi-sub">cost per purchase</div><div class="kpi-comp" id="comp-mcpa"></div></div>
+      <div class="kpi"><div class="kpi-label">Google CPA</div><div class="kpi-val">£28.14</div><div class="kpi-sub">cost per conversion</div><div class="kpi-comp" id="comp-gcpa"></div></div>
+      <div class="kpi warn"><div class="kpi-label">Loss-making</div><div class="kpi-val">2</div><div class="kpi-sub">Meta campaigns &lt;1× ROAS</div><div class="kpi-comp" style="color:var(--text3);font-size:10px;margin-top:6px;">same as April</div></div>
     </div>
+    <div style="font-size:10px;color:var(--text3);margin-bottom:24px;padding:0 2px;">Comparatives are like-for-like: May 1–18 vs April 1–18 · sourced directly from Supermetrics</div>
 
     <div class="section-head">
       <span class="section-title">Channel comparison — MTD</span>
@@ -599,31 +613,18 @@
   <!-- ══════════════ ROAS DIAGNOSIS ══════════════ -->
   <div class="panel" id="panel-diagnosis">
 
+    <!-- META DIAGNOSIS -->
     <div class="roas-card" style="margin-bottom:14px;">
       <div class="roas-header">
         <div class="roas-header-left">
-          <div class="roas-label">Performance diagnostic</div>
-          <div class="roas-title">Why is ROAS declining month on month?</div>
+          <div class="roas-label">📘 Meta Ads diagnostic</div>
+          <div class="roas-title">ROAS declining — why &amp; what to do</div>
         </div>
         <div class="roas-pills">
-          <div class="roas-pill">
-            <span class="pill-month">Feb</span>
-            <span class="pill-val">1.79×</span>
-          </div>
-          <div class="roas-pill">
-            <span class="pill-month">Mar</span>
-            <span class="pill-val">1.54×</span>
-            <span class="pill-arrow">↓</span>
-          </div>
-          <div class="roas-pill">
-            <span class="pill-month">Apr</span>
-            <span class="pill-val">1.33×</span>
-            <span class="pill-arrow">↓</span>
-          </div>
-          <div class="roas-pill" style="border-color:rgba(5,117,255,0.4);">
-            <span class="pill-month">May MTD</span>
-            <span class="pill-val" style="color:#3d91ff;">1.56×</span>
-          </div>
+          <div class="roas-pill"><span class="pill-month">Feb</span><span class="pill-val">1.79×</span></div>
+          <div class="roas-pill"><span class="pill-month">Mar</span><span class="pill-val">1.54×</span><span class="pill-arrow">↓</span></div>
+          <div class="roas-pill"><span class="pill-month">Apr</span><span class="pill-val">1.33×</span><span class="pill-arrow">↓</span></div>
+          <div class="roas-pill" style="border-color:rgba(5,117,255,0.4);"><span class="pill-month">May MTD</span><span class="pill-val" style="color:#3d91ff;">1.56×</span></div>
         </div>
       </div>
       <div class="roas-body">
@@ -641,28 +642,28 @@
               <div class="roas-num cause">2</div>
               <div class="roas-item-body">
                 <div class="roas-item-title">US campaigns dragging the average</div>
-                <div class="roas-item-desc">Your US TOF campaigns run at 1.23× ROAS vs UK at 1.60×. If US spend share grew over this period, blended ROAS falls even if UK held steady.</div>
+                <div class="roas-item-desc">Your US TOF campaigns run at 1.23× ROAS vs UK at 1.60×. If US spend share grew over this period, blended ROAS falls even if UK held steady. This is further confirmed by Google data — your US Google campaigns also underperform UK equivalents.</div>
               </div>
             </div>
             <div class="roas-item">
               <div class="roas-num cause">3</div>
               <div class="roas-item-body">
                 <div class="roas-item-title">Audience overlap &amp; self-competition</div>
-                <div class="roas-item-desc">Multiple overlapping UK/US TOF campaigns (4+ simultaneously) means you're bidding against yourself, inflating CPCs and saturating the same people faster.</div>
+                <div class="roas-item-desc">4+ overlapping UK/US TOF campaigns running simultaneously means you're bidding against yourself, inflating CPCs and saturating the same people faster.</div>
               </div>
             </div>
             <div class="roas-item">
               <div class="roas-num cause">4</div>
               <div class="roas-item-body">
                 <div class="roas-item-title">Seasonality</div>
-                <div class="roas-item-desc">Feb–Mar are historically strong for health/wellness. April sees a natural post-Q1 consumer spending dip in the UK. Check last year's data before over-attributing to campaign issues.</div>
+                <div class="roas-item-desc">Feb–Mar are historically strong for health/wellness. April sees a natural post-Q1 consumer spending dip in the UK — and Google data shows the same volume drop, suggesting this is market-wide not campaign-specific.</div>
               </div>
             </div>
             <div class="roas-item">
               <div class="roas-num cause">5</div>
               <div class="roas-item-body">
                 <div class="roas-item-title">Attribution erosion</div>
-                <div class="roas-item-desc">More broad/TOF activity means more view-through conversions in the mix. Meta's reported ROAS drifts downward as stronger last-click conversions shrink as a proportion of spend.</div>
+                <div class="roas-item-desc">More broad/TOF activity means more view-through conversions. Meta's reported ROAS drifts downward as last-click conversions shrink as a share of spend — and with Google also claiming the same clicks, true Meta ROAS is likely overstated.</div>
               </div>
             </div>
           </div>
@@ -672,35 +673,110 @@
               <div class="roas-num fix">1</div>
               <div class="roas-item-body">
                 <div class="roas-item-title">New creative immediately</div>
-                <div class="roas-item-desc">Audit frequency across main campaigns — if above 3–4 in 30 days, you have a fatigue problem. Brief UGC, testimonial and educational formats, not just reskins.</div>
+                <div class="roas-item-desc">Audit frequency — if above 3–4 in 30 days, you have a fatigue problem. Brief UGC, testimonial and educational formats, not just reskins of existing ads.</div>
               </div>
             </div>
             <div class="roas-item">
               <div class="roas-num fix">2</div>
               <div class="roas-item-body">
                 <div class="roas-item-title">Consolidate overlapping TOF campaigns</div>
-                <div class="roas-item-desc">Merge 4 overlapping UK/US campaigns into fewer, better-funded ones. Reduces self-competition and gives the algorithm more signal to optimise.</div>
+                <div class="roas-item-desc">Merge 4 overlapping UK/US campaigns into fewer, better-funded ones. Reduces self-competition and gives the algorithm more signal to optimise with.</div>
               </div>
             </div>
             <div class="roas-item">
               <div class="roas-num fix">3</div>
               <div class="roas-item-body">
                 <div class="roas-item-title">Reallocate to DPA retargeting</div>
-                <div class="roas-item-desc">DPA BOF campaigns are at 11.36× and 7.03× ROAS but spending &lt;3% of budget. Shift 10–15% of budget from underperforming US campaigns here immediately.</div>
+                <div class="roas-item-desc">DPA BOF campaigns are at 11.36× and 7.03× ROAS but spending &lt;3% of budget. Shift 10–15% from underperforming US campaigns here immediately.</div>
               </div>
             </div>
             <div class="roas-item">
               <div class="roas-num fix">4</div>
               <div class="roas-item-body">
                 <div class="roas-item-title">Pause the two loss-makers</div>
-                <div class="roas-item-desc">Stop cd-us-tof-asc-sales (0.55×) and US-TOF-Sales-Broad-ROAS (0.56×). Saves ~£800/month with negligible revenue impact.</div>
+                <div class="roas-item-desc">Stop cd-us-tof-asc-sales (0.55×) and US-TOF-Sales-Broad-ROAS (0.56×). Saves ~£800/month with negligible revenue impact given current conversion rates.</div>
               </div>
             </div>
             <div class="roas-item">
               <div class="roas-num fix">5</div>
               <div class="roas-item-body">
-                <div class="roas-item-title">Connect Shopify for true attribution</div>
-                <div class="roas-item-desc">Meta-reported ROAS is self-attributed and inflated. You can't see true new vs returning customer revenue without your DTC backend connected.</div>
+                <div class="roas-item-title">Fix US messaging — confirmed cross-channel</div>
+                <div class="roas-item-desc">Both Meta US (1.23×) and Google US PMax (1.85×) underperform their UK equivalents. This points to a messaging or offer issue in the US market, not just a Meta problem. Review landing pages, pricing, and social proof for US audiences across both channels.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GOOGLE DIAGNOSIS -->
+    <div class="roas-card" style="margin-bottom:14px;">
+      <div class="roas-header" style="background: linear-gradient(135deg, #0a2810 0%, #0d3d1a 100%);">
+        <div class="roas-header-left">
+          <div class="roas-label">🔍 Google Ads diagnostic</div>
+          <div class="roas-title">ROAS stable &amp; improving — the contrast story</div>
+        </div>
+        <div class="roas-pills">
+          <div class="roas-pill"><span class="pill-month">Feb</span><span class="pill-val">2.48×</span></div>
+          <div class="roas-pill"><span class="pill-month">Mar</span><span class="pill-val">2.51×</span><span class="pill-arrow" style="color:#34A853;">↑</span></div>
+          <div class="roas-pill"><span class="pill-month">Apr</span><span class="pill-val">2.55×</span><span class="pill-arrow" style="color:#34A853;">↑</span></div>
+          <div class="roas-pill" style="border-color:rgba(52,168,83,0.5);"><span class="pill-month">May MTD</span><span class="pill-val" style="color:#34A853;">1.95×</span></div>
+        </div>
+      </div>
+      <div class="roas-body">
+        <div class="roas-cols">
+          <div>
+            <div class="roas-col-title">What's working</div>
+            <div class="roas-item">
+              <div class="roas-num fix">1</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Brand search is printing money</div>
+                <div class="roas-item-desc">UK-Search-Brand at 32.59× and US-Search-Brand at 17.30× ROAS. ROW brand terms also at 13–17×. These campaigns are highly efficient and protect brand equity — ensure budget is never capped here.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num fix">2</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Search outperforms PMax for glasses</div>
+                <div class="roas-item-desc">UK-Search-Glasses (2.22×) and UK-Search-Screens (2.42×) are outperforming equivalent PMax campaigns (UK-PMax-Glasses at 2.02×, UK-PMax at 2.00×). Search intent is strong for your product category.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num fix">3</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Efficiency improving despite volume drop</div>
+                <div class="roas-item-desc">ROAS went from 2.48× in Feb to 2.55× in April even as spend fell from £38K to £29K. The account is getting more efficient — a sign of good optimisation and audience quality improvement.</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="roas-col-title">Watch &amp; fix</div>
+            <div class="roas-item">
+              <div class="roas-num cause">1</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">US-PMax-zombie states</div>
+                <div class="roas-item-desc">1.39× ROAS — the name is a red flag. If this campaign is targeting low-value US geographic segments, it's dragging the US Google average. Review and either exclude the worst-performing states or pause entirely.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num cause">2</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">EU-Search-Catch_All underperforming</div>
+                <div class="roas-item-desc">1.41× ROAS on low volume. Consider pausing and redirecting budget to higher-performing UK/AUS campaigns, or restructuring with tighter keyword targeting for EU markets.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num cause">3</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">May MTD dip to 1.95× worth monitoring</div>
+                <div class="roas-item-desc">The 3-month trend shows improvement but May MTD is lower at 1.95×. This may be early-month volatility — monitor through end of May before drawing conclusions.</div>
+              </div>
+            </div>
+            <div class="roas-item">
+              <div class="roas-num cause">4</div>
+              <div class="roas-item-body">
+                <div class="roas-item-title">Cross-channel conversion overlap</div>
+                <div class="roas-item-desc">Google and Meta both claim credit for the same customer journeys. A user who clicks a Meta ad and later converts via Google search will appear in both platforms' reports. True combined ROAS is lower than the sum of the two.</div>
               </div>
             </div>
           </div>
@@ -710,14 +786,30 @@
 
     <div class="chart-grid">
       <div class="chart-card">
-        <div class="chart-title">ROAS decline — monthly</div>
-        <div class="chart-sub">All accounts combined</div>
-        <div style="position:relative;height:200px;"><canvas id="c-roas2" role="img" aria-label="ROAS Feb 1.79 Mar 1.54 Apr 1.33">ROAS Feb 1.79 Mar 1.54 Apr 1.33</canvas></div>
+        <div class="chart-title">Meta ROAS decline vs Google stability</div>
+        <div class="chart-sub">Feb–Apr 2026 · the divergence is the key story</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-sq" style="background:#0575FF"></div>Meta ROAS</div>
+          <div class="leg"><div class="leg-sq" style="background:#34A853"></div>Google ROAS</div>
+        </div>
+        <div style="position:relative;height:200px;"><canvas id="c-roas2" role="img" aria-label="Meta vs Google ROAS trend Feb–Apr"></canvas></div>
       </div>
       <div class="chart-card">
-        <div class="chart-title">CTR decline — creative fatigue signal</div>
-        <div class="chart-sub">Link click-through rate by month</div>
+        <div class="chart-title">Meta CTR decline — creative fatigue signal</div>
+        <div class="chart-sub">Link click-through rate falling while Google CTR holds</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-sq" style="background:#E03535"></div>Meta link CTR</div>
+        </div>
         <div style="position:relative;height:200px;"><canvas id="c-ctr" role="img" aria-label="CTR Feb 0.82 Mar 0.84 Apr 0.69">CTR: Feb 0.82% Mar 0.84% Apr 0.69%</canvas></div>
+      </div>
+      <div class="chart-card full">
+        <div class="chart-title">Combined spend vs revenue — both channels</div>
+        <div class="chart-sub">Feb–Apr 2026 · volume declining but Google efficiency offsetting Meta deterioration</div>
+        <div class="legend">
+          <div class="leg"><div class="leg-sq" style="background:#0575FF"></div>Total spend</div>
+          <div class="leg"><div class="leg-sq" style="background:#00B87C"></div>Total revenue</div>
+        </div>
+        <div style="position:relative;height:180px;"><canvas id="c-diag-combined" role="img" aria-label="Combined spend and revenue Feb–Apr"></canvas></div>
       </div>
     </div>
   </div>
@@ -726,16 +818,17 @@
   <div class="panel" id="panel-actions">
 
     <div class="section-head" style="margin-top:0;">
-      <span class="section-title">Optimisation Recommendations</span>
-      <span class="section-desc">Prioritised by impact · May 2026</span>
+      <span class="section-title">Cross-channel Action Plan</span>
+      <span class="section-desc">Prioritised by impact · Meta + Google · May 2026</span>
     </div>
 
     <div class="alert warning">
       <span class="alert-icon">⚠️</span>
-      <span>2 campaigns are currently below 1× ROAS — every pound spent is losing money. Pausing these should be the first action.</span>
+      <span>2 Meta campaigns are below 1× ROAS and 2 Google campaigns are underperforming significantly. Combined wasted spend across both channels is approximately <strong>£1,650/month</strong>. Pausing these should be the first action.</span>
     </div>
 
     <div class="insight-grid">
+
       <div class="insight-card">
         <div class="insight-header">
           <div class="insight-icon up">🚀</div>
@@ -745,15 +838,19 @@
           <ul>
             <li>
               <div class="bullet scale">↑</div>
-              <div><strong>cd-ww-ret-bof-dpa-sales</strong> — 11.36× ROAS on just £221 spend. Massively underfunded relative to performance. Increase budget and find the ceiling — retargeting pool size is the only constraint.</div>
+              <div><strong>[Meta] cd-ww-ret-bof-dpa-sales</strong> — 11.36× ROAS on just £221 spend. Massively underfunded. Increase budget and find the ceiling — retargeting pool size is the only constraint here.</div>
             </li>
             <li>
               <div class="bullet scale">↑</div>
-              <div><strong>cd-ww-ret-bof-dpa-sales-cross_sell</strong> — 7.03× ROAS on £63 spend. Same situation. Both DPA campaigns combined are spending less than 3% of your budget for disproportionate returns.</div>
+              <div><strong>[Meta] cd-ww-ret-bof-dpa-sales-cross_sell</strong> — 7.03× ROAS on £63. Both DPA campaigns combined spend less than 3% of Meta budget for disproportionate returns. Double or triple their budgets immediately.</div>
             </li>
             <li>
               <div class="bullet scale">↑</div>
-              <div><strong>UKPlusUSA-TOF-Sales-Broad-Bid-Cap</strong> — 4.25× ROAS on £143. Broad bid cap is clearly working at this spend level. Test incrementally higher budgets to see if efficiency holds.</div>
+              <div><strong>[Google] Brand search campaigns</strong> — UK-Search-Brand at 32.59× and US-Search-Brand at 17.30× ROAS. Ensure these are never budget-capped. Check impression share lost to budget and fix any gaps.</div>
+            </li>
+            <li>
+              <div class="bullet scale">↑</div>
+              <div><strong>[Google] US-PMax-brand</strong> — 4.89× ROAS, your strongest non-brand Google performer. Test increasing budget to capture more branded search volume in the US market.</div>
             </li>
           </ul>
         </div>
@@ -768,15 +865,19 @@
           <ul>
             <li>
               <div class="bullet pause">✕</div>
-              <div><strong>cd-us-tof-asc-sales | lowest cost (phasing?)</strong> — 0.55× ROAS, £142 cost per purchase, 5 conversions on £708 spend. The campaign name already flags someone's doubt. Pause immediately.</div>
+              <div><strong>[Meta] cd-us-tof-asc-sales | lowest cost (phasing?)</strong> — 0.55× ROAS, £141.53 CPA, 5 conversions on £708 spend. The campaign name flags internal doubt. Pause immediately — saves ~£708/month.</div>
             </li>
             <li>
               <div class="bullet pause">✕</div>
-              <div><strong>US-TOF-Sales-Broad-ROAS</strong> — 0.56× ROAS, £100.61 cost per purchase on a single conversion. Too small a sample but combined with poor US performance overall, consolidate into the better-performing US campaign.</div>
+              <div><strong>[Meta] US-TOF-Sales-Broad-ROAS</strong> — 0.56× ROAS, £100.61 CPA on a single conversion. Consolidate into the better-performing US blue light ABO campaign.</div>
             </li>
             <li>
               <div class="bullet pause">✕</div>
-              <div><strong>cc-us-pro-ad_recall</strong> — £538 spend with zero recorded purchases MTD. If this is pure brand awareness, set a very clear cap. If it's meant to drive sales, pause it now.</div>
+              <div><strong>[Google] US-PMax-zombie states</strong> — 1.39× ROAS, the name says it all. Audit which states are dragging performance and either exclude them or pause the campaign until restructured.</div>
+            </li>
+            <li>
+              <div class="bullet pause">✕</div>
+              <div><strong>[Google] EU-Search-Catch_All</strong> — 1.41× ROAS, low volume, low efficiency. Pause and reallocate budget to UK or AUS campaigns with proven 2×+ ROAS until EU strategy is clarified.</div>
             </li>
           </ul>
         </div>
@@ -791,15 +892,19 @@
           <ul>
             <li>
               <div class="bullet optim">~</div>
-              <div><strong>cd-uk-tof-sales | blue_light | ABO</strong> — your biggest campaign (£4,410) at only 1.60× ROAS. Audit creative frequency, test new angles. ABO may be limiting the best ad sets from getting budget — consider CBO.</div>
+              <div><strong>[Meta] cd-uk-tof-sales | blue_light | ABO</strong> — your biggest Meta campaign (£4,410) at only 1.60× ROAS. Audit creative frequency, test new angles. ABO may be limiting top ad sets — consider switching to CBO.</div>
             </li>
             <li>
               <div class="bullet optim">~</div>
-              <div><strong>cd-us-tof-sales | blue_light | ABO</strong> — 1.23× ROAS on £2,566. US significantly underperforms UK (1.23× vs 1.60×). Test US-specific creative and localised messaging before putting more budget in.</div>
+              <div><strong>[Meta] cd-us-tof-sales | blue_light | ABO</strong> — 1.23× ROAS on £2,566. Google US data confirms US market underperformance is cross-channel. Fix messaging, landing pages and pricing for US audiences before spending more here.</div>
             </li>
             <li>
               <div class="bullet optim">~</div>
-              <div><strong>UK&amp;US-PRO-SALES-VIDEOVIEWFUNNEL</strong> — 1.08× ROAS on £907, barely breakeven. Clarify the objective: if this is awareness feeding retargeting, track it differently. If it's DR, the creative needs a rethink.</div>
+              <div><strong>[Google] US-Search-Glasses (170)</strong> — 1.83× ROAS but £46.77 CPA vs £22–25 average across other Google campaigns. Review keyword match types and negative keyword lists to reduce wasted spend.</div>
+            </li>
+            <li>
+              <div class="bullet optim">~</div>
+              <div><strong>[Google] UK&amp;US PMax campaigns</strong> — PMax variants (2.00–2.02×) are underperforming equivalent Search campaigns (2.22–2.42×). Review asset quality, audience signals, and whether PMax is cannibalising Search traffic.</div>
             </li>
           </ul>
         </div>
@@ -808,34 +913,35 @@
       <div class="insight-card">
         <div class="insight-header">
           <div class="insight-icon info">📋</div>
-          <div class="insight-title">Longer term — strategic actions</div>
+          <div class="insight-title">Strategic — longer term</div>
         </div>
         <div class="insight-body">
           <ul>
             <li>
               <div class="bullet cause">→</div>
-              <div><strong>Connect Shopify</strong> — both Meta and Google ROAS are self-attributed. You can't see true new vs returning customers, real revenue, or cross-channel attribution without your DTC backend in Supermetrics.</div>
+              <div><strong>Connect Shopify</strong> — both Meta and Google ROAS are self-attributed and overlapping. Without your DTC backend you can't see true revenue, new vs returning customers, or real cross-channel CPA. This is the highest-value data gap to close.</div>
             </li>
             <li>
               <div class="bullet cause">→</div>
-              <div><strong>Watch for conversion overlap</strong> — now that Google Ads is connected, be aware that both platforms claim credit for the same conversions. A customer clicking a Meta ad then a Google search ad may appear in both. True combined revenue will be lower than Meta + Google reported totals combined.</div>
+              <div><strong>Address US underperformance across both channels</strong> — Meta US ROAS is 1.23× and Google US PMax is 1.85× vs UK equivalents of 1.60× and 2.00–2.42×. This is a market-level issue: review US pricing, landing pages, reviews, and social proof independently of creative.</div>
             </li>
             <li>
               <div class="bullet cause">→</div>
-              <div><strong>Separate UK and US campaigns on Meta</strong> — the 0.37× ROAS gap suggests the same creative isn't landing equally. US needs localised proof points, pricing anchoring, and social proof.</div>
+              <div><strong>Audit PMax vs Search cannibalisation on Google</strong> — PMax consistently underperforms Search in your account. Ensure PMax isn't consuming budget that would convert better through targeted Search campaigns. Add brand exclusions to PMax if not already in place.</div>
             </li>
             <li>
               <div class="bullet cause">→</div>
-              <div><strong>Refresh Meta creative proactively</strong> — set a standing rule to introduce new creative every 4–6 weeks per campaign, before frequency triggers CTR decline rather than after.</div>
+              <div><strong>Refresh Meta creative on a rolling 6-week cycle</strong> — CTR decline from 0.83% to 0.69% is a clear fatigue signal. Set a standing creative brief cadence before frequency forces your hand rather than after performance drops.</div>
             </li>
           </ul>
         </div>
       </div>
+
     </div>
 
     <div class="alert info" style="margin-top:14px;">
       <span class="alert-icon">ℹ️</span>
-      <span><strong>Next step: connect Shopify</strong> — Google Ads is now live. Connecting your Shopify store will add true revenue, new vs returning customer data, and cross-channel deduplication. <a href="https://hub.supermetrics.com">Connect via Supermetrics →</a></span>
+      <span><strong>Next step: connect Shopify</strong> — Google Ads is now live. Connecting your Shopify store will add true revenue, new vs returning customer data, and cross-channel deduplication to this dashboard. <a href="https://hub.supermetrics.com">Connect via Supermetrics →</a></span>
     </div>
   </div>
 
@@ -846,7 +952,41 @@
 </div>
 
 <script>
-// ── TAB LOGIC ──
+// ── APRIL 1–18 COMPARATIVES (like-for-like with May 1–18) ──
+const aprData = {
+  spend:  30532,  rev:    64224,  roas:  2.10,
+  imp:    1385,   clicks: 21202,  conv:  1112,
+  mcpa:   54.94,  gcpa:   20.09,
+};
+const mayData = {
+  spend:  29373, rev: 53124, roas: 1.81,
+  imp:    1580,  clicks: 21527, conv: 891,
+  mcpa:   47.80, gcpa: 28.14,
+};
+
+function compBadge(mayVal, aprVal, fmt, inv, elId) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  const diff = mayVal - aprVal;
+  const pct  = (diff / aprVal) * 100;
+  const isGood = inv ? diff < 0 : diff > 0;
+  const cls  = Math.abs(pct) < 0.5 ? 'comp-neu' : isGood ? 'comp-up' : 'comp-down';
+  const arrow = diff > 0 ? '▲' : diff < 0 ? '▼' : '–';
+  const sign  = diff >= 0 ? '+' : '';
+  el.innerHTML = `
+    <span class="comp-badge ${cls}">${arrow} ${sign}${fmt(Math.abs(diff))} (${sign}${pct.toFixed(1)}%)</span>
+    <span class="comp-label">vs Apr 1–18</span>`;
+}
+
+compBadge(mayData.spend,  aprData.spend,  v=>'£'+(v/1000).toFixed(0)+'K',  false, 'comp-spend');
+compBadge(mayData.rev,    aprData.rev,    v=>'£'+(v/1000).toFixed(0)+'K',  false, 'comp-rev');
+compBadge(mayData.roas,   aprData.roas,   v=>v.toFixed(2)+'×',             false, 'comp-roas');
+compBadge(mayData.imp,    aprData.imp,    v=>v.toFixed(0)+'K',             false, 'comp-imp');
+compBadge(mayData.clicks, aprData.clicks, v=>v.toLocaleString('en-GB'),    false, 'comp-clicks');
+compBadge(mayData.conv,   aprData.conv,   v=>v.toLocaleString('en-GB'),    false, 'comp-conv');
+compBadge(mayData.mcpa,   aprData.mcpa,   v=>'£'+v.toFixed(2),            true,  'comp-mcpa');
+compBadge(mayData.gcpa,   aprData.gcpa,   v=>'£'+v.toFixed(2),            true,  'comp-gcpa');
+
 function showPanel(id) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -919,8 +1059,9 @@ function roasChart(id) {
   new Chart(document.getElementById(id), {
     type: 'line',
     data: { labels: months, datasets: [
-      { label:'ROAS', data:[1.79,1.54,1.33], borderColor:'#0575FF', backgroundColor:'rgba(5,117,255,0.06)', fill:true, tension:0.35, pointRadius:6, pointBackgroundColor:'#0575FF', yAxisID:'y' },
-      { label:'CPP',  data:[42.47,55.00,56.77], borderColor:'#D48A00', backgroundColor:'transparent', borderDash:[5,3], tension:0.35, pointRadius:6, pointBackgroundColor:'#D48A00', yAxisID:'y2' }
+      { label:'Meta ROAS',   data:[1.79,1.54,1.33], borderColor:'#0575FF', backgroundColor:'rgba(5,117,255,0.06)', fill:false, tension:0.35, pointRadius:6, pointBackgroundColor:'#0575FF', yAxisID:'y' },
+      { label:'Google ROAS', data:[2.48,2.51,2.55], borderColor:'#34A853', backgroundColor:'rgba(52,168,83,0.06)', fill:false, tension:0.35, pointRadius:6, pointBackgroundColor:'#34A853', yAxisID:'y' },
+      { label:'Meta CPP',    data:[42.47,55.00,56.77], borderColor:'#D48A00', backgroundColor:'transparent', borderDash:[5,3], tension:0.35, pointRadius:6, pointBackgroundColor:'#D48A00', yAxisID:'y2' }
     ]},
     options: { ...chartDefaults,
       scales: {
@@ -933,6 +1074,21 @@ function roasChart(id) {
 }
 roasChart('c-roas');
 roasChart('c-roas2');
+
+new Chart(document.getElementById('c-diag-combined'), {
+  type: 'bar',
+  data: { labels: months, datasets: [
+    { label:'Total spend',   data:[62508, 63794, 47822], backgroundColor:'#0575FF' },
+    { label:'Total revenue', data:[138206,133856, 98453], backgroundColor:'#00B87C' }
+  ]},
+  options: { ...chartDefaults,
+    plugins: { legend:{display:false}, tooltip:{callbacks:{label:c=>'£'+c.parsed.y.toLocaleString()}} },
+    scales: {
+      x: { grid:{display:false}, ticks:{font:{size:11}} },
+      y: { ticks:{callback:v=>'£'+(v/1000).toFixed(0)+'K',font:{size:10}}, grid:{color:'rgba(0,0,0,0.04)'} }
+    }
+  }
+});
 
 new Chart(document.getElementById('c-purch'), {
   type: 'bar',
